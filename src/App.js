@@ -37,7 +37,7 @@ class App extends Component {
   async fetchAccount() {
 
     try {
-      var accounts = await this.getAccountsPromise();
+      var accounts = await this._getAccountsPromise();
     } catch(e) {
       console.log(e);
     }
@@ -50,7 +50,7 @@ class App extends Component {
 
   }
 
-  getAccountsPromise() {
+  _getAccountsPromise() {
     var self = this;
     return new Promise(function (resolve, reject) {
       self.state.web3.eth.getAccounts(function (e, accounts) {
@@ -92,15 +92,17 @@ class App extends Component {
 
   async confess(sin, payment) {
 
-    var isValidSin = typeof sin === "string" && sin.length > 0;
-    var isValidPayment = typeof payment === "number" && payment > 0;
+    payment = parseFloat(payment);
+
+    var isValidSin = sin.length > 0;
+    var isValidPayment = payment > 0;
 
     if ( !(isValidSin && isValidPayment) ) {
       throw "Invalid confession";
     }
 
     try {
-      var results = await this.state.tetzel.confess(
+      var results = await this.state.tetzelInstance.confess(
         sin, {from: this.state.account, value: this.state.web3.toWei(payment, 'ether')}
       );
       console.log(results);
@@ -119,7 +121,7 @@ class App extends Component {
         <main className="container">
           <ConfessionBox 
             tokenAddress={ this.state.tetzelCoinAddress } 
-            onConfess={ this.confess } />
+            onConfess={ this.confess.bind(this) } />
         </main>
       </div>
     );
