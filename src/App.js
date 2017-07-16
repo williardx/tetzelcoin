@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import Tetzel from '../build/contracts/Tetzel.json'
 import TetzelCrowdsale from '../build/contracts/TetzelCrowdsale.json'
 import getWeb3 from './utils/getWeb3'
+
 import ConfessionBox from './components/ConfessionBox'
+import SinsTable from './components/SinsTable'
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -75,12 +77,6 @@ class App extends Component {
   }
 
   async instantiateContracts() {
-    /*
-     * SMART CONTRACT EXAMPLE
-     *
-     * Normally these functions would be called in the context of a
-     * state management library, but for convenience I've placed them here.
-     */
 
     const contract = require('truffle-contract')
     const tetzel = contract(Tetzel)
@@ -142,7 +138,7 @@ class App extends Component {
         payment: this.state.web3.fromWei(parseInt(event.topics[3], 16), 'ether'),
         sinHash: event.topics[2],
       };
-
+2
       this.setState({ recentSins: [...this.state.recentSins, logObj] });
 
     });
@@ -160,6 +156,7 @@ class App extends Component {
           <ConfessionBox 
             tokenAddress={ this.state.tetzelCoinAddress } 
             onConfess={ this.confess.bind(this) } />
+          <SinsTable recentSins={ this.state.recentSins } />
         </main>
       </div>
     );
