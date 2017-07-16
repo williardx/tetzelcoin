@@ -18,6 +18,7 @@ class App extends Component {
       tetzelInstance: null,
       tetzelCoinAddress: null,
       account: null,
+      recentSins: [],
     }
   }
 
@@ -29,6 +30,7 @@ class App extends Component {
       this.setState({web3: web3.web3});
       await this.fetchAccount();
       await this.instantiateContracts();
+      this.instantiateFilter();
     } catch(e) {
       console.log(e);
     }
@@ -61,6 +63,15 @@ class App extends Component {
         }
       });
     });
+  }
+
+  hexToAscii(h) {
+    var hex  = h.toString();
+    var str = '';
+    for (var n = 0; n < hex.length; n += 2) {
+      str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
+    }
+    return str;
   }
 
   async instantiateContracts() {
@@ -109,7 +120,34 @@ class App extends Component {
     } catch(e) {
       console.log(e);
     }
-  }   
+  }
+
+  instantiateFilter() {
+    
+    var sinFilter = this.state.web3.eth.filter({
+      address: this.state.tetzelInstance.address,
+      fromBlock: 1,
+      toBlock: 'latest'
+    });
+
+    sinFilter.watch((err, event) => {
+      if (err !== null) {
+        console.log("There was an error getting event logs");
+      }
+
+      var logObj = {
+        blockNumber: event.blockNumber,
+        sinner: "0x" + event.topics[1].replace(/^0x0+/, ""),
+        sin: this.hexToAscii(event.data.replace("0x", "")),
+        payment: this.state.web3.fromWei(parseInt(event.topics[3], 16), 'ether'),
+        sinHash: event.topics[2],
+      };
+
+      this.setState({ recentSins: [...this.state.recentSins, logObj] });
+
+    });
+
+  } 
 
   render() {
     return (
