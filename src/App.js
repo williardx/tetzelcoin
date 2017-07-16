@@ -5,6 +5,9 @@ import getWeb3 from './utils/getWeb3'
 
 import ConfessionBox from './components/ConfessionBox'
 import SinsTable from './components/SinsTable'
+import TokenContractBox from './components/TokenContractBox'
+
+import { Container } from 'semantic-ui-react';
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -68,13 +71,15 @@ class App extends Component {
   }
 
   hexToAscii(h) {
+
     var hex  = h.toString();
     var str = '';
     for (var n = 0; n < hex.length; n += 2) {
       str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
     }
     return str;
-  }
+  
+}
 
   async instantiateContracts() {
 
@@ -148,16 +153,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav className="navbar pure-menu pure-menu-horizontal">
-            <a href="#" className="pure-menu-heading pure-menu-link">TetzelCoin</a>
-        </nav>
-
-        <main className="container">
-          <ConfessionBox 
-            tokenAddress={ this.state.tetzelCoinAddress } 
-            onConfess={ this.confess.bind(this) } />
+        <Container>
+          <h1>TetzelCoin</h1>
+          <ConfessionBox onConfess={ this.confess.bind(this) } />
+          <TokenContractBox tokenAddress={ this.state.tetzelCoinAddress } />
           <SinsTable recentSins={ this.state.recentSins } />
-        </main>
+        </Container>
       </div>
     );
   }
