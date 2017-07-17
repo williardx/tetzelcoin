@@ -10,9 +10,11 @@ class SinsTable extends Component {
     var trs = this.props.recentSins.map((sinObj, i) => {
       return (
         <Table.Row key={i}>
-          <Table.Cell><Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment></Table.Cell>
+          <Table.Cell textAlign="center">
+            <Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment>
+          </Table.Cell>
           <Table.Cell>{ sinObj.sinner }</Table.Cell>
-          <Table.Cell>{ sinObj.payment }</Table.Cell>
+          <Table.Cell textAlign="center">{ sinObj.payment }</Table.Cell>
           <Table.Cell>{ sinObj.sin }</Table.Cell>
         </Table.Row>
       );
@@ -21,10 +23,10 @@ class SinsTable extends Component {
     return(
       <Table celled selectable fixed>
         <Table.Header>
-          <Table.HeaderCell>Time</Table.HeaderCell>
-          <Table.HeaderCell>Sinner</Table.HeaderCell>
-          <Table.HeaderCell>Payment (ETH)</Table.HeaderCell>
-          <Table.HeaderCell>Sin</Table.HeaderCell>
+          <Table.HeaderCell textAlign="center" width={2}>Time</Table.HeaderCell>
+          <Table.HeaderCell textAlign="center" width={2}>Sinner</Table.HeaderCell>
+          <Table.HeaderCell textAlign="center" width={2}>Payment (ETH)</Table.HeaderCell>
+          <Table.HeaderCell textAlign="center" width={8}>Sin</Table.HeaderCell>
         </Table.Header>
         <Table.Body>
           { trs }
