@@ -15,6 +15,7 @@ import './css/pure-min.css'
 import './App.css'
 
 class App extends Component {
+
   constructor(props) {
     super(props)
 
@@ -65,6 +66,19 @@ class App extends Component {
           reject(e);
         } else {
           resolve(accounts);
+        }
+      });
+    });
+  }
+
+  _getBlockTimestamp(blockNumber) {
+    var self = this;
+    return new Promise(function(resolve, reject) {
+      self.state.web3.eth.getBlock(blockNumber, function(err, results) {
+        if (err !== null) {
+          reject(err);
+        } else {
+          resolve(results);
         }
       });
     });
@@ -131,13 +145,15 @@ class App extends Component {
       toBlock: 'latest'
     });
 
-    sinFilter.watch((err, event) => {
+    sinFilter.watch(async (err, event) => {
       if (err !== null) {
         console.log("There was an error getting event logs");
       }
 
+      var blockObj = await this._getBlockTimestamp(event.blockNumber);
+
       var logObj = {
-        blockNumber: event.blockNumber,
+        timestamp: blockObj.timestamp,
         sinner: "0x" + event.topics[1].replace(/^0x0+/, ""),
         sin: this.hexToAscii(event.data.replace("0x", "")),
         payment: this.state.web3.fromWei(parseInt(event.topics[3], 16), 'ether'),

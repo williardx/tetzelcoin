@@ -50,8 +50,10 @@
   },
   "dependencies": {
     "dotenv": "^2.0.0",
+    "moment": "^2.18.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-moment": "^0.6.0",
     "semantic-ui-css": "^2.2.11",
     "semantic-ui-react": "^0.71.0",
     "zeppelin-solidity": "^1.1.0"
