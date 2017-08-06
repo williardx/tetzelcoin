@@ -13,6 +13,10 @@ import {
   Visibility,
 } from 'semantic-ui-react'
 
+import './css/dswallau.css';
+import './css/home.css';
+
+
 export default class Home extends Component {
 
   render() {
@@ -30,7 +34,8 @@ export default class Home extends Component {
               as='h1'
               content='TetzelCoin'
               inverted
-              style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em' }}
+              className='dswallau'
+              style={{ fontFamily: 'DSWallau', fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em' }}
             />
             <Header
               as='h2'
@@ -66,12 +71,10 @@ export default class Home extends Component {
         </Segment>
 
         <Segment style={{ padding: '8em 0em' }} vertical>
-          <Container text>
-            <Header as='h3' style={{ fontSize: '2em' }}>Confession Begins</Header>
+          <Container text style={{ textAlign: 'center' }}>
+            <Header as='h3' className='dswallau' style={{ fontSize: '2em' }}>Confession Begins</Header>
             <p style={{ fontSize: '1.33em' }}>
-              Instead of focusing on content creation and hard work, we have learned how to master the art of doing
-              nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic
-              and worth your attention.
+              October 31, 2017, 12 PM PST
             </p>
           </Container>
         </Segment>

@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'DSWallau';
+  font-style: normal;
+  src: url('../fonts/DSWallau/DSWallau.eot');
+  src: url('../fonts/DSWallau/DSWallau.eot?#iefix') format('embedded-opentype'),
+       local('DSWallau'),
+       url('../fonts/DSWallau/DSWallau.woff2') format('woff2'),
+       url('../fonts/DSWallau/DSWallau.woff') format('woff'),
+       url('../fonts/DSWallau/DSWallau.ttf') format('truetype'),
+       url('../fonts/DSWallau/DSWallau.svg#DSWallau') format('svg');
+}
