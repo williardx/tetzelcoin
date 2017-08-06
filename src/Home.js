@@ -21,7 +21,7 @@ import './css/home.css';
 export default class Home extends Component {
 
   render() {
-
+    let launchDate = Math.floor(new Date(2017, 9, 31, 12).getTime() / 1000);
     return (
       <div>
         <Segment
@@ -76,7 +76,7 @@ export default class Home extends Component {
             <p style={{ fontSize: '1.33em', marginBottom: '2em' }}>
               October 31, 2017, 12 PM PST
             </p>
-            <CountdownTimer />
+            <CountdownTimer targetTime={launchDate} />
           </Container>
         </Segment>
 
