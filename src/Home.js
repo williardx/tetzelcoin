@@ -12,6 +12,7 @@ import {
   Segment,
   Visibility,
 } from 'semantic-ui-react'
+import CountdownTimer from './components/CountdownTimer';
 
 import './css/dswallau.css';
 import './css/home.css';
@@ -72,9 +73,10 @@ export default class Home extends Component {
         <Segment className='confession-countdown' style={{ padding: '8em 0em' }} vertical>
           <Container text style={{ textAlign: 'center' }}>
             <Header as='h3' className='dswallau' style={{ fontSize: '2em' }}>Confession Begins</Header>
-            <p style={{ fontSize: '1.33em' }}>
+            <p style={{ fontSize: '1.33em', marginBottom: '2em' }}>
               October 31, 2017, 12 PM PST
             </p>
+            <CountdownTimer />
           </Container>
         </Segment>
 
