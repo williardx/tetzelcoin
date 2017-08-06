@@ -26,26 +26,26 @@ export default class Home extends Component {
       <div>
         <Segment
           textAlign='center'
-          style={{ minHeight: 700, padding: '1em 0em' }}
+          className='hero'
           vertical
         >
           <Container text>
             <Header
               as='h1'
               content='TetzelCoin'
-              inverted
               className='dswallau'
-              style={{ fontSize: '4em', marginBottom: 0, marginTop: '3em' }}
+              style={{ fontSize: '4em', marginBottom: 0, marginTop: '2em' }}
             />
             <Header
               as='h2'
-              content='A token for forgiveness'
-              inverted
-              style={{ fontSize: '1.7em', fontWeight: 'normal' }}
+              content='A Token for Forgiveness'
+              style={{ fontSize: '1.5em', fontWeight: 'normal', marginTop: '0em' }}
             />
-            <Button primary size='huge' className='btn-cta'>
-              Whitepaper
-            </Button>
+            <Image
+              centered
+              size='medium'
+              src='/images/TetzelCoin_Coin.png'
+            />
           </Container>
         </Segment>
 
@@ -57,13 +57,14 @@ export default class Home extends Component {
                 <p style={{ fontSize: '1.33em' }}>
                   TetzelCoin is a cryptocurrency designed to be a token for forgiveness. Since we cannot forgive and forget, users are able to define their sins in monetary terms and take appropriate action to correct their misdeeds.
                 </p>
+                <Button primary size='big' className='btn-cta'>
+                  Whitepaper
+                </Button>
               </Grid.Column>
               <Grid.Column floated='right' width={6}>
                 <Image
-                  bordered
-                  rounded
                   size='large'
-                  src='/assets/images/wireframe/white-image.png'
+                  src='/images/TetzelCoin_Confessional-Booth.png'
                 />
               </Grid.Column>
             </Grid.Row>

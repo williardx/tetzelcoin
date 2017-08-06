@@ -1,3 +1,12 @@
+.hero {
+    background-image: url('/images/TetzelCoin_Background-GradientBottom.png') !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    min-height: 700px !important;
+    padding: 1em 0em !important;
+}
+
 .confession-countdown {
     background: #FAFAFA !important;
 }
