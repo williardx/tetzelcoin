@@ -7,12 +7,25 @@ so we have to add `!important` after every rule that we want
 
 body {
   font-family: 'Didact Gothic', sans-serif !important;
+  color: #828282 !important;
 }
 
 h1, h2, h3 {
+  color: #8A8484 !important;
   font-family: 'Didact Gothic', sans-serif !important;
 }
 
 .dswallau {
+  color: #5F5F5F !important;
   font-family: 'DSWallau' !important;
+  font-weight: normal !important;
+}
+
+.btn-cta {
+  background: #F1FAFF !important;
+  border: 1px solid #E0E0E0 !important;
+  box-sizing: border-box !important;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 10px !important;
+  color: #828282 !important; /* Why doesn't this get set in body? */ 
 }

@@ -24,7 +24,6 @@ export default class Home extends Component {
     return (
       <div>
         <Segment
-          inverted
           textAlign='center'
           style={{ minHeight: 700, padding: '1em 0em' }}
           vertical
@@ -35,7 +34,7 @@ export default class Home extends Component {
               content='TetzelCoin'
               inverted
               className='dswallau'
-              style={{ fontFamily: 'DSWallau', fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em' }}
+              style={{ fontSize: '4em', marginBottom: 0, marginTop: '3em' }}
             />
             <Header
               as='h2'
@@ -43,7 +42,7 @@ export default class Home extends Component {
               inverted
               style={{ fontSize: '1.7em', fontWeight: 'normal' }}
             />
-            <Button primary size='huge'>
+            <Button primary size='huge' className='btn-cta'>
               Whitepaper
             </Button>
           </Container>
@@ -70,7 +69,7 @@ export default class Home extends Component {
           </Grid>
         </Segment>
 
-        <Segment style={{ padding: '8em 0em' }} vertical>
+        <Segment className='confession-countdown' style={{ padding: '8em 0em' }} vertical>
           <Container text style={{ textAlign: 'center' }}>
             <Header as='h3' className='dswallau' style={{ fontSize: '2em' }}>Confession Begins</Header>
             <p style={{ fontSize: '1.33em' }}>
@@ -130,12 +129,12 @@ export default class Home extends Component {
           </Grid>
         </Segment>
 
-        <Segment inverted vertical style={{ padding: '5em 0em' }}>
+        <Segment vertical style={{ padding: '5em 0em' }}>
           <Container>
-            <Grid divided inverted stackable>
+            <Grid divided stackable>
               <Grid.Row>
                 <Grid.Column width={16}>
-                  <Header as='h4' inverted>Footer Header</Header>
+                  <Header as='h4'>Footer Header</Header>
                   <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
                 </Grid.Column>
               </Grid.Row>
