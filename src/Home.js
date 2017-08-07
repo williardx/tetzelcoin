@@ -28,6 +28,7 @@ export default class Home extends Component {
           textAlign='center'
           className='hero'
           vertical
+          basic
         >
           <Container text>
             <Header
