@@ -183,7 +183,7 @@ export default class Home extends Component {
           </Container>
         </Segment>
 
-        <Segment textAlign='center' style={{ padding: '8em 0em' }} vertical>
+        <Segment basic textAlign='center' style={{ padding: '8em 0em' }} vertical>
           <Container>
             <Header as='h3' style={{ fontSize: '2em' }}>Receive updates about TetzelCoin and the token sale</Header>                      
             <Input
@@ -194,17 +194,8 @@ export default class Home extends Component {
           </Container>
         </Segment>
 
-        <Segment vertical style={{ padding: '5em 0em' }}>
-          <Container>
-            <Grid divided stackable>
-              <Grid.Row>
-                <Grid.Column width={16}>
-                  <Header as='h4'>Footer Header</Header>
-                  <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Container>
+        <Segment className='footer' basic vertical style={{ padding: '5em 0em' }}>
+          
         </Segment>
       </div>
     )
