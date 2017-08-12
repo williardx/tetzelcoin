@@ -195,7 +195,22 @@ export default class Home extends Component {
         </Segment>
 
         <Segment className='footer' basic vertical style={{ padding: '5em 0em' }}>
-          
+          <Container>
+            <Grid columns={3}>
+              <Grid.Row>
+                <Grid.Column>
+                  <p>Copyright TetzelCoin</p>
+                  <p>Press Kit</p>
+                </Grid.Column>
+                <Grid.Column textAlign='center'>
+                  GitHub and other links
+                </Grid.Column>
+                <Grid.Column textAlign='right'>
+                  <p>team@tetzelcoin.com</p>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Container>
         </Segment>
       </div>
     )
