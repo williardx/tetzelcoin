@@ -53,6 +53,20 @@
    text-align: center; 
 }
 
+/* Semantic UI is being annoying about centering some items... so we have
+this hack instead.
+ */
+.center-hack {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.how-it-works-steps {
+    background-color: #FAFAFA !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
 .footer {
     background-image: url('/images/TetzelCoin_Background-GradientTop.png') !important;
     background-position: center !important;

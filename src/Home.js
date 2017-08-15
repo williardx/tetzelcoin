@@ -74,6 +74,7 @@ export default class Home extends Component {
               </Grid.Column>
               <Grid.Column floated='right' width={6}>
                 <Image
+                  className='center-hack'
                   size='large'
                   src='/images/TetzelCoin_Confessional-Booth.png'
                 />
@@ -81,39 +82,60 @@ export default class Home extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
-
         <Segment style={{ padding: '8em 0em' }} vertical>
           <Container>
             <Grid stackable verticalAlign='middle'>
               <Grid.Row>
                 <Header as='h3' style={{ fontSize: '2em' }}>How does it work?</Header>              
               </Grid.Row>
-              <Grid.Row>
+              <Grid.Row only='computer tablet'>
                 <Image
+                  className='center-hack'
                   fluid
                   style={{height: '100%'}}
                   src='/images/TetzelCoin_How-It-Works.png'
                 />
               </Grid.Row>
-              <Grid.Row>
-                <Header as='h4' style={{ fontSize: '1.5em' }}>Confession</Header>                            
-              </Grid.Row>
-              <Grid.Row>
+              <Grid.Row only='mobile'>
                 <Image
+                  className='center-hack'
                   fluid
-                  size='huge'
                   style={{height: '100%'}}
-                  src='/images/TetzelCoin_MedicalDebt.png'
+                  src='/images/TetzelCoin_How-It-Works-Mobile.png'
                 />
               </Grid.Row>
               <Grid.Row>
-                <Grid.Column width={8}>
-                  <Header as='h4' style={{ fontSize: '1.5em' }}>Forgiveness</Header>
+                <Header as='h4' style={{ fontSize: '1.5em' }}>Confess</Header>                            
+              </Grid.Row>
+              <Grid.Row>
+                <Segment className='how-it-works-steps'>
+                  <p style={{ fontSize: '1.2em' }}>Confess your sin and pay whatever you believe your sin to be worth. The sin gets registered on the blockchain.</p>
+                </Segment>
+              </Grid.Row>
+              <Grid.Row>
+                <p style={{ fontSize: '1.33em' }}>
+                  TetzelCoin allows us to correct our past wrongs by doing what's right. The first step to using TetzelCoin is to publicly confess a sin -- i.e., a harmful thing we have said or done -- and to pay an amount in proportion to the gravity of the sin. The confession and payment are done through the Pardoner, a special smart contract designed to pardon people of their sins. The Pardoner will register your confession on the public and permanent record of the Ethereum blockchain.
+                </p>
+              </Grid.Row>
+              <Grid.Row>
+                <Header as='h4' style={{ fontSize: '1.5em' }}>Forgive</Header>
+              </Grid.Row>
+              <Grid.Row>
+                <Segment className='how-it-works-steps'>
+                  <p style={{ fontSize: '1.2em' }}>You receive TetzelCoin as a token of forgiveness. The proceeds from your confession are used to forgive medical debt.</p>
+                  <p style={{ fontSize: '1.2em' }}>The proceeds from your confession are used to forgive medical debt.</p>
+                </Segment>
+              </Grid.Row>
+              <Grid.Row columns={2}>
+                <Grid.Column>
+                   <p style={{ fontSize: '1.33em' }}>
+                    TetzelCoin is fundamentally about forgiveness. Once you've confessed and paid an appropriate amount for your sin, the Pardoner will issue you TetzelCoin as a token of forgiveness. Once issued, you can use the token to further forgive or apologize to others by simply sending them TetzelCoin.
+                  </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    TetzelCoin is a cryptocurrency designed to be a token for forgiveness. Since we cannot forgive and forget, users are able to define their sins in monetary terms and take appropriate action to correct their misdeeds. (Edit text later...)
+                    The proceeds from TetzelCoin will be used to purchase and cancel medical debt. A particularly pernicious form of debt, medical debt is issued when a patient is unable to pay for their treatment. Medical debt can be purchased for pennies on the dollar, allowing your forgiveness to magnify tens of times over and help forgive others of their debts.
                   </p>
                 </Grid.Column>
-                <Grid.Column floated='right' width={6}>
+                <Grid.Column floated='right'>
                   <Image
                     src='/images/TetzelCoin_Forgiveness.png'
                   />
@@ -143,10 +165,13 @@ export default class Home extends Component {
                     The TetzelCoin token sale will begin on October 31st at 12PM PST (the 500th Anniversary of Reformation Day) and will end January 1st, 2018, 12 AM PST.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    The token sale is uncapped and there is an unlimited supply of tokens.  Tokens will be available immediately upon confession. Only ether will be accepted as payment.
+                    The token sale is uncapped. Tokens will be issued at a rate of 500 SIN per ETH and will be available immediately upon confession. Only ether will be accepted as payment.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    90% of the proceeds from the token sale will be donated directly to RIP Medical Debt. The remaining 10% will go towards covering operating costs and compensating the team.
+                    85% of the tokens will be distributed to token buyers and 15% will be retained by the team.
+                  </p>
+                  <p style={{ fontSize: '1.33em' }}>
+                    100% of the proceeds from the token sale will go to The Tetzel Fund, a 501(c)(3) non-profit that will provide medical debt relief in the United States.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
                     View token sale terms here.
@@ -160,6 +185,15 @@ export default class Home extends Component {
                     src='/assets/images/wireframe/white-image.png'
                   />
                 </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Image
+                  fluid
+                  className='center-hack'
+                  size='huge'
+                  style={{height: '100%'}}
+                  src='/images/TetzelCoin_MedicalDebt.png'
+                />
               </Grid.Row>
             </Grid>
           </Container>
