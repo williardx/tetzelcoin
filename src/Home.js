@@ -60,7 +60,7 @@ export default class Home extends Component {
           </Container>
         </Segment>
 
-        <Segment style={{ padding: '8em 0em' }} vertical>
+        <Segment style={{ padding: '2% 8%' }} vertical>
           <Grid container stackable verticalAlign='middle'>
             <Grid.Row>
               <Grid.Column width={8}>
@@ -82,11 +82,11 @@ export default class Home extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
-        <Segment style={{ padding: '8em 0em' }} vertical>
+        <Segment style={{ padding: '8% 8%' }} vertical>
           <Container>
             <Grid stackable verticalAlign='middle'>
               <Grid.Row>
-                <Header as='h3' style={{ fontSize: '2em' }}>How does it work?</Header>              
+                <Header as='h3' className='center-hack' style={{ fontSize: '2em', paddingBottom: '0' }}>How does it work?</Header>              
               </Grid.Row>
               <Grid.Row only='computer tablet'>
                 <Image
@@ -105,7 +105,7 @@ export default class Home extends Component {
                 />
               </Grid.Row>
               <Grid.Row>
-                <Header as='h4' style={{ fontSize: '1.5em' }}>Confess</Header>                            
+                <Header as='h4' style={{ fontSize: '2em' }}>Confess</Header>                            
               </Grid.Row>
               <Grid.Row>
                 <Segment className='how-it-works-steps'>
@@ -118,12 +118,11 @@ export default class Home extends Component {
                 </p>
               </Grid.Row>
               <Grid.Row>
-                <Header as='h4' style={{ fontSize: '1.5em' }}>Forgive</Header>
+                <Header as='h4' style={{ fontSize: '2em' }}>Forgive</Header>
               </Grid.Row>
               <Grid.Row>
                 <Segment className='how-it-works-steps'>
                   <p style={{ fontSize: '1.2em' }}>You receive TetzelCoin as a token of forgiveness. The proceeds from your confession are used to forgive medical debt.</p>
-                  <p style={{ fontSize: '1.2em' }}>The proceeds from your confession are used to forgive medical debt.</p>
                 </Segment>
               </Grid.Row>
               <Grid.Row columns={2}>
@@ -145,9 +144,9 @@ export default class Home extends Component {
           </Container>
         </Segment>
 
-        <Segment className='dark-gray-background' style={{ padding: '8em 0em' }} vertical>
+        <Segment className='dark-gray-background' style={{ padding: '8% 0em' }} vertical>
           <Container text style={{ textAlign: 'center' }}>
-            <Header as='h3' className='dswallau' style={{ fontSize: '2em' }}>Confession Begins</Header>
+            <Header as='h3' className='dswallau' style={{ fontSize: '3em', paddingBottom: '0' }}>Confession Begins</Header>
             <p style={{ fontSize: '1.33em', marginBottom: '2em' }}>
               October 31, 2017, 12 PM PST
             </p>
@@ -155,7 +154,7 @@ export default class Home extends Component {
           </Container>
         </Segment>
 
-        <Segment style={{ padding: '8em 0em' }} vertical>
+        <Segment style={{ padding: '8% 8%' }} vertical>
           <Container>
             <Grid stackable verticalAlign='middle'>
               <Grid.Row>

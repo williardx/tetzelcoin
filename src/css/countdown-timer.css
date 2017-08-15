@@ -4,13 +4,16 @@
 
 .countdown-number-box {
     background: #F1FAFF !important;
-    box-shadow: -2px -1px 5px rgba(0, 0, 0, 0.1) !important;
-    padding-top: 15px !important;
-    padding-bottom: 15px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
     font-size: 40px;
     max-width: 120px;
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 5px;
 }
 
 .countdown-unit-title {

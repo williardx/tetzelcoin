@@ -5,7 +5,8 @@ so we have to add `!important` after every rule that we want
 
 @import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
 
-body {
+body,
+.ui.text.container {
   font-family: 'Didact Gothic', sans-serif !important;
   color: #828282 !important;
 }
@@ -19,6 +20,9 @@ h1, h2, h3, h4 {
   color: #5F5F5F !important;
   font-family: 'DSWallau' !important;
   font-weight: normal !important;
+}
+h3.ui.header.dswallau {
+  color: #828282 !important;
 }
 
 .btn-cta {

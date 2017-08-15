@@ -37,6 +37,39 @@
     background: transparent !important;
 }
 
+button.ui.big.primary.button.btn-cta {
+    text-transform: uppercase !important;
+    font-weight: 400 !important;
+    letter-spacing: .5px !important;
+    font-family: 'Didact Gothic', sans-serif !important;
+}
+input[type="text"] {
+    font-family: 'Didact Gothic', sans-serif !important;
+    letter-spacing: .2px;
+}
+
+h3.ui.header {
+    font-weight: 100;
+    padding-bottom: 30px;
+}
+h4.ui.header {
+    font-weight: 100;
+    letter-spacing: .2px;
+}
+p {
+    padding-bottom: 30px;
+    margin: 0 !important;
+}
+
+.ui.grid {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.column {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
 ::-webkit-input-placeholder {
    text-align: center;
 }
@@ -65,6 +98,15 @@ this hack instead.
     background-color: #FAFAFA !important;
     border: none !important;
     box-shadow: none !important;
+    font-family: 'Courier' !important;
+    border-left: 8px solid #F1FAFF !important;
+}
+.ui.segment.how-it-works-steps {
+    width: 100%;
+    padding: 2rem;
+}
+.ui.segment.how-it-works-steps p {
+    padding-bottom: 0;
 }
 
 .footer {
@@ -73,5 +115,23 @@ this hack instead.
     background-size: cover !important;
     background-repeat: no-repeat !important;
     min-height: 200px !important;
+    overflow: hidden !important;
     padding: 1em 0em !important; 
+}
+
+.footer:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(255,255,255,0);
+    background: -moz-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 83%, rgba(255,255,255,1) 100%);
+    background: -webkit-gradient(left bottom, left bottom, color-stop(0%, rgba(255,255,255,0)), color-stop(83%, rgba(255,255,255,0)), color-stop(100%, rgba(255,255,255,1)));
+    background: -webkit-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 83%, rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 83%, rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 83%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 83%, rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0 );    
 }
