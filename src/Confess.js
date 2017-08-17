@@ -3,7 +3,7 @@ import Tetzel from '../build/contracts/Tetzel.json'
 import TetzelCrowdsale from '../build/contracts/TetzelCrowdsale.json'
 import getWeb3 from './utils/getWeb3'
 
-import ConfessionBox from './components/ConfessionBox'
+import ConfessionForm from './components/ConfessionForm'
 import SinsTable from './components/SinsTable'
 import TokenContractBox from './components/TokenContractBox'
 
@@ -171,7 +171,7 @@ class Confess extends Component {
       <div className="App">
         <Container>
           <h1>TetzelCoin</h1>
-          <ConfessionBox onConfess={ this.confess.bind(this) } />
+          <ConfessionForm onConfess={ this.confess.bind(this) } />
           <TokenContractBox tokenAddress={ this.state.tetzelCoinAddress } />
           <SinsTable recentSins={ this.state.recentSins } />
         </Container>

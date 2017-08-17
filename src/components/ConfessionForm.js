@@ -4,7 +4,7 @@ import {
   Form,
 } from 'semantic-ui-react';
 
-class ConfessionBox extends Component {
+export default class ConfessionForm extends Component {
 
   constructor(props) {
     super(props);
@@ -48,5 +48,3 @@ class ConfessionBox extends Component {
   }
 
 }
-
-export default ConfessionBox;
