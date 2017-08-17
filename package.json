@@ -57,6 +57,8 @@
     "react-router-dom": "^4.1.2",
     "semantic-ui-css": "^2.2.11",
     "semantic-ui-react": "^0.71.0",
+    "three": "^0.86.0",
+    "three-obj-loader": "^1.1.2",
     "zeppelin-solidity": "^1.1.0"
   },
   "scripts": {
