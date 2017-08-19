@@ -14,6 +14,7 @@ import {
   Input,
 } from 'semantic-ui-react'
 import CountdownTimer from './components/CountdownTimer';
+import EmailForm from './components/EmailForm';
 
 import './css/dswallau.css';
 import './css/home.css';
@@ -52,11 +53,7 @@ export default class Home extends Component {
               content='Sign up to receive updates about TetzelCoin and the token sale'
               style={{ fontSize: '1.2em', fontWeight: 'normal' }}
             />
-            <Input
-              className='email-input'
-              action={<Button primary size='big' className='btn-cta'>Sign Up</Button>}
-              placeholder='your@email.com'
-            />
+            <EmailForm />
           </Container>
         </Segment>
 
@@ -219,11 +216,7 @@ export default class Home extends Component {
         <Segment basic textAlign='center' style={{ padding: '8em 0em' }} vertical>
           <Container>
             <Header as='h3' style={{ fontSize: '2em' }}>Receive updates about TetzelCoin and the token sale</Header>                      
-            <Input
-              className='email-input'
-              action={<Button primary size='big' className='btn-cta'>Sign Up</Button>}
-              placeholder='your@email.com'
-            />
+
           </Container>
         </Segment>
 
