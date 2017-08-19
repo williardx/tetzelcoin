@@ -14,7 +14,7 @@ import {
   Input,
 } from 'semantic-ui-react'
 import CountdownTimer from './components/CountdownTimer';
-import EmailForm from './components/EmailForm';
+import MailchimpEmailForm from './components/MailchimpEmailForm';
 
 import './css/dswallau.css';
 import './css/home.css';
@@ -53,7 +53,11 @@ export default class Home extends Component {
               content='Sign up to receive updates about TetzelCoin and the token sale'
               style={{ fontSize: '1.2em', fontWeight: 'normal' }}
             />
-            <EmailForm />
+            <MailchimpEmailForm
+              u={this.props.mailchimp.u}
+              id={this.props.mailchimp.id}
+              signupUrl={this.props.mailchimp.signupUrl}
+            />
           </Container>
         </Segment>
 
