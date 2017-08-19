@@ -25,7 +25,7 @@ h3.ui.header.dswallau {
   color: #828282 !important;
 }
 
-.btn-cta {
+.btn-cta, .btn-cta > button {
   background: #F1FAFF !important;
   border: 1px solid #E0E0E0 !important;
   box-sizing: border-box !important;

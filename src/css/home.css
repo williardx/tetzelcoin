@@ -28,21 +28,13 @@
     background: #FAFAFA !important;
 }
 
-.email-input input {
-    border-top: 0px !important;
-    border-right: 0px !important;
-    border-left: 0px !important;
-    border-radius: 0px !important;
-    margin-right: 15px !important;
-    background: transparent !important;
-}
-
 button.ui.big.primary.button.btn-cta {
     text-transform: uppercase !important;
     font-weight: 400 !important;
     letter-spacing: .5px !important;
     font-family: 'Didact Gothic', sans-serif !important;
 }
+
 input[type="text"] {
     font-family: 'Didact Gothic', sans-serif !important;
     letter-spacing: .2px;

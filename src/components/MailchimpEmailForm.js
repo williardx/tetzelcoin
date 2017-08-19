@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Form, Message } from 'semantic-ui-react';
+import { Button, Grid, Form, Message } from 'semantic-ui-react';
 import jsonp from 'jsonp';
+
+import '../css/mailchimp-email-form.css';
 
 export default class MailchimpEmailForm extends Component {
 
@@ -53,7 +55,9 @@ export default class MailchimpEmailForm extends Component {
   render() {
     return(
       <div>
-        <Form onSubmit={() => this.subscribe(this.state.form)} >
+        <Form 
+          onSubmit={() => this.subscribe(this.state.form)}
+          loading={this.state.status === 'sending'}>
           <div 
             aria-label='Please leave the following three fields empty' 
             style={{position: 'absolute', left: '-9999px'}}>
@@ -82,15 +86,27 @@ export default class MailchimpEmailForm extends Component {
               onChange={this.handleInputChange}
               id='b_comment'>{this.state.b_comment}</textarea>
           </div>
-          <Form.Input 
-            type='email'
-            autocapitalize='off'
-            autocorrect='off'
-            name='MERGE0'
-            value={this.state.email}
-            placeholder='your@email.com'
-            onChange={this.handleInputChange} />
-          <Form.Button content='submit' type='submit' />
+          <Grid>
+            <Grid.Row centered columns={2}>
+              <Grid.Column>
+                <Form.Input 
+                  className='email-input'
+                  type='email'
+                  required
+                  autocapitalize='off'
+                  autocorrect='off'
+                  name='MERGE0'
+                  value={this.state.email}
+                  placeholder='your@email.com'
+                  onChange={this.handleInputChange} />
+              </Grid.Column>
+              <Grid.Column>
+                <Button primary size='big' className='btn-cta' type='submit'>
+                  Submit
+                </Button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         </Form>
         {this.state.status === null ? null : 
           <Message
