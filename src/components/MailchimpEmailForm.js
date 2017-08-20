@@ -42,9 +42,9 @@ export default class MailchimpEmailForm extends Component {
     this.setState({status: 'sending', msg: 'Sending...'}, 
       () => jsonp(url, {param: 'c'}, (err, data) => {
         if (err) {
-          this.setState({status: 'error', msg: err});
+          this.setState({status: 'error', msg: err.replace('0 - ', 'Error: ')});
         } else if (data.result !== 'success') {
-          this.setState({status: 'error', msg: data.msg});
+          this.setState({status: 'error', msg: data.msg.replace('0 - ', 'Error: ')});
         } else {
           this.setState({status: 'success', msg: data.msg});
         }
