@@ -55,9 +55,7 @@ export default class MailchimpEmailForm extends Component {
   render() {
     return(
       <div>
-        <Form 
-          onSubmit={() => this.subscribe(this.state.form)}
-          loading={this.state.status === 'sending'}>
+        <Form onSubmit={() => this.subscribe(this.state.form)}>
           <div 
             aria-label='Please leave the following three fields empty' 
             style={{position: 'absolute', left: '-9999px'}}>
@@ -87,24 +85,25 @@ export default class MailchimpEmailForm extends Component {
               id='b_comment'>{this.state.b_comment}</textarea>
           </div>
           <Grid>
-            <Grid.Row centered columns={2}>
-              <Grid.Column>
-                <Form.Input 
-                  className='email-input'
-                  type='email'
-                  required
-                  autocapitalize='off'
-                  autocorrect='off'
-                  name='MERGE0'
-                  value={this.state.email}
-                  placeholder='your@email.com'
-                  onChange={this.handleInputChange} />
-              </Grid.Column>
-              <Grid.Column>
-                <Button primary size='big' className='btn-cta' type='submit'>
+            <Grid.Row centered>
+              <Form.Input
+                style={{marginBottom: 0}}
+                className='email-input'
+                type='email'
+                required
+                autocapitalize='off'
+                autocorrect='off'
+                name='MERGE0'
+                value={this.state.email}
+                placeholder='your@email.com'
+                onChange={this.handleInputChange} />
+                <Button 
+                  disabled={this.state.status === 'sending'}
+                  primary size='big' 
+                  className='btn-cta' 
+                  type='submit'>
                   Submit
                 </Button>
-              </Grid.Column>
             </Grid.Row>
           </Grid>
         </Form>

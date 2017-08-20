@@ -70,7 +70,7 @@ export default class Home extends Component {
                   TetzelCoin is a cryptocurrency designed to be a token for forgiveness. Since we cannot forgive and forget, users are able to define their sins in monetary terms and take appropriate action to correct their misdeeds.
                 </p>
                 <Button primary size='big' className='btn-cta'>
-                  Whitepaper
+                  White Paper
                 </Button>
               </Grid.Column>
               <Grid.Column floated='right' width={6}>
@@ -220,7 +220,10 @@ export default class Home extends Component {
         <Segment basic textAlign='center' style={{ padding: '8em 0em' }} vertical>
           <Container>
             <Header as='h3' style={{ fontSize: '2em' }}>Receive updates about TetzelCoin and the token sale</Header>                      
-
+            <MailchimpEmailForm
+              u={this.props.mailchimp.u}
+              id={this.props.mailchimp.id}
+              signupUrl={this.props.mailchimp.signupUrl} />
           </Container>
         </Segment>
 
