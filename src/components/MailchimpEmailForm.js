@@ -87,7 +87,6 @@ export default class MailchimpEmailForm extends Component {
           <Grid>
             <Grid.Row centered>
               <Form.Input
-                style={{marginBottom: 0}}
                 className='email-input'
                 type='email'
                 required
@@ -113,7 +112,7 @@ export default class MailchimpEmailForm extends Component {
             positive={this.state.status === 'success'}
             negative={this.state.status === 'error'}>
             <Message.Content>
-              <p style={{paddingBottom: 0}}>{this.state.msg}</p>
+              <p className='message'>{this.state.msg}</p>
             </Message.Content>
           </Message>}
       </div>
