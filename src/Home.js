@@ -77,7 +77,13 @@ export default class Home extends Component {
                 <Image
                   className='center-hack'
                   size='large'
+                  style={{  }}
                   src='/images/TetzelCoin_Confessional-Booth.png'
+                />
+                <Image
+                  className='center-hack rise'
+                  style={{ width: '100%', position: 'absolute', left: '0%', top: '0%', zIndex: '-1' }}
+                  src='/images/TetzelCoin_RobotCenter-half.png'
                 />
               </Grid.Column>
             </Grid.Row>
@@ -91,18 +97,28 @@ export default class Home extends Component {
               </Grid.Row>
               <Grid.Row only='computer tablet'>
                 <Image
-                  className='center-hack'
-                  fluid
-                  style={{height: '100%'}}
-                  src='/images/TetzelCoin_How-It-Works.png'
+                  className='center-hack wiggle'
+                  style={{ width: '7.5%', position: 'absolute', left: '17%', top: '51.5%', zIndex: '1' }}
+                  src='/images/TetzelCoin_Dollars.png'
                 />
-              </Grid.Row>
-              <Grid.Row only='mobile'>
                 <Image
                   className='center-hack'
                   fluid
                   style={{height: '100%'}}
-                  src='/images/TetzelCoin_How-It-Works-Mobile.png'
+                  src='/images/TetzelCoin_How-It-Works-NoMoney.png'
+                />
+              </Grid.Row>
+              <Grid.Row only='mobile'>
+                <Image
+                  className='center-hack wiggle'
+                  style={{ width: '7.5%', position: 'absolute', left: '19.5%', top: '48%', zIndex: '1' }}
+                  src='/images/TetzelCoin_Dollars.png'
+                />
+                <Image
+                  className='center-hack'
+                  fluid
+                  style={{height: '100%'}}
+                  src='/images/TetzelCoin_How-It-Works-NoMoney-Mobile.png'
                 />
               </Grid.Row>
               <Grid.Row>
@@ -174,43 +190,81 @@ export default class Home extends Component {
                     100% of the proceeds from the token sale will go to The Tetzel Fund, a 501(c)(3) non-profit that will provide medical debt relief in the United States.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    View token sale terms here.
+                    Accepted purchase method: ETH
                   </p>
                 </Grid.Column>
                 <Grid.Column floated='right' width={6}>
                   <Image
-                    bordered
                     rounded
                     size='large'
-                    src='/assets/images/wireframe/white-image.png'
+                    src='/images/TetzelCoin_PieChart.png'
                   />
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
-                <Image
-                  fluid
-                  className='center-hack'
-                  size='huge'
-                  style={{height: '100%'}}
-                  src='/images/TetzelCoin_MedicalDebt.png'
-                />
+                <Button primary size='big' className='btn-cta center-hack'>
+                  Token Sale Terms
+                </Button>
               </Grid.Row>
             </Grid>
           </Container>
         </Segment>
 
+        <Segment vertical className='medical-debt-image'>
+          <Image
+            className='center-hack wiggle'
+            style={{ width: '7.5%', position: 'absolute', left: '28%', top: '28%', zIndex: '1' }}
+            src='/images/TetzelCoin_Dollars-Left.png'
+          />
+          <Image
+            fluid
+            className='center-hack'
+            size='huge'
+            style={{height: '100%'}}
+            src='/images/TetzelCoin_MedicalDebt_NoMoney.png'
+          />
+        </Segment>
+
         <Segment style={{ padding: '8em 0em' }} vertical className='dark-gray-background'>
           <Container>
-            <Grid stackable verticalAlign='middle'>
+            <Grid stackable>
               <Grid.Row>
                 <Grid.Column textAlign='center'>
                   <Header as='h3' style={{ fontSize: '2em' }}>Team</Header>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
-                <Grid.Column>
+                <Grid.Column width={2}>
                 </Grid.Column>
-                <Grid.Column>
+                <Grid.Column width={6} padded='horizontally'>
+                <Image
+                  fluid
+                  className='center-hack'
+                  size='huge'
+                  style={{width: '60%', borderRadius: '100%', boxShadow: '2px 1px 5px rgba(0, 0, 0, 0.1)' }}
+                  src='/images/will-doenlen-headshot.jpg'
+                />
+                <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0' }}>Will Doenlen</Header>
+                <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Project Lead and Development</Header>
+                <p style={{ textAlign: 'center', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }} >Will Doenlen is an artist, engineer and investor 
+                living in San Francisco. Will's art explores the existential absurdity of human systems 
+                that provide us with symbolic value in our daily lives. You can view more of his projects 
+                on his <a href="https://williardx.com">personal website</a>. Will previously worked at Asana and Autodesk and holds a BS from MIT.</p>
+                </Grid.Column>
+                <Grid.Column width={6} padded='horizontally'>
+                <Image
+                  fluid
+                  className='center-hack'
+                  size='huge'
+                  style={{width: '60%', borderRadius: '100%', boxShadow: '2px 1px 5px rgba(0, 0, 0, 0.1)' }}
+                  src='/images/leanne-luce-headshot.jpg'
+                />
+                <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0' }}>Leanne Luce</Header>
+                <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Designer</Header>
+                <p style={{ textAlign: 'center', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }}>Leanne is a designer, developer, 
+                and fashion technologist based out of San Francisco.  You can visit her blog, <a href="https://thefashionrobot.com">the fashion robot</a> or view previous works in her <a href="https://leanneluce.com">portfolio</a>. 
+                Leanne previously worked on wearable robotics at Harvard University and Otherlab. 
+                She holds a BFA in Apparel Design from Rhode Island School of Design (RISD).</p>
                 </Grid.Column>
               </Grid.Row>
             </Grid>          
