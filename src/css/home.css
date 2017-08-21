@@ -1,5 +1,5 @@
 .hero {
-    background-image: url('/images/TetzelCoin_Background-GradientBottom.png') !important;
+    background-image: url('/images/TetzelCoin_Background.png') !important;
     background-position: center !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
@@ -42,7 +42,9 @@ button.ui.big.primary.button.btn-cta:hover {
     background: white !important;
 }
 
-input[type="text"] {
+input[type="text"],
+.ui.form .field .ui.input input, 
+.ui.form .fields .field .ui.input input {
     font-family: 'Didact Gothic', sans-serif !important;
     letter-spacing: .2px;
 }
@@ -108,7 +110,6 @@ this hack instead.
     border: none !important;
     box-shadow: none !important;
     font-family: 'Courier' !important;
-    border-left: 8px solid #F1FAFF !important;
 }
 .ui.segment.how-it-works-steps {
     width: 100%;
@@ -153,7 +154,7 @@ this hack instead.
 
 .rise {
   animation-name: rise;
-  animation-duration: 5s; 
+  animation-duration: 4s; 
   animation-timing-function: ease-out; 
   animation-delay: 0;
   animation-direction: alternate;
@@ -170,12 +171,26 @@ this hack instead.
     transform: translateY(100px);
   }
 }
+
+.icons {
+    width: 40px;
+}
+.icons:hover {
+    opacity: .8;
+}
+a.icons-link:hover:after {
+    content: '';
+}
+.footer .ui.container {
+    padding-top: 7.5%;
+}
+
 .footer {
-    background-image: url('/images/TetzelCoin_Background-GradientTop.png') !important;
+    background-image: url('/images/TetzelCoin_Background-Footer.png') !important;
     background-position: center !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
-    min-height: 200px !important;
+    min-height: 250px !important;
     overflow: hidden !important;
     padding: 1em 0em !important; 
 }
@@ -188,11 +203,11 @@ this hack instead.
     bottom: 0;
     left: 0;
     background: rgba(255,255,255,0);
-    background: -moz-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 83%, rgba(255,255,255,1) 100%);
-    background: -webkit-gradient(left bottom, left bottom, color-stop(0%, rgba(255,255,255,0)), color-stop(83%, rgba(255,255,255,0)), color-stop(100%, rgba(255,255,255,1)));
-    background: -webkit-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 83%, rgba(255,255,255,1) 100%);
-    background: -o-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 83%, rgba(255,255,255,1) 100%);
-    background: -ms-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 83%, rgba(255,255,255,1) 100%);
-    background: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 83%, rgba(255,255,255,1) 100%);
+    background: -moz-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 73%, rgba(255,255,255,1) 100%);
+    background: -webkit-gradient(left bottom, left bottom, color-stop(0%, rgba(255,255,255,0)), color-stop(73%, rgba(255,255,255,0)), color-stop(100%, rgba(255,255,255,1)));
+    background: -webkit-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 73%, rgba(255,255,255,1) 100%);
+    background: -o-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 73%, rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 73%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 73%, rgba(255,255,255,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0 );    
 }

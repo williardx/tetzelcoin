@@ -128,14 +128,23 @@ export default class Home extends Component {
                 <Segment className='how-it-works-steps'>
                   <p style={{ fontSize: '1.2em' }}>Confess your sin and pay whatever you believe your sin to be worth. The sin gets registered on the blockchain.</p>
                 </Segment>
+              </Grid.Row> 
+              <Grid.Row columns={2}>
+                <Grid.Column floated='left'>
+                  <Image
+                    src='/images/TetzelCoin_Confessing.png'
+                    style={{ width: '90%' }}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <p style={{ fontSize: '1.33em' }}>
+                    TetzelCoin allows us to correct our past wrongs by doing what's right. The first step to using TetzelCoin is to publicly confess a sin -- i.e., a harmful thing we have said or done -- and to pay an amount in proportion to the gravity of the sin. The confession and payment are done through the Pardoner, a special smart contract designed to pardon people of their sins. The Pardoner will register your confession on the public and permanent record of the Ethereum blockchain.
+                  </p>
+                </Grid.Column>
               </Grid.Row>
+
               <Grid.Row>
-                <p style={{ fontSize: '1.33em' }}>
-                  TetzelCoin allows us to correct our past wrongs by doing what's right. The first step to using TetzelCoin is to publicly confess a sin -- i.e., a harmful thing we have said or done -- and to pay an amount in proportion to the gravity of the sin. The confession and payment are done through the Pardoner, a special smart contract designed to pardon people of their sins. The Pardoner will register your confession on the public and permanent record of the Ethereum blockchain.
-                </p>
-              </Grid.Row>
-              <Grid.Row>
-                <Header as='h4' style={{ fontSize: '2em' }}>Forgive</Header>
+                <Header as='h4' style={{ fontSize: '2em', marginTop: '4%' }}>Forgive</Header>
               </Grid.Row>
               <Grid.Row>
                 <Segment className='how-it-works-steps'>
@@ -286,14 +295,19 @@ export default class Home extends Component {
             <Grid columns={3}>
               <Grid.Row>
                 <Grid.Column>
-                  <p>Copyright TetzelCoin</p>
-                  <p>Press Kit</p>
+                  <p style={{ fontSize: '1.2em', paddingBottom: '0' }}>Copyright &copy; TetzelCoin</p>
+                  <p style={{ fontSize: '1.2em' }}><a href="/">Press Kit</a></p>
                 </Grid.Column>
                 <Grid.Column textAlign='center'>
-                  GitHub and other links
+                  <a className='icons-link' href="https://github.com/wdoenlen/tetzelcoin/">
+                    <Image
+                      className='center-hack icons'
+                      src='/images/TetzelCoin_github.png'
+                    />
+                  </a>
                 </Grid.Column>
                 <Grid.Column textAlign='right'>
-                  <p>team@tetzelcoin.com</p>
+                  <p style={{ fontSize: '1.2em' }}><a href="mailto:team@tetzelcoin.com">team@tetzelcoin.com</a></p>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
