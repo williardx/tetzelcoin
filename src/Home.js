@@ -258,7 +258,7 @@ export default class Home extends Component {
                 <p style={{ textAlign: 'center', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }} >Will Doenlen is an artist, engineer and investor 
                 living in San Francisco. Will's art explores the existential absurdity of human systems 
                 that provide us with symbolic value in our daily lives. You can view more of his projects 
-                on his <a href="https://williardx.com">personal website</a>. Will previously worked at Asana and Autodesk and holds a BS from MIT.</p>
+                on his <a href="http://williardx.com">portfolio</a>. Will holds a BS from MIT.</p>
                 </Grid.Column>
                 <Grid.Column width={6} padded='horizontally'>
                 <Image
