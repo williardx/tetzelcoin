@@ -1,7 +1,7 @@
 {
   "name": "tetzelcoin",
   "author": "Will Doenlen",
-  "homepage": "https://wdoenlen.github.io/tetzelcoin",
+  "homepage": "http://tetzelcoin.com",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
