@@ -168,7 +168,7 @@ this hack instead.
     transform: translateY(0px);
   }
   100% {
-    transform: translateY(100px);
+    transform: translateY(70px);
   }
 }
 

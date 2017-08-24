@@ -81,7 +81,7 @@ export default class Home extends Component {
                   src='/images/TetzelCoin_Confessional-Booth.png'
                 />
                 <Image
-                  className='center-hack rise'
+                  className='center-hack'
                   style={{ width: '100%', position: 'absolute', left: '0%', top: '0%', zIndex: '-1' }}
                   src='/images/TetzelCoin_RobotCenter-half.png'
                 />
@@ -97,7 +97,7 @@ export default class Home extends Component {
               </Grid.Row>
               <Grid.Row only='computer tablet'>
                 <Image
-                  className='center-hack wiggle'
+                  className='center-hack'
                   style={{ width: '7.5%', position: 'absolute', left: '17%', top: '51.5%', zIndex: '1' }}
                   src='/images/TetzelCoin_Dollars.png'
                 />
@@ -110,7 +110,7 @@ export default class Home extends Component {
               </Grid.Row>
               <Grid.Row only='mobile'>
                 <Image
-                  className='center-hack wiggle'
+                  className='center-hack'
                   style={{ width: '7.5%', position: 'absolute', left: '19.5%', top: '48%', zIndex: '1' }}
                   src='/images/TetzelCoin_Dollars.png'
                 />
@@ -122,10 +122,10 @@ export default class Home extends Component {
                 />
               </Grid.Row>
               <Grid.Row>
-                <Header as='h4' style={{ fontSize: '2em' }}>Confess</Header>                            
+                <Header as='h4' style={{ fontSize: '2em', marginTop: '20px', marginBottom: '20px' }}>Confess</Header>                            
               </Grid.Row>
               <Grid.Row>
-                <Segment className='how-it-works-steps'>
+                <Segment className='how-it-works-steps' style={{ marginBottom: '40px' }} >
                   <p style={{ fontSize: '1.2em' }}>Confess your sin and pay whatever you believe your sin to be worth. The sin gets registered on the blockchain.</p>
                 </Segment>
               </Grid.Row> 
@@ -137,17 +137,17 @@ export default class Home extends Component {
                   />
                 </Grid.Column>
                 <Grid.Column>
-                  <p style={{ fontSize: '1.33em' }}>
+                  <p style={{ fontSize: '1.33em', marginBottom: '40px' }}>
                     TetzelCoin allows us to correct our past wrongs by doing what's right. The first step to using TetzelCoin is to publicly confess a sin -- i.e., a harmful thing we have said or done -- and to pay an amount in proportion to the gravity of the sin. The confession and payment are done through the Pardoner, a special smart contract designed to pardon people of their sins. The Pardoner will register your confession on the public and permanent record of the Ethereum blockchain.
                   </p>
                 </Grid.Column>
               </Grid.Row>
 
               <Grid.Row>
-                <Header as='h4' style={{ fontSize: '2em', marginTop: '4%' }}>Forgive</Header>
+                <Header as='h4' style={{ fontSize: '2em', marginTop: '4%', marginBottom: '20px' }}>Forgive</Header>
               </Grid.Row>
               <Grid.Row>
-                <Segment className='how-it-works-steps'>
+                <Segment className='how-it-works-steps' style={{ marginBottom: '40px' }} >
                   <p style={{ fontSize: '1.2em' }}>You receive TetzelCoin as a token of forgiveness. The proceeds from your confession are used to forgive medical debt.</p>
                 </Segment>
               </Grid.Row>
@@ -221,7 +221,7 @@ export default class Home extends Component {
 
         <Segment vertical className='medical-debt-image'>
           <Image
-            className='center-hack wiggle'
+            className='center-hack'
             style={{ width: '7.5%', position: 'absolute', left: '28%', top: '28%', zIndex: '1' }}
             src='/images/TetzelCoin_Dollars-Left.png'
           />
