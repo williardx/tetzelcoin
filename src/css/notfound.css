@@ -1,0 +1,22 @@
+body {
+    position: absolute !important;
+    background-image: url('/images/TetzelCoin_Background.png') !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.notfound-container {
+    margin-top: 20% !important;
+}
+
+.notfound-header {
+    font-size: 4em !important; 
+    margin-bottom: 0 !important;
+}
+
+.notfound-text {
+    font-size: 1.4em !important;
+}
