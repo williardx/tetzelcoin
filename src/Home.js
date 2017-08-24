@@ -203,6 +203,9 @@ export default class Home extends Component {
                   <p style={{ fontSize: '1.33em' }}>
                     Accepted purchase method: ETH
                   </p>
+                  <p style={{ fontSize: '1.33em' }}>
+                    Token sale terms and conditions coming soon.
+                  </p>
                 </Grid.Column>
                 <Grid.Column floated='right' width={6}>
                   <Image
@@ -212,28 +215,8 @@ export default class Home extends Component {
                   />
                 </Grid.Column>
               </Grid.Row>
-              <Grid.Row>
-                <Button primary size='big' className='btn-cta center-hack'>
-                  Token Sale Terms
-                </Button>
-              </Grid.Row>
             </Grid>
           </Container>
-        </Segment>
-
-        <Segment vertical className='medical-debt-image'>
-          <Image
-            className='center-hack'
-            style={{ width: '7.5%', position: 'absolute', left: '28%', top: '28%', zIndex: '1' }}
-            src='/images/TetzelCoin_Dollars-Left.png'
-          />
-          <Image
-            fluid
-            className='center-hack'
-            size='huge'
-            style={{height: '100%'}}
-            src='/images/TetzelCoin_MedicalDebt_NoMoney.png'
-          />
         </Segment>
 
         <Segment style={{ padding: '8em 0em' }} vertical className='dark-gray-background'>
