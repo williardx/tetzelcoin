@@ -9,18 +9,20 @@ export default class NotFound extends Component {
   render() {
     return(
       <Container className='notfound-container' textAlign='center'>
-        <Header
-          as='h1'
-          content='Not Found' 
-          className='dswallau notfound-header' />
-        <p className='notfound-text'>
-          The page you are looking for does not exist.
-        </p>
-        <Link to='/'>
-          <Button primary size='big' className='btn-cta'>
-            Return Home
-          </Button> 
-        </Link>
+        <div className='notfound-wrapper'>
+          <Header
+            as='h1'
+            content='Not Found' 
+            className='dswallau notfound-header' />
+          <p className='notfound-text'>
+            The page you are looking for does not exist.
+          </p>
+          <Link to='/'>
+            <Button primary size='big' className='btn-cta'>
+              Return Home
+            </Button> 
+          </Link>
+        </div>
       </Container>
     );
   }

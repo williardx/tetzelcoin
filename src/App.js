@@ -26,7 +26,7 @@ export default class App extends Component {
           <Route exact path="/" render={ () => <Home mailchimp={this.state.mailchimp} /> } />
           <Route path="/confess" component={ Confess } />
           <Route path="/confessionaltest" component = { ConfessionalTest } />
-          <Route component={ NotFound } />
+          <Route path='*' component={ NotFound } />
         </Switch>
       </main>
     );

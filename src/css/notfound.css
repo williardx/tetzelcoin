@@ -1,4 +1,4 @@
-body {
+.notfound-container {
     position: absolute !important;
     background-image: url('/images/TetzelCoin_Background.png') !important;
     background-position: center !important;
@@ -6,9 +6,17 @@ body {
     background-repeat: no-repeat !important;
     height: 100% !important;
     width: 100% !important;
+    margin: 0 !important;
 }
 
-.notfound-container {
+@media only screen and (max-width: 767px) {
+    .ui.container.notfound-container {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+}
+
+.notfound-wrapper {
     margin-top: 20% !important;
 }
 
