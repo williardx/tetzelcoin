@@ -68,9 +68,6 @@ a {
 a:hover {
     text-decoration: none !important;
 }
-a:hover:after {
-    content: " \2192";
-}
 
 .ui.grid {
     margin-left: 0 !important;

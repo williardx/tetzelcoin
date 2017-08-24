@@ -69,9 +69,11 @@ export default class Home extends Component {
                 <p style={{ fontSize: '1.33em' }}>
                   TetzelCoin is a cryptocurrency designed to be a token for forgiveness. Since we cannot forgive and forget, users are able to define their sins in monetary terms and take appropriate action to correct their misdeeds.
                 </p>
-                <Button primary size='big' className='btn-cta'>
-                  White Paper
-                </Button>
+                <a href="https://drive.google.com/open?id=0B7t2SoXRiUoXVERSaV9aRnR3VGc">
+                  <Button primary size='big' className='btn-cta'>
+                    White Paper
+                  </Button>
+                </a>
               </Grid.Column>
               <Grid.Column floated='right' width={6}>
                 <Image
