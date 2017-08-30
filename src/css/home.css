@@ -208,3 +208,23 @@ a.icons-link:hover:after {
     background: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 73%, rgba(255,255,255,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0 );    
 }
+
+.footer-text {
+    font-size: '1.2em' !important;
+}
+
+.footer-social-icons {
+    display: inline-block !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+}
+
+.footer-copyright {
+    padding-bottom: 0 !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .footer-email {
+        padding-bottom: 0 !important;
+    }
+}

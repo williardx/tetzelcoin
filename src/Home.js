@@ -22,7 +22,39 @@ import './css/home.css';
 export default class Home extends Component {
 
   render() {
+
     let launchDate = Math.floor(new Date(2017, 9, 31, 12).getTime() / 1000);
+
+    let footerSocial = (alignment) => (
+      <Grid.Column textAlign={alignment}>
+        <a className='icons-link' href="https://github.com/williardx/tetzelcoin/">
+          <Image
+            className='center-hack icons footer-social-icons'
+            src='/images/TetzelCoin_github.png'
+          />
+        </a>
+        <a className='icons-link' href="https://twitter.com/tetzelcoin/">
+          <Image
+            className='center-hack icons footer-social-icons'
+            src='/images/TetzelCoin_twitter.png'
+          />
+        </a>
+      </Grid.Column>
+    );
+
+    let footerPressKit = (alignment) => (
+      <Grid.Column textAlign={alignment}>
+        <p className='footer-text footer-copyright'>Copyright &copy; TetzelCoin</p>
+        <p className='footer-text'><a href="/">Press Kit</a></p>
+      </Grid.Column>      
+    );
+
+    let footerEmail = (alignment) => (
+      <Grid.Column textAlign={alignment}>
+        <p className='footer-text footer-email'><a href="mailto:team@tetzelcoin.com">team@tetzelcoin.com</a></p>
+      </Grid.Column>
+    );
+
     return (
       <div>
         <Segment
@@ -254,7 +286,7 @@ export default class Home extends Component {
                   src='/images/leanne-luce-headshot.jpg'
                 />
                 <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0' }}>Leanne Luce</Header>
-                <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Designer</Header>
+                <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Design</Header>
                 <p style={{ textAlign: 'center', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }}>Leanne is a designer, developer, 
                 and fashion technologist based out of San Francisco.  You can visit her blog, <a href="https://thefashionrobot.com">the fashion robot</a> or view previous works in her <a href="https://leanneluce.com">portfolio</a>. 
                 Leanne previously worked on wearable robotics at Harvard University and Otherlab. 
@@ -277,23 +309,16 @@ export default class Home extends Component {
 
         <Segment className='footer' basic vertical style={{ padding: '5em 0em' }}>
           <Container>
-            <Grid columns={3}>
-              <Grid.Row>
-                <Grid.Column>
-                  <p style={{ fontSize: '1.2em', paddingBottom: '0' }}>Copyright &copy; TetzelCoin</p>
-                  <p style={{ fontSize: '1.2em' }}><a href="/">Press Kit</a></p>
-                </Grid.Column>
-                <Grid.Column textAlign='center'>
-                  <a className='icons-link' href="https://github.com/wdoenlen/tetzelcoin/">
-                    <Image
-                      className='center-hack icons'
-                      src='/images/TetzelCoin_github.png'
-                    />
-                  </a>
-                </Grid.Column>
-                <Grid.Column textAlign='right'>
-                  <p style={{ fontSize: '1.2em' }}><a href="mailto:team@tetzelcoin.com">team@tetzelcoin.com</a></p>
-                </Grid.Column>
+            <Grid columns={3} stackable>
+              <Grid.Row only='computer tablet'>
+                { footerPressKit('left') }
+                { footerSocial('center') }
+                { footerEmail('right') }
+              </Grid.Row>
+              <Grid.Row only='mobile'>
+                { footerSocial('center') }
+                { footerEmail('center') }
+                { footerPressKit('center') }
               </Grid.Row>
             </Grid>
           </Container>
