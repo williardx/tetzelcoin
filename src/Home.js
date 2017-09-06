@@ -29,13 +29,13 @@ export default class Home extends Component {
       <Grid.Column textAlign={alignment}>
         <a className='icons-link' href="https://github.com/williardx/tetzelcoin/">
           <Image
-            className='center-hack icons footer-social-icons'
+            className='center-hack icons social-icons'
             src='/images/TetzelCoin_github.png'
           />
         </a>
         <a className='icons-link' href="https://twitter.com/tetzelcoin/">
           <Image
-            className='center-hack icons footer-social-icons'
+            className='center-hack icons social-icons'
             src='/images/TetzelCoin_twitter.png'
           />
         </a>
@@ -45,7 +45,7 @@ export default class Home extends Component {
     let footerPressKit = (alignment) => (
       <Grid.Column textAlign={alignment}>
         <p className='footer-text footer-copyright'>Copyright &copy; TetzelCoin</p>
-        <p className='footer-text'><a href="/">Press Kit</a></p>
+        <p className='footer-text'><a href="https://drive.google.com/open?id=0B1_FSb-uT5g-ZzYyNWdaWmFFUjA">Press Kit</a></p>
       </Grid.Column>      
     );
 
@@ -111,7 +111,6 @@ export default class Home extends Component {
                 <Image
                   className='center-hack'
                   size='large'
-                  style={{  }}
                   src='/images/TetzelCoin_Confessional-Booth.png'
                 />
                 <Image
@@ -188,10 +187,10 @@ export default class Home extends Component {
               <Grid.Row columns={2}>
                 <Grid.Column>
                    <p style={{ fontSize: '1.33em' }}>
-                    TetzelCoin is fundamentally about forgiveness. Once you've confessed and paid an appropriate amount for your sin, the Pardoner will issue you TetzelCoin as a token of forgiveness. Once issued, you can use the token to further forgive or apologize to others by simply sending them TetzelCoin.
+                    TetzelCoin is fundamentally about forgiveness. Once you've confessed and paid an appropriate amount for your sin, the Pardoner will issue you TetzelCoin (SIN) as a token of forgiveness. Once issued, you can use the token to further forgive or apologize to others by simply sending them TetzelCoin.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    The proceeds from TetzelCoin will be used to purchase and cancel medical debt. A particularly pernicious form of debt, medical debt is issued when a patient is unable to pay for their treatment. Medical debt can be purchased for pennies on the dollar, allowing your forgiveness to magnify tens of times over and help forgive others of their debts.
+                    The proceeds from TetzelCoin will be used to forgive medical debt. A particularly pernicious form of debt, medical debt is issued when a patient is unable to pay for their treatment. Medical debt can be purchased for pennies on the dollar, allowing your forgiveness to magnify tens of times over and help forgive others of their debts.
                   </p>
                 </Grid.Column>
                 <Grid.Column floated='right'>
@@ -230,7 +229,7 @@ export default class Home extends Component {
                     85% of the tokens will be distributed to token buyers and 15% will be retained by the team.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    100% of the proceeds from the token sale will go to The Tetzel Fund, a 501(c)(3) non-profit that will provide medical debt relief in the United States.
+                    After costs are covered, 85% of the proceeds from the token sale will go towards medical debt forgiveness.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
                     Accepted purchase method: ETH
@@ -263,31 +262,67 @@ export default class Home extends Component {
                 <Grid.Column width={2}>
                 </Grid.Column>
                 <Grid.Column width={6} padded='horizontally'>
-                <Image
-                  fluid
-                  className='center-hack'
-                  size='huge'
-                  style={{width: '60%', borderRadius: '100%', boxShadow: '2px 1px 5px rgba(0, 0, 0, 0.1)' }}
-                  src='/images/will-doenlen-headshot.jpg'
-                />
-                <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0' }}>Will Doenlen</Header>
-                <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Project Lead and Development</Header>
-                <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }} >Widely known for his <a href="http://www.huffingtonpost.com/2014/09/18/hamster-wheel-standing-de_n_5837086.html">hamster wheel standing desk</a>, Will Doenlen's art explores the existential absurdity of human systems 
-                that provide us with symbolic value in our daily lives. You can view more of his projects 
-                on his <a href="http://williardx.com">portfolio</a>. Will holds a BS from MIT.</p>
+                  <Grid.Row>
+                    <Image
+                      fluid
+                      className='center-hack'
+                      size='huge'
+                      style={{width: '60%', borderRadius: '100%', boxShadow: '2px 1px 5px rgba(0, 0, 0, 0.1)' }}
+                      src='/images/will-doenlen-headshot.jpg'
+                    />
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0', marginTop: '25px' }}>Will Doenlen</Header>
+                    <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Project Lead and Development</Header>
+                    <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }} >Widely known for his <a href="http://www.huffingtonpost.com/2014/09/18/hamster-wheel-standing-de_n_5837086.html">hamster wheel standing desk</a>, Will Doenlen's art explores the existential absurdity of human systems 
+                    that provide us with symbolic value in our daily lives. You can view more of his projects 
+                    on his <a href="http://williardx.com">portfolio</a>. Will holds a BS from MIT.</p>
+                  </Grid.Row>
+                  <Grid.Row style={{textAlign: 'center', marginBottom: '50px'}}>
+                    <a className='icons-link' href="https://twitter.com/_williardx/">
+                      <Image
+                        className='center-hack icons social-icons'
+                        src='/images/TetzelCoin_twitter.png'
+                      />
+                    </a>
+                    <a className='icons-link' href="https://www.linkedin.com/in/will-doenlen/">
+                      <Image
+                        className='center-hack icons social-icons'
+                        src='/images/TetzelCoin_linkedin.png'
+                      />
+                    </a>
+                  </Grid.Row>
                 </Grid.Column>
                 <Grid.Column width={6} padded='horizontally'>
-                <Image
-                  fluid
-                  className='center-hack'
-                  size='huge'
-                  style={{width: '60%', borderRadius: '100%', boxShadow: '2px 1px 5px rgba(0, 0, 0, 0.1)' }}
-                  src='/images/leanne-luce-headshot.jpg'
-                />
-                <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0' }}>Leanne Luce</Header>
-                <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Design</Header>
-                <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }}>Leanne is a designer, developer, 
-                and fashion technologist based out of San Francisco.  You can visit her blog, <a href="https://thefashionrobot.com">the fashion robot</a> or view previous works in her <a href="https://leanneluce.com">portfolio</a>. Leanne holds a BFA from Rhode Island School of Design (RISD).</p>
+                  <Grid.Row>
+                    <Image
+                      fluid
+                      className='center-hack'
+                      size='huge'
+                      style={{width: '60%', borderRadius: '100%', boxShadow: '2px 1px 5px rgba(0, 0, 0, 0.1)' }}
+                      src='/images/leanne-luce-headshot.jpg'
+                    />
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0', marginTop: '25px' }}>Leanne Luce</Header>
+                    <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Design</Header>
+                    <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }}>Leanne is a designer, developer, 
+                    and fashion technologist based out of San Francisco.  You can visit her blog, <a href="https://thefashionrobot.com">the fashion robot</a> or view previous works in her <a href="https://leanneluce.com">portfolio</a>. Leanne holds a BFA from Rhode Island School of Design (RISD).</p>
+                  </Grid.Row>
+                  <Grid.Row style={{textAlign: 'center', marginBottom: '50px'}}>
+                    <a className='icons-link' href="https://twitter.com/leanne_luce">
+                      <Image
+                        className='center-hack icons social-icons'
+                        src='/images/TetzelCoin_twitter.png'
+                      />
+                    </a>
+                    <a className='icons-link' href="https://www.linkedin.com/in/leanne-luce/">
+                      <Image
+                        className='center-hack icons social-icons'
+                        src='/images/TetzelCoin_linkedin.png'
+                      />
+                    </a>
+                  </Grid.Row>
                 </Grid.Column>
               </Grid.Row>
             </Grid>          
