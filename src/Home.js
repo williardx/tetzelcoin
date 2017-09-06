@@ -272,8 +272,7 @@ export default class Home extends Component {
                 />
                 <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0' }}>Will Doenlen</Header>
                 <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Project Lead and Development</Header>
-                <p style={{ textAlign: 'center', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }} >Will Doenlen is an artist, engineer and investor 
-                living in San Francisco. Will's art explores the existential absurdity of human systems 
+                <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }} >Widely known for his <a href="http://www.huffingtonpost.com/2014/09/18/hamster-wheel-standing-de_n_5837086.html">hamster wheel standing desk</a>, Will Doenlen's art explores the existential absurdity of human systems 
                 that provide us with symbolic value in our daily lives. You can view more of his projects 
                 on his <a href="http://williardx.com">portfolio</a>. Will holds a BS from MIT.</p>
                 </Grid.Column>
@@ -287,10 +286,8 @@ export default class Home extends Component {
                 />
                 <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0' }}>Leanne Luce</Header>
                 <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Design</Header>
-                <p style={{ textAlign: 'center', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }}>Leanne is a designer, developer, 
-                and fashion technologist based out of San Francisco.  You can visit her blog, <a href="https://thefashionrobot.com">the fashion robot</a> or view previous works in her <a href="https://leanneluce.com">portfolio</a>. 
-                Leanne previously worked on wearable robotics at Harvard University and Otherlab. 
-                She holds a BFA in Apparel Design from Rhode Island School of Design (RISD).</p>
+                <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }}>Leanne is a designer, developer, 
+                and fashion technologist based out of San Francisco.  You can visit her blog, <a href="https://thefashionrobot.com">the fashion robot</a> or view previous works in her <a href="https://leanneluce.com">portfolio</a>. Leanne holds a BFA from Rhode Island School of Design (RISD).</p>
                 </Grid.Column>
               </Grid.Row>
             </Grid>          
