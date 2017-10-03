@@ -1,11 +1,14 @@
 pragma solidity ^0.4.11;
 
-import './TetzelCrowdsale.sol';
+// Interface for TetzelCrowdsale contract
+contract IFtetzelCrowdsale {
+  function buyTokens(address beneficiary) public payable;
+}
 
 contract Tetzel {
 
   address owner; 
-  TetzelCrowdsale public crowdsale;
+  IFtetzelCrowdsale public crowdsale;
 
   event Confess(
     address indexed sinner,
@@ -20,13 +23,9 @@ contract Tetzel {
     _;
   }
 
-  function Tetzel() {
+  function Tetzel(address _crowdsale) {
     owner = msg.sender;
-    crowdsale = createCrowdsale();
-  }
-
-  function createCrowdsale() internal returns (TetzelCrowdsale) {
-      return new TetzelCrowdsale();
+    crowdsale = IFtetzelCrowdsale(_crowdsale);
   }
 
   function confess(string sin) payable returns (bool success) {
@@ -37,7 +36,7 @@ contract Tetzel {
     }
 
     // Issue TetzelCoin for the sinner
-    crowdsale.buyTokens.value(msg.value)(msg.sender); 
+    crowdsale.buyTokens.value(msg.value)(msg.sender);
 
     // Make the confession known!
     Confess(msg.sender, msg.value, sin);
