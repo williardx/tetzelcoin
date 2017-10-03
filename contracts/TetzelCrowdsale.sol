@@ -11,6 +11,8 @@ contract TetzelCrowdsale is Crowdsale {
   uint256 public startTime = block.timestamp;
   uint256 public endTime = block.timestamp + 100;
 
+  bool teamTokensMinted = false;
+
   function TetzelCrowdsale() Crowdsale(startTime, endTime, rate, teamWallet) {}
 
   function createTokenContract() internal returns (MintableToken) {
@@ -22,6 +24,12 @@ contract TetzelCrowdsale is Crowdsale {
     uint256 charityValue = msg.value - teamValue; // Charity keeps 85%
     wallet.transfer(teamValue);
     charityWallet.transfer(charityValue);
+  }
+
+  function mintTeamTokens() public {
+    require(hasEnded() && !teamTokensMinted);
+    token.mint(teamWallet, token.totalSupply() * 15 / 85);
+    teamTokensMinted = true;
   }
 
 }
