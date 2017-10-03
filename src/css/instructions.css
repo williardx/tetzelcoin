@@ -1,0 +1,32 @@
+.ui.container.instructions-container {
+    max-width: 420px !important;
+}
+
+.instructions-header {
+    font-size: 4em !important; 
+    margin-bottom: 0 !important;
+}
+
+.confess-button-wrapper {
+    text-align: center !important;
+}
+
+.install-metamask-item {
+    margin-bottom: 30px !important;
+}
+
+.learn-more {
+    text-decoration: none !important;
+}
+
+.get-metamask-row {
+    margin-bottom: 17px !important;
+}
+
+.get-metamask-button {
+    border-radius: 8px !important;
+    color: #F1FAFF !important;
+    background-color: #86888A !important;
+    font-family: 'Didact Gothic', sans-serif !important;
+    font-weight: normal !important;
+}

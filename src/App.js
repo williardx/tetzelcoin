@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
+import Instructions from './Instructions';
 import NotFound from './NotFound';
 
 import './App.css';
@@ -22,6 +23,7 @@ export default class App extends Component {
       <main>
         <Switch>
           <Route exact path="/" render={ () => <Home mailchimp={this.state.mailchimp} /> } />
+          <Route exact path="/instructions" component={ Instructions } />
           <Route component={ NotFound } />
         </Switch>
       </main>
