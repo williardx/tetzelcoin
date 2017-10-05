@@ -28,6 +28,7 @@ export default class Confess extends Component {
       sinText: '',
       sinValue: 0,
       sinRate: 500,
+      testSinValues: [0, 0, 0],
       activeView: 'CONFESS_SIN',
     };
   }
@@ -128,6 +129,12 @@ export default class Confess extends Component {
     this.setState({sinText: txt});
   }
 
+  updateTestSinValues(idx, val) {
+    var newTestSinValues = this.state.testSinValues.slice();
+    newTestSinValues[idx] = val;
+    this.setState({testSinValues: newTestSinValues});
+  }
+
   render() {
 
     console.log(this.state);
@@ -145,8 +152,10 @@ export default class Confess extends Component {
           return (
             <ValueSin
               sinText={ this.state.sinText }
-              sinValue={ this.state.sinValue } 
-              onNext={ (val) => this.setState({activeView: 'PURCHASE_SIN'}) } />
+              sinValue={ this.state.sinValue }
+              testSinValues={ this.state.testSinValues }
+              updateTestSinValues={ this.updateTestSinValues.bind(this) }
+              onNext={ () => this.setState({activeView: 'PURCHASE_SIN'}) } />
           );
         case 'PURCHASE_SIN':
           return (

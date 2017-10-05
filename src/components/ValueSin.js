@@ -21,6 +21,7 @@ export default class ValueSin extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <Container>
         <Header
@@ -33,26 +34,41 @@ export default class ValueSin extends Component {
         <Form>
           <Form.Field inline>
             <label>Johnny shot and killed a man. He should pay...?</label>
-            <Input icon='dollar' iconPosition='left' type='number' />
+            <Input
+              value={ this.props.testSinValues[0] } 
+              icon='dollar' 
+              iconPosition='left'
+              type='number'
+              onChange={ (e) => this.props.updateTestSinValues(0, e.target.value) } />
           </Form.Field>
           <Form.Field inline>
             <label>Jane told her best friend a white lie. She should pay...?</label>
-            <Input icon='dollar' iconPosition='left' type='number' />
+            <Input
+              value={ this.props.testSinValues[1] } 
+              icon='dollar' 
+              iconPosition='left' 
+              type='number'
+              onChange={ (e) => this.props.updateTestSinValues(1, e.target.value) } />
           </Form.Field>
           <Form.Field inline>
             <label>Foster stole 10 loaves of bread from the grocery store.  He should pay...?</label>
-            <Input icon='dollar' iconPosition='left' type='number' />
+            <Input 
+              value={ this.props.testSinValues[2] }
+              icon='dollar' 
+              iconPosition='left' 
+              type='number'
+              onChange={ (e) => this.props.updateTestSinValues(2, e.target.value) } />
           </Form.Field>
           <Form.Field inline>
             <label>Your sin: "{ this.props.sinText }" You should pay...?</label>
-            <Input 
+          <Input
               icon='dollar' 
-              iconPosition='left' 
+              iconPosition='left'
               type='number' 
               onChange={ this.handleChange.bind(this) } />
           </Form.Field>
         </Form>
-        <a onClick={ () => this.props.onNext(this.state.sinValue) }>Next <Icon name='long arrow right'/></a>
+        <a onClick={ () => this.props.onNext() }>Next <Icon name='long arrow right'/></a>
       </Container>
     )
   }
