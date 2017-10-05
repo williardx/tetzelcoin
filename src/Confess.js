@@ -22,9 +22,9 @@ export default class Confess extends Component {
     super(props);
     this.state = {
       tetzelInstance: null,
-      tetzelAddress: null,
-      tetzelCoinAddress: null,
-      account: null,
+      tetzelAddress: 'Loading...',
+      tetzelCoinAddress: 'Loading...',
+      account: 'Loading...',
       sinText: '',
       sinValue: 0,
     };
@@ -123,16 +123,24 @@ export default class Confess extends Component {
     this.setState({sinValue: val});
   }
 
+  updateSinText(txt) {
+    this.setState({sinText: txt});
+  }
+
   render() {
-    console.log(this.state);
     return(
       <Container>
         <Link to='/'><Icon name='long arrow left' /> Exit Confession</Link>
-        <ConfessSin onNext={ (txt) => this.setState({sinText: txt}) } />
-        <ValueSin 
+        <ConfessSin
+          sinText={ this.state.sinText }
+          updateSinText={ this.updateSinText.bind(this) }
+          onNext={ (txt) => this.setState({sinText: txt}) } />
+        <ValueSin
+          sinText={ this.state.sinText }
           sinValue={ this.state.sinValue } 
           onNext={ (val) => this.setState({sinValue: val}) } />
-        <PurchaseSin 
+        <PurchaseSin
+          tetzelAddress={ this.state.tetzelAddress }
           sinValue={ this.state.sinValue }
           updateSinValue={ this.updateSinValue.bind(this) }
           onPurchase={ this.purchase.bind(this) } />

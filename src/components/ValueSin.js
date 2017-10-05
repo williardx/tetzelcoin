@@ -44,8 +44,12 @@ export default class ValueSin extends Component {
             <Input icon='dollar' iconPosition='left' type='number' />
           </Form.Field>
           <Form.Field inline>
-            <label>Your sin. You should pay...?</label>
-            <Input icon='dollar' iconPosition='left' type='number' onChange={ this.handleChange.bind(this) } />
+            <label>Your sin: "{ this.props.sinText }" You should pay...?</label>
+            <Input 
+              icon='dollar' 
+              iconPosition='left' 
+              type='number' 
+              onChange={ this.handleChange.bind(this) } />
           </Form.Field>
         </Form>
         <a onClick={ () => this.props.onNext(this.state.sinValue) }>Next <Icon name='long arrow right'/></a>

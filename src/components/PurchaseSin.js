@@ -28,7 +28,7 @@ export default class PurchaseSin extends Component {
                   Recipient
                 </Table.Cell>
                 <Table.Cell>
-                  <Form.Input readOnly value='0x12345...'/>
+                  <Form.Input readOnly value={ this.props.tetzelAddress }/>
                 </Table.Cell>
               </Table.Row>
               <Table.Row>
