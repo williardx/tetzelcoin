@@ -12,7 +12,7 @@ export default class PurchaseSin extends Component {
 
   render() {
     return(
-      <Container>
+      <Container className='confess-container'>
         <Header
           as='h1'
           content='Submit Payment' 

@@ -16,7 +16,7 @@ export default class Forgiveness extends Component {
     }
 
     return (
-      <Container>
+      <Container className='confess-container'>
         <Header
           as='h1'
           content={ "You Are Forgiven" }

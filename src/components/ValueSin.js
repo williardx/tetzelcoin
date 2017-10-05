@@ -23,7 +23,7 @@ export default class ValueSin extends Component {
   render() {
     console.log(this.state);
     return (
-      <Container>
+      <Container className='confess-container'>
         <Header
           as='h1'
           content='Value Your Sin' 

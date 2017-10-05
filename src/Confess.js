@@ -185,11 +185,9 @@ export default class Confess extends Component {
       }
     }
 
-    return(
-      <Container>
-        <Link to='/'><Icon name='long arrow left' /> Exit Confession</Link>
-        { currentView() }
-        <div>
+    const ConfessionNav = () => {
+      return(
+        <div className='icon-wrapper'>
           <Icon
             onClick={ () => this.setState({activeView: 'CONFESS_SIN'}) } 
             name={ this.state.activeView === 'CONFESS_SIN' ? 'circle' : 'circle thin'} />
@@ -202,6 +200,14 @@ export default class Confess extends Component {
               (this.state.activeView === 'PURCHASE_SIN' 
               || this.state.activeView === 'FORGIVENESS') ? 'circle' : 'circle thin'} />
         </div>
+      );
+    }
+
+    return(
+      <Container className='confess-wrapper'>
+        <Link className='exit-link' to='/'><Icon name='long arrow left' /> Exit Confession</Link>
+        { currentView() }
+        { ConfessionNav() }
       </Container>
     );
   }
