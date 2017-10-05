@@ -54,7 +54,7 @@ export default class PurchaseSin extends Component {
                 <Table.Cell>
                   <Form.Field>
                     <Input 
-                      value={ this.props.sinValue * 500 } 
+                      value={ this.props.sinValue * this.props.sinRate } 
                       readOnly 
                       label={{basic: true, content: 'SIN'}} 
                       labelPosition='right'/>

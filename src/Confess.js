@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   Container,
   Icon,
-  // Header,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
@@ -21,18 +20,18 @@ export default class Confess extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      tx: null,
       tetzelInstance: null,
       tetzelAddress: 'Loading...',
       tetzelCoinAddress: 'Loading...',
       account: 'Loading...',
       sinText: '',
       sinValue: 0,
+      sinRate: 500,
     };
   }
 
   async componentWillMount() {
-    // Get network provider and web3 instance.
-    // See utils/getWeb3 for more info.
     if (this.props.web3) {
       try {
         await this.fetchAccount();
@@ -113,7 +112,7 @@ export default class Confess extends Component {
           value: this.props.web3.toWei(sinValue, 'ether')
         }
       );
-      console.log(results);
+      this.setState({tx: results.tx});
     } catch(e) {
       console.log(e);
     }
@@ -141,10 +140,14 @@ export default class Confess extends Component {
           onNext={ (val) => this.setState({sinValue: val}) } />
         <PurchaseSin
           tetzelAddress={ this.state.tetzelAddress }
+          sinRate={ this.state.sinRate }
           sinValue={ this.state.sinValue }
           updateSinValue={ this.updateSinValue.bind(this) }
           onPurchase={ this.purchase.bind(this) } />
-        <Forgiveness />
+        <Forgiveness 
+          tx={ this.state.tx } 
+          web3={ this.props.web3 } 
+          tokenAmount={ this.state.sinValue * this.state.sinRate } />
       </Container>
     );
   }
