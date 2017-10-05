@@ -205,7 +205,7 @@ export default class Confess extends Component {
 
     return(
       <Container className='confess-wrapper'>
-        <Link className='exit-link' to='/'><Icon name='long arrow left' /> Exit Confession</Link>
+        <Link className='arrow-link exit-link' to='/'><Icon name='long arrow left' /> Exit Confession</Link>
         { currentView() }
         { ConfessionNav() }
       </Container>

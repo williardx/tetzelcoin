@@ -64,7 +64,19 @@ i.cirlce {
     margin-right: 7px !important;
 }
 
+a.arrow-link {
+    text-decoration: none !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+}
+
 .exit-link {
     position: relative !important;
     top: 40px !important;
+}
+
+.next-link {
+    position: absolute !important;
+    right: 25px !important;
+    bottom: -40px !important;
 }

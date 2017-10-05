@@ -68,7 +68,7 @@ export default class ValueSin extends Component {
               onChange={ this.handleChange.bind(this) } />
           </Form.Field>
         </Form>
-        <a onClick={ () => this.props.onNext() }>Next <Icon name='long arrow right'/></a>
+        <a className='arrow-link next-link' onClick={ () => this.props.onNext() }>Next <Icon name='long arrow right'/></a>
       </Container>
     )
   }
