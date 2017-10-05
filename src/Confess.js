@@ -154,6 +154,7 @@ export default class Confess extends Component {
               sinText={ this.state.sinText }
               sinValue={ this.state.sinValue }
               testSinValues={ this.state.testSinValues }
+              updateSinValue={ this.updateSinValue.bind(this) }
               updateTestSinValues={ this.updateTestSinValues.bind(this) }
               onNext={ () => this.setState({activeView: 'PURCHASE_SIN'}) } />
           );
