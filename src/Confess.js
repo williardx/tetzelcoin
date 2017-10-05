@@ -22,6 +22,7 @@ export default class Confess extends Component {
     super(props);
     this.state = {
       tetzelInstance: null,
+      tetzelAddress: null,
       tetzelCoinAddress: null,
       account: null,
       sinText: '',
@@ -83,11 +84,12 @@ export default class Confess extends Component {
 
     //TODO: Is there any way to do this without making so many async calls?
     var tetzelInstance = await tetzel.deployed();
-    var tetzelCrowdsaleInstance = await tetzel.deployed();
+    var tetzelCrowdsaleInstance = await tetzelCrowdsale.deployed();
     var tetzelCoinAddress = await tetzelCrowdsaleInstance.token();
 
     this.setState({
       tetzelInstance: tetzelInstance,
+      tetzelAddress: tetzelInstance.address,
       tetzelCoinAddress: tetzelCoinAddress
     });
   }
