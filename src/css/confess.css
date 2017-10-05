@@ -1,3 +1,33 @@
+body {
+    background: rgba(79,79,79,1) !important;
+    background: -moz-radial-gradient(center top, ellipse cover, rgba(79,79,79,1) 0%, rgba(79,79,79,0) 100%) !important;
+    background: -webkit-gradient(radial, center top, 0px, center top, 100%, color-stop(0%, rgba(79,79,79,1)), color-stop(100%, rgba(79,79,79,0))) !important;
+    background: -webkit-radial-gradient(center top, ellipse cover, rgba(79,79,79,1) 0%, rgba(79,79,79,0) 100%) !important;
+    background: -o-radial-gradient(center top, ellipse cover, rgba(79,79,79,1) 0%, rgba(79,79,79,0) 100%) !important;
+    background: -ms-radial-gradient(center top, ellipse cover, rgba(79,79,79,1) 0%, rgba(79,79,79,0) 100%) !important;
+    background: radial-gradient(ellipse at center top, rgba(79,79,79,1) 0%, rgba(79,79,79,0) 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4f4f4f', endColorstr='#4f4f4f', GradientType=1 ) !important;
+    color: #86888A !important;
+    background-color: #303030 !important;
+}
+
+textarea, input {
+    background-color: #4F4F4F !important;
+    resize: none !important;
+}
+
+h1.gradient-text {
+    background-image: -ms-linear-gradient(left, #86888A 0%, #FFFFFF 100%) !important;
+    background-image: -moz-linear-gradient(left, #86888A 0%, #FFFFFF 100%) !important;
+    background-image: -o-linear-gradient(left, #86888A 0%, #FFFFFF 100%) !important;
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #86888A), color-stop(100, #FFFFFF)) !important;
+    background-image: -webkit-linear-gradient(left, #86888A 0%, #FFFFFF 100%) !important;
+    background-image: linear-gradient(to right, #86888A 0%, #FFFFFF 100%) !important;
+    color: transparent !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+}
+
 .confess-header {
     font-size: 4em !important; 
     margin-bottom: 0 !important;

@@ -17,7 +17,7 @@ export default class PurchaseSin extends Component {
           as='h1'
           content='Submit Payment' 
           textAlign='center'
-          className='dswallau confess-header' 
+          className='dswallau confess-header gradient-text' 
         />
         <p>Now that you've confessed, submit your transaction to purchase your SIN tokens and obtain forgiveness.</p>
         <p>Your sin: { this.props.sinText }</p>

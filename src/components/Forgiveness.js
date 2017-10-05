@@ -21,7 +21,7 @@ export default class Forgiveness extends Component {
           as='h1'
           content={ "You Are Forgiven" }
           textAlign='center'
-          className='dswallau confess-header' 
+          className='dswallau confess-header gradient-text' 
         />
         <Image 
           src="/images/TetzelCoin_Coin.png" 

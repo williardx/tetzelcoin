@@ -28,7 +28,7 @@ export default class ValueSin extends Component {
           as='h1'
           content='Value Your Sin' 
           textAlign='center'
-          className='dswallau confess-header' 
+          className='dswallau confess-header gradient-text' 
         />
         <p>How do you value a sin? To help you figure out how much your sin is worth, we're going to ask you to value a few other sins first. You can then use those numbers to value your own. Use whatever currency you feel comfortable with, though you'll need to eventually convert to ether. You can skip this part if you already know how much your sin is worth.</p>
         <Form>
