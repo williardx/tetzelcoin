@@ -13,7 +13,7 @@ export default class PurchaseSin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sinValue: null,
+      sinValue: 0,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -22,7 +22,12 @@ export default class PurchaseSin extends Component {
     this.setState({sinValue: event.target.value});
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({sinValue: nextProps.sinValue});
+  }
+
   render() {
+    console.log(this.state.sinValue);
     return(
       <Container>
         <Header
@@ -53,7 +58,8 @@ export default class PurchaseSin extends Component {
                       type='number'
                       min='0'
                       onChange={ this.handleChange } 
-                      label={{basic: true, content: 'ETH'}} 
+                      label={{basic: true, content: 'ETH'}}
+                      value={ this.state.sinValue }
                       labelPosition='right'/>
                   </Form.Field>
                 </Table.Cell>
@@ -64,13 +70,17 @@ export default class PurchaseSin extends Component {
                 </Table.Cell>
                 <Table.Cell>
                   <Form.Field>
-                    <Input value={ this.state.sinValue * 500 } readOnly label={{basic: true, content: 'SIN'}} labelPosition='right'/>
+                    <Input 
+                      value={ this.state.sinValue * 500 } 
+                      readOnly 
+                      label={{basic: true, content: 'SIN'}} 
+                      labelPosition='right'/>
                   </Form.Field>
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
-          <Button type="submit" primary size='big' className='btn-cta'>Finish</Button>
+          <Button type="submit" primary size='big' className='btn-cta' onClick={() => this.props.onPay() }> Finish </Button>
         </Form>
       </Container>
     );

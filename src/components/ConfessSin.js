@@ -36,7 +36,7 @@ export default class ConfessSin extends Component {
         <Form>
           <TextArea onChange={ this.handleChange } />
         </Form>
-        <a>Next <Icon name='long arrow right'/></a>
+        <a onClick={ () => this.props.onNext(this.state.sinText) }>Next <Icon name='long arrow right'/></a>
       </Container>
     );
   }
