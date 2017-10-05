@@ -28,6 +28,7 @@ export default class Confess extends Component {
       sinText: '',
       sinValue: 0,
       sinRate: 500,
+      activeView: 'CONFESS_SIN',
     };
   }
 
@@ -106,15 +107,16 @@ export default class Confess extends Component {
 
     try {
       var results = await this.state.tetzelInstance.confess(
-        this.state.sinText, 
+        this.state.sinText,
         {
           from: this.state.account, 
           value: this.props.web3.toWei(sinValue, 'ether')
         }
       );
       this.setState({tx: results.tx});
+      return {complete: true, msg: ''};
     } catch(e) {
-      console.log(e);
+      return {complete: false, msg: e.message};
     }
   }
 
@@ -127,27 +129,70 @@ export default class Confess extends Component {
   }
 
   render() {
+
+    console.log(this.state);
+
+    const currentView = () => {
+      switch(this.state.activeView) {
+        case 'CONFESS_SIN':
+          return (
+            <ConfessSin
+              sinText={ this.state.sinText }
+              updateSinText={ this.updateSinText.bind(this) }
+              onNext={ (txt) => this.setState({activeView: 'VALUE_SIN'}) } />            
+          );
+        case 'VALUE_SIN':
+          return (
+            <ValueSin
+              sinText={ this.state.sinText }
+              sinValue={ this.state.sinValue } 
+              onNext={ (val) => this.setState({activeView: 'PURCHASE_SIN'}) } />
+          );
+        case 'PURCHASE_SIN':
+          return (
+            <PurchaseSin
+              tetzelAddress={ this.state.tetzelAddress }
+              sinRate={ this.state.sinRate }
+              sinValue={ this.state.sinValue }
+              sinText={ this.state.sinText }
+              updateSinValue={ this.updateSinValue.bind(this) }
+              onPurchase={ async () => { 
+                let successObj = await this.purchase();
+                if (successObj.complete) {
+                  this.setState({activeView: 'FORGIVENESS'})
+                } else {
+                  console.log(successObj.msg);
+                }
+
+              }} />
+          );
+        case 'FORGIVENESS':
+          return (
+            <Forgiveness 
+              tx={ this.state.tx }
+              web3={ this.props.web3 }
+              tokenAmount={ this.state.sinValue * this.state.sinRate } />
+          );
+      }
+    }
+
     return(
       <Container>
         <Link to='/'><Icon name='long arrow left' /> Exit Confession</Link>
-        <ConfessSin
-          sinText={ this.state.sinText }
-          updateSinText={ this.updateSinText.bind(this) }
-          onNext={ (txt) => this.setState({sinText: txt}) } />
-        <ValueSin
-          sinText={ this.state.sinText }
-          sinValue={ this.state.sinValue } 
-          onNext={ (val) => this.setState({sinValue: val}) } />
-        <PurchaseSin
-          tetzelAddress={ this.state.tetzelAddress }
-          sinRate={ this.state.sinRate }
-          sinValue={ this.state.sinValue }
-          updateSinValue={ this.updateSinValue.bind(this) }
-          onPurchase={ this.purchase.bind(this) } />
-        <Forgiveness 
-          tx={ this.state.tx } 
-          web3={ this.props.web3 } 
-          tokenAmount={ this.state.sinValue * this.state.sinRate } />
+        { currentView() }
+        <div>
+          <Icon
+            onClick={ () => this.setState({activeView: 'CONFESS_SIN'}) } 
+            name={ this.state.activeView === 'CONFESS_SIN' ? 'circle' : 'circle thin'} />
+          <Icon
+            onClick={ () => this.setState({activeView: 'VALUE_SIN'}) } 
+            name={ this.state.activeView === 'VALUE_SIN' ? 'circle' : 'circle thin'} />
+          <Icon
+            onClick={ () => this.setState({activeView: 'PURCHASE_SIN'}) } 
+            name={ 
+              (this.state.activeView === 'PURCHASE_SIN' 
+              || this.state.activeView === 'FORGIVENESS') ? 'circle' : 'circle thin'} />
+        </div>
       </Container>
     );
   }

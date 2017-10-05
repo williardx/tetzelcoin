@@ -20,6 +20,7 @@ export default class PurchaseSin extends Component {
           className='dswallau confess-header' 
         />
         <p>Now that you've confessed, submit your transaction to purchase your SIN tokens and obtain forgiveness.</p>
+        <p>Your sin: { this.props.sinText }</p>
         <Form>
           <Table celled>
             <Table.Body>
@@ -61,6 +62,18 @@ export default class PurchaseSin extends Component {
                   </Form.Field>
                 </Table.Cell>
               </Table.Row>
+              <Table.Row>
+                <Table.Cell>Your Donation to RIP Medical Debt</Table.Cell>
+                <Table.Cell>
+                  <Form.Field>
+                    <Input 
+                      value={ this.props.sinValue * 0.85 } 
+                      readOnly 
+                      label={{basic: true, content: 'ETH'}} 
+                      labelPosition='right'/>
+                  </Form.Field>
+                </Table.Cell>
+              </Table.Row>
             </Table.Body>
           </Table>
           <Button 
@@ -68,7 +81,7 @@ export default class PurchaseSin extends Component {
             primary 
             size='big' 
             className='btn-cta' 
-            onClick={() => this.props.onPurchase() }> Finish </Button>
+            onClick={() => this.props.onPurchase() }> Submit </Button>
         </Form>
       </Container>
     );
