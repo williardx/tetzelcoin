@@ -11,7 +11,7 @@ class SinsTable extends Component {
 
     var trs = this.props.recentSins.map((sinObj, i) => {
       return (
-        <Grid.Row key={i}>
+        <Grid.Row className='sins-table' key={i}>
           <Grid.Column width={2} textAlign="center">
             <Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment>
           </Grid.Column>

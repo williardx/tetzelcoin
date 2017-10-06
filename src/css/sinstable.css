@@ -2,3 +2,12 @@
     text-overflow: ellipsis;
     overflow: hidden;    
 }
+
+.ui.grid > .sins-table.row {
+    padding: 0;
+}
+
+p.sins-table {
+    padding: 30px 50px;
+    font-size: 20px;    
+}
