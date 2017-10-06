@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Instructions from './Instructions';
 import Confess from './Confess';
+import Sins from './Sins';
 import NotFound from './NotFound';
 import getWeb3 from './utils/getWeb3'
 
@@ -39,6 +40,7 @@ export default class App extends Component {
           <Route exact path="/" render={ () => <Home mailchimp={this.state.mailchimp} /> } />
           <Route exact path="/instructions" component={ Instructions } />
           <Route exact path="/confess" component={ () =>  <Confess web3={this.state.web3} /> } />
+          <Route exact path="/sins" component={ () => <Sins web3={this.state.web3} /> } />
           <Route component={ NotFound } />
         </Switch>
       </main>
