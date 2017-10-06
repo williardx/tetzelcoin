@@ -20,7 +20,7 @@ export default class ValueSin extends Component {
           textAlign='center'
           className='dswallau confess-header gradient-text' 
         />
-        <p>How do you value a sin? To help you figure out how much your sin is worth, we're going to ask you to value a few other sins first. You can then use those numbers to value your own. You can skip this part if you already know how much your sin is worth.</p>
+        <p className='confess'>How do you value a sin? To help you figure out how much your sin is worth, we're going to ask you to value a few other sins first. You can then use those numbers to value your own. You can skip this part if you already know how much your sin is worth.</p>
         <Grid padded columns={2} className='bordered-form value-form'>
           <Grid.Row>
             <Grid.Column width={11}>
@@ -28,6 +28,7 @@ export default class ValueSin extends Component {
             </Grid.Column>
             <Grid.Column width={4} floated='right'>
               <Input
+                className='confess'
                 fluid
                 value={ this.props.testSinValues[0] } 
                 icon='dollar' 
@@ -42,6 +43,7 @@ export default class ValueSin extends Component {
             </Grid.Column>
             <Grid.Column width={4} floated='right'>
               <Input
+                className='confess'
                 fluid
                 value={ this.props.testSinValues[1] } 
                 icon='dollar' 
@@ -56,6 +58,7 @@ export default class ValueSin extends Component {
             </Grid.Column>
             <Grid.Column width={4} floated='right'>
               <Input 
+                className='confess'
                 fluid
                 value={ this.props.testSinValues[2] }
                 icon='dollar' 
@@ -70,6 +73,7 @@ export default class ValueSin extends Component {
             </Grid.Column>
             <Grid.Column width={4} floated='right'>
               <Input
+                className='confess'
                 fluid
                 value={ this.props.sinValue }
                 icon='dollar' 

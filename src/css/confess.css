@@ -1,4 +1,7 @@
-body {
+/* Apparently every CSS file is included on every page, and so I occasionally
+need to use the "confess" class as a namespace */
+
+.ui.container.confess-wrapper {
     background: rgba(79,79,79,1) !important;
     background: -moz-radial-gradient(center top, ellipse cover, rgba(79,79,79,1) 0%, rgba(79,79,79,0) 100%) !important;
     background: -webkit-gradient(radial, center top, 0px, center top, 100%, color-stop(0%, rgba(79,79,79,1)), color-stop(100%, rgba(79,79,79,0))) !important;
@@ -9,6 +12,8 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4f4f4f', endColorstr='#4f4f4f', GradientType=1 ) !important;
     color: #86888A !important;
     background-color: #303030 !important;
+    margin: 0 !important;
+    width: 100%;
 }
 
 .confess-container {
@@ -18,7 +23,7 @@ body {
     transform: translateY(-50%) !important;
 }
 
-textarea, input {
+textarea.confess, .confess > input {
     background-color: #4F4F4F !important;
     resize: none !important;
     color: #F1FAFF !important;
@@ -61,7 +66,7 @@ textarea, input {
     padding-bottom: 10px;    
 }
 
-textarea {
+textarea.confess {
     height: 150px !important;
 }
 
@@ -82,7 +87,7 @@ h1.gradient-text {
     margin-bottom: 0 !important;
 }
 
-p {
+p.confess {
     font-size: 18px !important;
 }
 
@@ -111,7 +116,8 @@ a.arrow-link {
 
 .exit-link {
     position: relative !important;
-    top: 40px !important;
+    top: 40px;
+    left: 40px;
 }
 
 .next-link {

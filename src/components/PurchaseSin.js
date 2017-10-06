@@ -20,8 +20,8 @@ export default class PurchaseSin extends Component {
           textAlign='center'
           className='dswallau confess-header gradient-text' 
         />
-        <p>Now that you've confessed, submit your transaction to purchase your SIN tokens and obtain forgiveness.</p>
-        <p>Your sin: { this.props.sinText }</p>
+        <p className='confess'>Now that you've confessed, submit your transaction to purchase your SIN tokens and obtain forgiveness.</p>
+        <p className='confess'>Your sin: { this.props.sinText }</p>
         <Grid className='bordered-form purchase-form'>
           <Grid.Row>
             <Grid.Column width={4} className='payment-form-text payment-form-label'>
@@ -29,7 +29,7 @@ export default class PurchaseSin extends Component {
             </Grid.Column>
             <Grid.Column className='payment-input-column recipient' width={12}>
               <Input
-                className='payment-input recipient'
+                className='confess payment-input recipient'
                 fluid 
                 readOnly
                 value={ this.props.tetzelAddress }/>
@@ -41,7 +41,7 @@ export default class PurchaseSin extends Component {
             </Grid.Column>
             <Grid.Column className='payment-input-column' width={11}>
               <Input
-                className='payment-input input-with-units'
+                className='confess payment-input input-with-units'
                 fluid
                 type='number'
                 min='0'
@@ -58,7 +58,7 @@ export default class PurchaseSin extends Component {
             </Grid.Column>
             <Grid.Column width={11} className='payment-input-column'>
                 <Input
-                  className='payment-input input-with-units'
+                  className='confess payment-input input-with-units'
                   fluid
                   value={ this.props.sinValue * this.props.sinRate } 
                   readOnly />
@@ -77,7 +77,7 @@ export default class PurchaseSin extends Component {
             <Grid.Column width={4} className='payment-form-text'>Your Donation to RIP Medical Debt</Grid.Column>
             <Grid.Column className='payment-input-column donation-column' width={7}>
               <Input
-                className='donation-field payment-input input-with-units'
+                className='confess donation-field payment-input input-with-units'
                 fluid
                 value={ this.props.sinValue * 0.85 } 
                 readOnly />
