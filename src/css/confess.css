@@ -182,3 +182,9 @@ input[type="number"] {
 .payment-input.recipient > input, .payment-input-column.recipient {
     border-top-right-radius: 10px !important;    
 }
+
+p.sin-ownership {
+    color: #F1FAFF;
+    font-size: 30px !important;
+    text-align: center;
+}

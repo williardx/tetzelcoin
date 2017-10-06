@@ -27,8 +27,8 @@ export default class Forgiveness extends Component {
           src="/images/TetzelCoin_Coin.png" 
           size='medium' 
           className='center-hack' />
-        <p>You own { this.props.tokenAmount } SIN</p>
-        <p>Once your transaction completes your SIN tokens will be available and you will be forgiven. <a href={ txUrl }>View your transaction on Etherscan.</a></p>
+        <p className='confess sin-ownership'>You own { this.props.tokenAmount } SIN</p>
+        <p className='confess'>Once your transaction completes your SIN tokens will be available and you will be forgiven. <a href={ txUrl }>View your transaction on Etherscan.</a></p>
       </Container>
     );
   }
