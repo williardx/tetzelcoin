@@ -172,3 +172,7 @@ input[type="number"] {
     margin-top: 35px !important;
     float: right;
 }
+
+.payment-input.recipient > input, .payment-input-column.recipient {
+    border-top-right-radius: 10px !important;    
+}

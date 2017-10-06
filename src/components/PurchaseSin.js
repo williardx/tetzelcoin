@@ -27,9 +27,9 @@ export default class PurchaseSin extends Component {
             <Grid.Column width={4} className='payment-form-text payment-form-label'>
               Recipient
             </Grid.Column>
-            <Grid.Column className='payment-input-column' width={12}>
+            <Grid.Column className='payment-input-column recipient' width={12}>
               <Input
-                className='payment-input'
+                className='payment-input recipient'
                 fluid 
                 readOnly
                 value={ this.props.tetzelAddress }/>
