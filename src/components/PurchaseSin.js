@@ -5,7 +5,7 @@ import {
   Form,
   Header,
   Input,
-  Table,
+  Grid,
 } from 'semantic-ui-react';
 
 export default class PurchaseSin extends Component {
@@ -21,68 +21,72 @@ export default class PurchaseSin extends Component {
         />
         <p>Now that you've confessed, submit your transaction to purchase your SIN tokens and obtain forgiveness.</p>
         <p>Your sin: { this.props.sinText }</p>
-        <Form>
-          <Table celled>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  Recipient
-                </Table.Cell>
-                <Table.Cell>
-                  <Form.Input readOnly value={ this.props.tetzelAddress }/>
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  Amount
-                </Table.Cell>
-                <Table.Cell>
-                  <Form.Field>
-                    <Input 
-                      type='number'
-                      min='0'
-                      onChange={ (event) => this.props.updateSinValue(event.target.value) } 
-                      label={{basic: true, content: 'ETH'}}
-                      value={ this.props.sinValue }
-                      labelPosition='right'/>
-                  </Form.Field>
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  Amount SIN Tokens to Receive
-                </Table.Cell>
-                <Table.Cell>
-                  <Form.Field>
-                    <Input 
-                      value={ this.props.sinValue * this.props.sinRate } 
-                      readOnly 
-                      label={{basic: true, content: 'SIN'}} 
-                      labelPosition='right'/>
-                  </Form.Field>
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>Your Donation to RIP Medical Debt</Table.Cell>
-                <Table.Cell>
-                  <Form.Field>
-                    <Input 
-                      value={ this.props.sinValue * 0.85 } 
-                      readOnly 
-                      label={{basic: true, content: 'ETH'}} 
-                      labelPosition='right'/>
-                  </Form.Field>
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-          <Button 
-            type="submit" 
-            primary 
-            size='big' 
-            className='btn-cta' 
-            onClick={() => this.props.onPurchase() }> Submit </Button>
-        </Form>
+        <Grid celled>
+          <Grid.Row>
+            <Grid.Column width={4}>
+              Recipient
+            </Grid.Column>
+            <Grid.Column className='payment-input-column' width={12}>
+              <Input
+                className='payment-input'
+                fluid 
+                readOnly
+                value={ this.props.tetzelAddress }/>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={4}>
+              Amount
+            </Grid.Column>
+            <Grid.Column className='payment-input-column' width={11}>
+              <Input
+                className='payment-input'
+                fluid
+                type='number'
+                min='0'
+                onChange={ (event) => this.props.updateSinValue(event.target.value) } 
+                value={ this.props.sinValue } />
+            </Grid.Column>
+            <Grid.Column className='payment-input-column' width={1}>
+              ETH
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={4}>
+              Amount SIN Tokens to Receive
+            </Grid.Column>
+            <Grid.Column width={11} className='payment-input-column'>
+                <Input
+                  className='payment-input'
+                  fluid
+                  value={ this.props.sinValue * this.props.sinRate } 
+                  readOnly />
+            </Grid.Column>
+            <Grid.Column className='payment-input-column' width={1}>
+              SIN
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={4}>Your Donation to RIP Medical Debt</Grid.Column>
+            <Grid.Column width={4}>Your Donation to RIP Medical Debt</Grid.Column>
+            <Grid.Column className='payment-input-column' width={7}>
+              <Input
+                className='payment-input'
+                fluid
+                value={ this.props.sinValue * 0.85 } 
+                readOnly />
+            </Grid.Column>
+            <Grid.Column className='payment-input-column' width={1}>
+              ETH
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+        <Button 
+          type="submit" 
+          primary 
+          size='big' 
+          className='btn-cta' 
+          onClick={() => this.props.onPurchase() }> Submit </Button>
       </Container>
     );
   }
