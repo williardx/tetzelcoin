@@ -4,6 +4,7 @@ import {
   Container,
   Form,
   Header,
+  Image,
   Input,
   Grid,
 } from 'semantic-ui-react';
@@ -21,7 +22,7 @@ export default class PurchaseSin extends Component {
         />
         <p>Now that you've confessed, submit your transaction to purchase your SIN tokens and obtain forgiveness.</p>
         <p>Your sin: { this.props.sinText }</p>
-        <Grid celled>
+        <Grid className='bordered-form'>
           <Grid.Row>
             <Grid.Column width={4}>
               Recipient
@@ -40,52 +41,54 @@ export default class PurchaseSin extends Component {
             </Grid.Column>
             <Grid.Column className='payment-input-column' width={11}>
               <Input
-                className='payment-input'
+                className='payment-input input-with-units'
                 fluid
                 type='number'
                 min='0'
                 onChange={ (event) => this.props.updateSinValue(event.target.value) } 
                 value={ this.props.sinValue } />
             </Grid.Column>
-            <Grid.Column className='payment-input-column' width={1}>
+            <Grid.Column className='unit-name-column' width={1}>
               ETH
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={4}>
-              Amount SIN Tokens to Receive
+              SIN Received
             </Grid.Column>
             <Grid.Column width={11} className='payment-input-column'>
                 <Input
-                  className='payment-input'
+                  className='payment-input input-with-units'
                   fluid
                   value={ this.props.sinValue * this.props.sinRate } 
                   readOnly />
             </Grid.Column>
-            <Grid.Column className='payment-input-column' width={1}>
+            <Grid.Column className='unit-name-column' width={1}>
               SIN
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={4}>Your Donation to RIP Medical Debt</Grid.Column>
+            <Grid.Column width={4}>
+              <Image src="/images/rip_medical_debt_tz_colors.png" size='tiny' />
+            </Grid.Column>
             <Grid.Column width={4}>Your Donation to RIP Medical Debt</Grid.Column>
             <Grid.Column className='payment-input-column' width={7}>
               <Input
-                className='payment-input'
+                className='donation-field payment-input input-with-units'
                 fluid
                 value={ this.props.sinValue * 0.85 } 
                 readOnly />
             </Grid.Column>
-            <Grid.Column className='payment-input-column' width={1}>
+            <Grid.Column className='unit-name-column' width={1}>
               ETH
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <Button 
+        <Button
           type="submit" 
           primary 
           size='big' 
-          className='btn-cta' 
+          className='btn-cta submit-btn' 
           onClick={() => this.props.onPurchase() }> Submit </Button>
       </Container>
     );

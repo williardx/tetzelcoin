@@ -21,7 +21,7 @@ export default class ValueSin extends Component {
           className='dswallau confess-header gradient-text' 
         />
         <p>How do you value a sin? To help you figure out how much your sin is worth, we're going to ask you to value a few other sins first. You can then use those numbers to value your own. You can skip this part if you already know how much your sin is worth.</p>
-        <Grid padded columns={2} className='value-form'>
+        <Grid padded columns={2} className='bordered-form'>
           <Grid.Row>
             <Grid.Column width={11}>
               <label>Jane told her best friend a white lie. She should pay...?</label>

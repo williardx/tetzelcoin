@@ -29,12 +29,24 @@ textarea, input {
 
 .payment-input > input {
     border: none !important;
-    box-shadow: none !important;
+    border-radius: 0 !important;
     text-align: right !important;
+}
+
+.input-with-units > input {
+    /* For inputs with ETH/SIN after them */
+    margin-right: -2.5em !important;
+    padding: 0.678571em 3.2em 0.6785em 1em !important;
+    max-width: none !important;    
 }
 
 .payment-input-column {
     background: #4F4F4F;
+}
+
+.unit-name-column {
+    align-items: center;
+    display: flex !important;  
 }
 
 textarea {
@@ -96,7 +108,7 @@ a.arrow-link {
     bottom: -40px !important;
 }
 
-.grid.value-form {
+.grid.bordered-form {
     border: 1px solid #86888A;
     box-sizing: border-box;
     border-radius: 10px;
@@ -117,4 +129,13 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 input[type="number"] {
     -moz-appearance: textfield;
+}
+
+.donation-field {
+    height: 100%;
+}
+
+.submit-btn {
+    margin-top: 35px !important;
+    float: right;
 }
