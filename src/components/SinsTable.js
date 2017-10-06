@@ -21,11 +21,11 @@ class SinsTable extends Component {
     });
 
     return(
-      <Table celled selectable fixed>
+      <Table basic='very' selectable fixed>
         <Table.Header>
           <Table.HeaderCell textAlign="center" width={2}>Time</Table.HeaderCell>
           <Table.HeaderCell textAlign="center" width={2}>Sinner</Table.HeaderCell>
-          <Table.HeaderCell textAlign="center" width={2}>Payment (ETH)</Table.HeaderCell>
+          <Table.HeaderCell textAlign="center" width={2}>ETH Paid</Table.HeaderCell>
           <Table.HeaderCell textAlign="center" width={8}>Sin</Table.HeaderCell>
         </Table.Header>
         <Table.Body>

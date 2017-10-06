@@ -88,7 +88,7 @@ export default class Sins extends Component {
         timestamp: blockObj.timestamp,
         sinner: "0x" + event.topics[1].replace(/^0x0+/, ""),
         sin: this.hexToAscii(event.data.replace("0x", "")),
-        payment: this.props.web3.fromWei(parseInt(event.topics[3], 16), 'ether'),
+        payment: this.props.web3.fromWei(parseInt(event.topics[2], 16), 'ether'),
       };
 
       this.setState({ recentSins: [...this.state.recentSins, logObj] });
