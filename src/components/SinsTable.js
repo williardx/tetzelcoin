@@ -15,9 +15,10 @@ class SinsTable extends Component {
           <Grid.Column width={2} textAlign="center">
             <Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment>
           </Grid.Column>
-          <Grid.Column width={3} className='sinner-field'>{ sinObj.sinner }</Grid.Column>
+          <Grid.Column width={2} className='sinner-field'>{ sinObj.sinner }</Grid.Column>
+          <Grid.Column width={8} textAlign="center">{ sinObj.sin }</Grid.Column>
           <Grid.Column width={2} textAlign="center">{ sinObj.payment }</Grid.Column>
-          <Grid.Column width={9} textAlign="center">{ sinObj.sin }</Grid.Column>
+          <Grid.Column width={2} textAlign="center">{ sinObj.payment * 500 }</Grid.Column>          
         </Grid.Row>
       );
     });
@@ -26,9 +27,10 @@ class SinsTable extends Component {
       <Grid divided='vertically'>
         <Grid.Row>
           <Grid.Column textAlign="center" width={2}>Time</Grid.Column>
-          <Grid.Column textAlign="center" width={3}>Sinner</Grid.Column>
+          <Grid.Column textAlign="center" width={2}>Sinner</Grid.Column>
+          <Grid.Column textAlign="center" width={8}>Confession</Grid.Column>
           <Grid.Column textAlign="center" width={2}>ETH Paid</Grid.Column>
-          <Grid.Column textAlign="center" width={9}>Sin</Grid.Column>
+          <Grid.Column textAlign="center" width={2}>SIN Received</Grid.Column>
         </Grid.Row>
         { trs }
       </Grid>
