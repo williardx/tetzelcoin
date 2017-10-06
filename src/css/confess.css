@@ -44,9 +44,21 @@ textarea, input {
     background: #4F4F4F;
 }
 
-.unit-name-column {
+.payment-form-text {
     align-items: center;
-    display: flex !important;  
+    display: flex !important;
+    font-size: 16px;
+}
+
+.payment-form-label {
+    border-right: 1px solid #86888A;
+    justify-content: center;
+    color: #F1FAFF;
+}
+
+.donation-img-wrapper {
+    padding-top: 10px;
+    padding-bottom: 10px;    
 }
 
 textarea {
@@ -112,8 +124,24 @@ a.arrow-link {
     border: 1px solid #86888A;
     box-sizing: border-box;
     border-radius: 10px;
+}
+
+.grid.bordered-form.value-form {
     padding-left: 15px !important;
-    padding-right: 15px !important;
+    padding-right: 15px !important;    
+}
+
+.grid.bordered-form.purchase-form {
+    padding: 0;
+}
+
+.purchase-form .row {
+    padding: 0 !important;
+    border-bottom: 1px solid #86888A;
+}
+
+.purchase-form .row:last-of-type {
+    border: none;
 }
 
 label {
@@ -133,6 +161,11 @@ input[type="number"] {
 
 .donation-field {
     height: 100%;
+}
+
+.donation-field > input, .donation-column {
+    background-color: transparent !important;
+    box-shadow: none !important;   
 }
 
 .submit-btn {

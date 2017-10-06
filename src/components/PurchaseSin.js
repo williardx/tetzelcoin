@@ -22,9 +22,9 @@ export default class PurchaseSin extends Component {
         />
         <p>Now that you've confessed, submit your transaction to purchase your SIN tokens and obtain forgiveness.</p>
         <p>Your sin: { this.props.sinText }</p>
-        <Grid className='bordered-form'>
+        <Grid className='bordered-form purchase-form'>
           <Grid.Row>
-            <Grid.Column width={4}>
+            <Grid.Column width={4} className='payment-form-text payment-form-label'>
               Recipient
             </Grid.Column>
             <Grid.Column className='payment-input-column' width={12}>
@@ -36,7 +36,7 @@ export default class PurchaseSin extends Component {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={4}>
+            <Grid.Column width={4} className='payment-form-text payment-form-label'>
               Amount
             </Grid.Column>
             <Grid.Column className='payment-input-column' width={11}>
@@ -48,12 +48,12 @@ export default class PurchaseSin extends Component {
                 onChange={ (event) => this.props.updateSinValue(event.target.value) } 
                 value={ this.props.sinValue } />
             </Grid.Column>
-            <Grid.Column className='unit-name-column' width={1}>
+            <Grid.Column className='payment-form-text' width={1}>
               ETH
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={4}>
+            <Grid.Column width={4} className='payment-form-text payment-form-label'>
               SIN Received
             </Grid.Column>
             <Grid.Column width={11} className='payment-input-column'>
@@ -63,23 +63,26 @@ export default class PurchaseSin extends Component {
                   value={ this.props.sinValue * this.props.sinRate } 
                   readOnly />
             </Grid.Column>
-            <Grid.Column className='unit-name-column' width={1}>
+            <Grid.Column className='payment-form-text' width={1}>
               SIN
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={4}>
-              <Image src="/images/rip_medical_debt_tz_colors.png" size='tiny' />
+            <Grid.Column width={4} className='donation-img-wrapper'>
+              <Image
+                width={60}
+                className='center-hack'
+                src="/images/rip_medical_debt_tz_colors.png" />
             </Grid.Column>
-            <Grid.Column width={4}>Your Donation to RIP Medical Debt</Grid.Column>
-            <Grid.Column className='payment-input-column' width={7}>
+            <Grid.Column width={4} className='payment-form-text'>Your Donation to RIP Medical Debt</Grid.Column>
+            <Grid.Column className='payment-input-column donation-column' width={7}>
               <Input
                 className='donation-field payment-input input-with-units'
                 fluid
                 value={ this.props.sinValue * 0.85 } 
                 readOnly />
             </Grid.Column>
-            <Grid.Column className='unit-name-column' width={1}>
+            <Grid.Column className='payment-form-text' width={1}>
               ETH
             </Grid.Column>
           </Grid.Row>
