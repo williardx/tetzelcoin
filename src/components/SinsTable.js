@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Table } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 
 import Moment from 'react-moment';
+
+import '../css/sinstable.css'
 
 class SinsTable extends Component {
 
@@ -9,29 +11,27 @@ class SinsTable extends Component {
 
     var trs = this.props.recentSins.map((sinObj, i) => {
       return (
-        <Table.Row key={i}>
-          <Table.Cell textAlign="center">
+        <Grid.Row key={i}>
+          <Grid.Column width={2} textAlign="center">
             <Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment>
-          </Table.Cell>
-          <Table.Cell>{ sinObj.sinner }</Table.Cell>
-          <Table.Cell textAlign="center">{ sinObj.payment }</Table.Cell>
-          <Table.Cell>{ sinObj.sin }</Table.Cell>
-        </Table.Row>
+          </Grid.Column>
+          <Grid.Column width={3} className='sinner-field'>{ sinObj.sinner }</Grid.Column>
+          <Grid.Column width={2} textAlign="center">{ sinObj.payment }</Grid.Column>
+          <Grid.Column width={9} textAlign="center">{ sinObj.sin }</Grid.Column>
+        </Grid.Row>
       );
     });
 
     return(
-      <Table basic='very' selectable fixed>
-        <Table.Header>
-          <Table.HeaderCell textAlign="center" width={2}>Time</Table.HeaderCell>
-          <Table.HeaderCell textAlign="center" width={2}>Sinner</Table.HeaderCell>
-          <Table.HeaderCell textAlign="center" width={2}>ETH Paid</Table.HeaderCell>
-          <Table.HeaderCell textAlign="center" width={8}>Sin</Table.HeaderCell>
-        </Table.Header>
-        <Table.Body>
-          { trs }
-        </Table.Body>
-      </Table>
+      <Grid divided='vertically'>
+        <Grid.Row>
+          <Grid.Column textAlign="center" width={2}>Time</Grid.Column>
+          <Grid.Column textAlign="center" width={3}>Sinner</Grid.Column>
+          <Grid.Column textAlign="center" width={2}>ETH Paid</Grid.Column>
+          <Grid.Column textAlign="center" width={9}>Sin</Grid.Column>
+        </Grid.Row>
+        { trs }
+      </Grid>
     );
 
   }
