@@ -4,11 +4,13 @@ import {
   Header,
 } from 'semantic-ui-react';
 import SinsTable from './components/SinsTable';
+import Navbar from './components/Navbar';
 
 import Tetzel from '../build/contracts/Tetzel.json';
 import TetzelCrowdsale from '../build/contracts/TetzelCrowdsale.json';
 
 import './css/dswallau.css';
+import './css/sinstable.css';
 
 export default class Sins extends Component {
 
@@ -99,14 +101,18 @@ export default class Sins extends Component {
 
   render() {
     return(
-      <Container>
-        <Header
-          as='h1'
-          content='Table of Sins' 
-          textAlign='center'
-          className='dswallau instructions-header' />
-        <SinsTable recentSins={ this.state.recentSins } />
-      </Container>
+      <div>
+        <Navbar />
+        <Container className='sins-table below-navbar'>
+          <Header
+            as='h1'
+            content='Table of Sins' 
+            textAlign='center'
+            className='dswallau instructions-header' />
+          <p className='sins-table'>These are the sins of those who have confessed through the TetzelCoin confessional. Every sin is taken directly from the Ethereum blockchain. The sins will remain recorded on the blockchain for as long as Ethereum exists.</p>
+          <SinsTable recentSins={ this.state.recentSins } />
+        </Container>
+      </div>
     )
   }
 

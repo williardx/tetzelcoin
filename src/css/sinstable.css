@@ -1,3 +1,7 @@
+.ui.container.sins-table.below-navbar {
+    margin-top: 52px;
+}
+
 .sinner-field {
     text-overflow: ellipsis;
     overflow: hidden;    
