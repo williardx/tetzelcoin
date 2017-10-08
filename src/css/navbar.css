@@ -31,15 +31,12 @@ a.navbar-link {
     text-decoration: none !important;
 }
 
-h1.header.ui.dswallau {
+h1.header.ui.dswallau.navbar-header {
     color: #86888A !important;
+    font-size: 2em;
 }
 
-h1.header.ui.navbar-header {
-    font-size: 2.5em;
-}
-
-.menu a.navbar-link > div.item {
+.menu a.navbar-link > div.navbar-item {
     font-size: 18px;
     height: 100%;
     text-transform: uppercase;

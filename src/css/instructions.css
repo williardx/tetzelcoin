@@ -1,8 +1,10 @@
 .ui.container.instructions-container {
+    margin-top: 35px;
     max-width: 420px !important;
 }
 
-.instructions-header {
+h1.ui.header.instructions-header {
+    color: #86888A !important;
     font-size: 4em !important; 
     margin-bottom: 0 !important;
 }

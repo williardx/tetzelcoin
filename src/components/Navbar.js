@@ -15,7 +15,7 @@ export default class Navbar extends Component {
       <div>
         <Menu borderless className='navbar'>
           <Link className='navbar-link' to='/'>
-            <Menu.Item name='tetzelcoin' >
+            <Menu.Item className='navbar-item' name='tetzelcoin' >
               <Header
                 as='h1'
                 content='TetzelCoin'
@@ -27,12 +27,12 @@ export default class Navbar extends Component {
 
           <Menu.Menu position='right'>
             <Link className='navbar-link' to='/'>
-              <Menu.Item name='home' >
+              <Menu.Item className='navbar-item' name='home' >
                 Home
               </Menu.Item>
             </Link>
             <Link className='navbar-link' to='/confess'>
-              <Menu.Item name='confess' >
+              <Menu.Item className='navbar-item' name='confess' >
                 Confess
               </Menu.Item>
             </Link>
