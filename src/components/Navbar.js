@@ -14,24 +14,24 @@ export default class Navbar extends Component {
     return(
       <div>
         <Menu borderless className='navbar'>
-          <Link to='/'>
+          <Link className='navbar-link' to='/'>
             <Menu.Item name='tetzelcoin' >
               <Header
                 as='h1'
-                content='TetzelCoin' 
+                content='TetzelCoin'
                 textAlign='center'
-                className='dswallau' 
+                className='dswallau navbar-header'
               />
             </Menu.Item>
           </Link>
 
           <Menu.Menu position='right'>
-            <Link to='/'>
+            <Link className='navbar-link' to='/'>
               <Menu.Item name='home' >
                 Home
               </Menu.Item>
             </Link>
-            <Link to='/confess'>
+            <Link className='navbar-link' to='/confess'>
               <Menu.Item name='confess' >
                 Confess
               </Menu.Item>
