@@ -20,3 +20,13 @@ p.sins-table {
     padding: 30px 50px;
     font-size: 20px;    
 }
+
+div.sins-table.pager {
+    text-align: center;
+    display: block !important;
+    margin-top: 50px;    
+}
+
+div.sins-table.pager-item {
+    cursor: pointer;
+}

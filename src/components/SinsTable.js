@@ -21,7 +21,8 @@ class SinsTable extends Component {
 
     var startIndex = (this.state.currentPage - 1) * this.props.sinsPerPage;
     var endIndex = startIndex + this.props.sinsPerPage;
-    var trs = this.props.recentSins.slice(startIndex, endIndex).map((sinObj, i) => {
+    var reversedSins = this.props.recentSins.reverse();
+    var trs = reversedSins.slice(startIndex, endIndex).map((sinObj, i) => {
       return (
         <Grid.Row className='sins-table' key={i}>
           <Grid.Column width={2} textAlign="center">
@@ -43,7 +44,10 @@ class SinsTable extends Component {
     
     var pagerItems = new Array(numPages).fill(undefined).map((val, i) => {
       return (
-          <List.Item key={i} onClick={ () => this.setState({currentPage: i + 1}) }>{ i + 1 }</List.Item>
+          <List.Item 
+            key={i}
+            className='sins-table pager-item'
+            onClick={ () => this.setState({currentPage: i + 1}) }>{ i + 1 }</List.Item>
       );
     });
 
@@ -59,7 +63,7 @@ class SinsTable extends Component {
           </Grid.Row>
           { trs }
         </Grid>
-        <List style={{marginTop: '20px'}} horizontal>
+        <List className='sins-table pager' horizontal>
           { pagerItems }
         </List>
       </div>
