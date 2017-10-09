@@ -20,7 +20,12 @@ class SinsTable extends Component {
 
   componentWillReceiveProps(props) {
     this.setState({
-      reversedSins: props.recentSins.reverse()
+      // Sort by most recent first      
+      reversedSins: props.recentSins.sort((a, b) => {
+        if (a.timestamp > b.timestamp) return -1;
+        if (a.timestamp < b.timestamp) return 1;
+        return 0;
+      })
     });
   }
 
