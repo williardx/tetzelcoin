@@ -75,13 +75,13 @@ export default class ValueSin extends Component {
               <Input
                 className='confess'
                 fluid
-                value={ this.props.sinValue }
+                value={ this.props.sinValueUSD }
                 icon='dollar' 
                 iconPosition='left'
                 type='number' 
-                onChange={ (e) => this.props.updateSinValue(e.target.value) } />
+                onChange={ (e) => this.props.updateSinValue(e.target.value, 'USD') } />
             </Grid.Column>
-          </Grid.Row>        
+          </Grid.Row>
         </Grid>
         <a className='arrow-link next-link' onClick={ () => this.props.onNext() }>Next <Icon name='long arrow right'/></a>
       </Container>

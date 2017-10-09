@@ -26,9 +26,11 @@ export default class Confess extends Component {
       tetzelCoinAddress: 'Loading...',
       account: 'Loading...',
       sinText: '',
-      sinValue: 0,
+      sinValueUSD: 0,
+      sinValueETH: 0,
       sinRate: 500,
       testSinValues: [0, 0, 0],
+      ethSpotPrice: null,
       activeView: 'CONFESS_SIN',
     };
   }
@@ -38,6 +40,7 @@ export default class Confess extends Component {
       try {
         await this.fetchAccount();
         await this.instantiateContracts();
+        await this.fetchEtherPrice();        
       } catch(e) {
         console.log(e);
       }      
@@ -64,7 +67,7 @@ export default class Confess extends Component {
     var self = this;
     return new Promise(function (resolve, reject) {
       self.props.web3.eth.getAccounts(function (e, accounts) {
-        if (e != null) {
+        if (e !== null) {
           reject(e);
         } else {
           resolve(accounts);
@@ -73,6 +76,12 @@ export default class Confess extends Component {
     });
   }
 
+  async fetchEtherPrice() {
+    const priceUrl = "https://api.coinbase.com/v2/prices/ETH-USD/spot";
+    let response = await fetch(priceUrl);
+    let responseJSON = await response.json();
+    this.setState({ethSpotPrice: parseFloat(responseJSON.data.amount)});
+  }
 
   async instantiateContracts() {
 
@@ -83,7 +92,6 @@ export default class Confess extends Component {
     tetzel.setProvider(this.props.web3.currentProvider)
     tetzelCrowdsale.setProvider(this.props.web3.currentProvider)
 
-    //TODO: Is there any way to do this without making so many async calls?
     var tetzelInstance = await tetzel.deployed();
     var tetzelCrowdsaleInstance = await tetzelCrowdsale.deployed();
     var tetzelCoinAddress = await tetzelCrowdsaleInstance.token();
@@ -97,7 +105,7 @@ export default class Confess extends Component {
 
   async purchase() {
 
-    var sinValue = parseFloat(this.state.sinValue);
+    var sinValue = parseFloat(this.state.sinValueETH);
 
     var isValidSin = this.state.sinText.length > 0;
     var isValidPayment = typeof sinValue === 'number' && sinValue > 0;
@@ -121,8 +129,20 @@ export default class Confess extends Component {
     }
   }
 
-  updateSinValue(val) {
-    this.setState({sinValue: val});
+  updateSinValue(val, unit) {
+    if (unit === 'USD') {
+      this.setState({
+        sinValueUSD: val,
+        sinValueETH: val / this.state.ethSpotPrice
+      });      
+    } else if (unit === 'ETH') {
+      this.setState({
+        sinValueUSD: val * this.state.ethSpotPrice,
+        sinValueETH: val
+      });       
+    } else {
+      throw "Invalid unit for updateSinValue";
+    }
   }
 
   updateSinText(txt) {
@@ -152,7 +172,7 @@ export default class Confess extends Component {
           return (
             <ValueSin
               sinText={ this.state.sinText }
-              sinValue={ this.state.sinValue }
+              sinValueUSD={ this.state.sinValueUSD }
               testSinValues={ this.state.testSinValues }
               updateSinValue={ this.updateSinValue.bind(this) }
               updateTestSinValues={ this.updateTestSinValues.bind(this) }
@@ -163,8 +183,9 @@ export default class Confess extends Component {
             <PurchaseSin
               tetzelAddress={ this.state.tetzelAddress }
               sinRate={ this.state.sinRate }
-              sinValue={ this.state.sinValue }
+              sinValueETH={ this.state.sinValueETH }
               sinText={ this.state.sinText }
+              ethSpotPrice={ this.state.ethSpotPrice }
               updateSinValue={ this.updateSinValue.bind(this) }
               onPurchase={ async () => { 
                 let successObj = await this.purchase();
@@ -181,7 +202,7 @@ export default class Confess extends Component {
             <Forgiveness 
               tx={ this.state.tx }
               web3={ this.props.web3 }
-              tokenAmount={ this.state.sinValue * this.state.sinRate } />
+              tokenAmount={ this.state.sinValueETH * this.state.sinRate } />
           );
       }
     }

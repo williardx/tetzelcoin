@@ -28,7 +28,7 @@ export default class ConfessSin extends Component {
             onChange={ (event) => this.props.updateSinText(event.target.value) } />
         </Form>
         <a 
-          className='arrow-link next-link' 
+          className='arrow-link next-link'
           onClick={ () => this.props.onNext() }>
           Next <Icon name='long arrow right'/>
         </a>

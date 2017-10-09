@@ -45,8 +45,8 @@ export default class PurchaseSin extends Component {
                 fluid
                 type='number'
                 min='0'
-                onChange={ (event) => this.props.updateSinValue(event.target.value) } 
-                value={ this.props.sinValue } />
+                onChange={ (event) => this.props.updateSinValue(event.target.value, 'ETH') } 
+                value={ this.props.sinValueETH } />
             </Grid.Column>
             <Grid.Column className='payment-form-text' width={1}>
               ETH
@@ -60,7 +60,7 @@ export default class PurchaseSin extends Component {
                 <Input
                   className='confess payment-input input-with-units'
                   fluid
-                  value={ this.props.sinValue * this.props.sinRate } 
+                  value={ this.props.sinValueETH * this.props.sinRate } 
                   readOnly />
             </Grid.Column>
             <Grid.Column className='payment-form-text' width={1}>
@@ -79,7 +79,7 @@ export default class PurchaseSin extends Component {
               <Input
                 className='confess donation-field payment-input input-with-units'
                 fluid
-                value={ this.props.sinValue * 0.85 } 
+                value={ this.props.sinValueETH * 0.85 } 
                 readOnly />
             </Grid.Column>
             <Grid.Column className='payment-form-text' width={1}>
