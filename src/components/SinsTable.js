@@ -14,15 +14,21 @@ class SinsTable extends Component {
     super(props);
     this.state = {
       currentPage: 1,
+      reversedSins: [],
     };
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({
+      reversedSins: props.recentSins.reverse()
+    });
   }
 
   render() {
 
     var startIndex = (this.state.currentPage - 1) * this.props.sinsPerPage;
     var endIndex = startIndex + this.props.sinsPerPage;
-    var reversedSins = this.props.recentSins.reverse();
-    var trs = reversedSins.slice(startIndex, endIndex).map((sinObj, i) => {
+    var trs = this.state.reversedSins.slice(startIndex, endIndex).map((sinObj, i) => {
       return (
         <Grid.Row className='sins-table' key={i}>
           <Grid.Column width={2} textAlign="center">
@@ -43,10 +49,12 @@ class SinsTable extends Component {
     }
     
     var pagerItems = new Array(numPages).fill(undefined).map((val, i) => {
+      let classes = 'sins-table pager-item';
+      if (this.state.currentPage === (i + 1)) classes += ' active';
       return (
           <List.Item 
             key={i}
-            className='sins-table pager-item'
+            className={ classes }
             onClick={ () => this.setState({currentPage: i + 1}) }>{ i + 1 }</List.Item>
       );
     });

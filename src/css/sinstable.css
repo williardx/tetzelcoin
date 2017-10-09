@@ -27,6 +27,10 @@ div.sins-table.pager {
     margin-top: 50px;    
 }
 
-div.sins-table.pager-item {
+div.item.sins-table.pager-item {
     cursor: pointer;
+}
+
+div.item.sins-table.pager-item.active {
+    font-size: 18px;
 }
