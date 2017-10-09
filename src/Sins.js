@@ -19,8 +19,8 @@ export default class Sins extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      tetzelAddress: null,
       tetzelInstance: null,
-      tetzelCrowdsaleInstance: null,
       recentSins: [],
     };
   }
@@ -28,17 +28,15 @@ export default class Sins extends Component {
   async componentWillMount() {
     if (this.props.web3) {
       await this.instantiateContracts();
-      await this.instantiateFilter();
-    }
-  }
-
-    hexToAscii(h) {
-      var hex  = h.toString();
-      var str = '';
-      for (var n = 0; n < hex.length; n += 2) {
-        str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
+      // TODO: Figure out why filter isn't working with Metamask and testnet.
+      // For now we're pulling sins from Etherscan instead when we're
+      // on testnet.
+      if (this.props.web3.version.network === '3') { // Ropsten
+        await this.getSinsFromEtherscan();
+      } else {
+        await this.getSinsFromTestRPC();
       }
-      return str;
+    }
   }
 
   _getBlockTimestamp(blockNumber) {
@@ -58,14 +56,9 @@ export default class Sins extends Component {
 
     const contract = require('truffle-contract');
     const tetzel = contract(Tetzel);
-    const tetzelCrowdsale = contract(TetzelCrowdsale);
 
     tetzel.setProvider(this.props.web3.currentProvider)
-    tetzelCrowdsale.setProvider(this.props.web3.currentProvider)
-
-    //TODO: Is there any way to do this without making so many async calls?
     var tetzelInstance = await tetzel.deployed();
-    var tetzelCrowdsaleInstance = await tetzelCrowdsale.deployed();
 
     this.setState({
       tetzelInstance: tetzelInstance,
@@ -73,7 +66,7 @@ export default class Sins extends Component {
     });
   }  
 
-  async instantiateFilter() {
+  async getSinsFromTestRPC() {
     
     var sinFilter = this.props.web3.eth.filter({
       address: this.state.tetzelInstance.address,
@@ -82,26 +75,33 @@ export default class Sins extends Component {
     });
 
     sinFilter.watch(async (err, event) => {
-      if (err !== null) {
-        console.log("There was an error getting event logs");
-      }
-
-      var blockObj = await this._getBlockTimestamp(event.blockNumber);
-
-      var logObj = {
-        timestamp: blockObj.timestamp,
-        sinner: "0x" + event.topics[1].replace(/^0x0+/, ""),
-        sin: this.hexToAscii(event.data.replace("0x", "")),
-        payment: this.props.web3.fromWei(parseInt(event.topics[2], 16), 'ether'),
-      };
-
-      this.setState({ recentSins: [...this.state.recentSins, logObj] });
-
+      if (err !== null) throw "There was an error getting event logs";
+      this.setState({ recentSins: [...this.state.recentSins, this.processConfessEvent(event)] });
     });
 
-  } 
+  }
+
+  processConfessEvent(event) {
+    return {
+      timestamp: parseInt(event.timeStamp, 16),
+      sinner: "0x" + event.topics[1].replace(/^0x0+/, ""),
+      sin: this.props.web3.toAscii(event.data),
+      payment: this.props.web3.fromWei(parseInt(event.topics[2], 16), 'ether'),
+    };
+  }
+
+  async getSinsFromEtherscan(fromBlock, toBlock) {
+    if (typeof toBlock === 'undefined') toBlock = 'latest';
+    if (typeof fromBlock === 'undefined') fromBlock = 1800000;
+    let url = `https://ropsten.etherscan.io/api?module=logs&action=getLogs&fromBlock=${fromBlock}&toBlock=${toBlock}&address=${this.state.tetzelAddress}`;
+    let logs = await fetch(url);
+    let data = await logs.json();
+    let newSins = data.result.map(this.processConfessEvent.bind(this));
+    this.setState({recentSins: this.state.recentSins.concat(newSins)});
+  }
 
   render() {
+
     return(
       <div>
         <Navbar />

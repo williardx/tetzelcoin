@@ -188,11 +188,11 @@ export default class Confess extends Component {
               ethSpotPrice={ this.state.ethSpotPrice }
               updateSinValue={ this.updateSinValue.bind(this) }
               onPurchase={ async () => { 
-                let successObj = await this.purchase();
-                if (successObj.complete) {
+                let responseObj = await this.purchase();
+                if (responseObj.complete) {
                   this.setState({activeView: 'FORGIVENESS'})
                 } else {
-                  console.log(successObj.msg);
+                  console.log(responseObj.msg);
                 }
 
               }} />
