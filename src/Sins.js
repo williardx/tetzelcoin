@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { 
+import {
+  Button,
   Container,
   Header,
 } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import SinsTable from './components/SinsTable';
 import Navbar from './components/Navbar';
 
@@ -113,6 +115,14 @@ export default class Sins extends Component {
           <SinsTable 
             recentSins={ this.state.recentSins } 
             sinsPerPage={ 5 } />
+          <div className='sins-table confess-btn-wrapper'>
+            <Link to='/confess'>
+              <Button 
+                size='big' 
+                primary 
+                className='btn-cta sins-table confess-btn'>Confess Now</Button>
+            </Link>
+          </div>
         </Container>
       </div>
     )

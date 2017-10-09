@@ -34,3 +34,8 @@ div.item.sins-table.pager-item {
 div.item.sins-table.pager-item.active {
     font-size: 18px;
 }
+
+div.sins-table.confess-btn-wrapper {
+    text-align: center;
+    margin-top: 100px;
+}

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { 
+import {
   Grid,
   List,
 } from 'semantic-ui-react';
-
 import Moment from 'react-moment';
 
 import '../css/sinstable.css'
