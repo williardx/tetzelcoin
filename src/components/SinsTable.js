@@ -39,8 +39,7 @@ class SinsTable extends Component {
             <Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment>
           </Grid.Column>
           <Grid.Column width={2} className='sinner-field'>{ sinObj.sinner }</Grid.Column>
-          <Grid.Column width={8} textAlign="center">{ sinObj.sin }</Grid.Column>
-          <Grid.Column width={2} textAlign="center">{ sinObj.payment }</Grid.Column>
+          <Grid.Column width={10} textAlign="center">{ sinObj.sin }</Grid.Column>
           <Grid.Column width={2} textAlign="center">{ sinObj.payment * 500 }</Grid.Column>          
         </Grid.Row>
       );
@@ -69,9 +68,8 @@ class SinsTable extends Component {
           <Grid.Row>
             <Grid.Column textAlign="center" width={2}>Time</Grid.Column>
             <Grid.Column textAlign="center" width={2}>Sinner</Grid.Column>
-            <Grid.Column textAlign="center" width={8}>Confession</Grid.Column>
-            <Grid.Column textAlign="center" width={2}>ETH Paid</Grid.Column>
-            <Grid.Column textAlign="center" width={2}>SIN Received</Grid.Column>
+            <Grid.Column textAlign="center" width={10}>Confession</Grid.Column>
+            <Grid.Column textAlign="center" width={2}>SIN Value</Grid.Column>
           </Grid.Row>
           { trs }
         </Grid>
