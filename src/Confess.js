@@ -31,6 +31,7 @@ export default class Confess extends Component {
       sinRate: 500,
       testSinValues: [0, 0, 0],
       ethSpotPrice: null,
+      pending: false,
       activeView: 'CONFESS_SIN',
     };
   }
@@ -103,6 +104,10 @@ export default class Confess extends Component {
     });
   }
 
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
   async purchase() {
 
     var sinValue = parseFloat(this.state.sinValueETH);
@@ -114,7 +119,11 @@ export default class Confess extends Component {
       throw "Invalid confession";
     }
 
+    var txStatus;
+    this.setState({pending: true})
+
     try {
+
       var results = await this.state.tetzelInstance.confess(
         this.state.sinText,
         {
@@ -122,11 +131,53 @@ export default class Confess extends Component {
           value: this.props.web3.toWei(sinValue, 'ether')
         }
       );
-      this.setState({tx: results.tx});
-      return {complete: true, msg: ''};
+      
+      var isSuccess = false;
+      var count = 0;
+      while (!isSuccess && count < 9) {
+        isSuccess = await this.checkTxSuccess(
+          results.tx, results.receipt.blockNumber
+        );
+        count += 1;
+        await this.sleep(5000);
+      }
+
+      if (isSuccess) {
+        txStatus = {complete: true, msg: ''};
+        this.setState({tx: results.tx});
+      } else {
+        throw 'Transaction failed';
+      }
+
     } catch(e) {
-      return {complete: false, msg: e.message};
+      txStatus = {complete: false, msg: e.message};
+    } finally {
+      this.setState({pending: false});
     }
+
+    return txStatus;
+
+  }
+
+  /*
+  Checks whether or not a transaction succeeded by looking for the `Confess`
+  event in the event logs. We need to do this because there's no way to tell
+  the difference between a transaction that failed due to out of gas errors 
+  on internal transactions but is still successfully mined and a successful
+  transaction.
+
+  TODO: Use `web3.eth.filter` once I figure out how to get it working
+  with testnet.
+  */
+  async checkTxSuccess(txHash, blockNumber) {
+    var url = `https://ropsten.etherscan.io/api?module=logs&action=getLogs&fromBlock=${blockNumber}&toBlock=${blockNumber}&address=${this.state.tetzelAddress}`;
+    var logs = await fetch(url);
+    var data = await logs.json();
+    var txs = data.result.map((logObj) => logObj.transactionHash);
+    var txPresent = data.result.reduce((acc, logObj) => {
+        return logObj.transactionHash === txHash || acc
+      }, false);
+    return txPresent;
   }
 
   updateSinValue(val, unit) {
@@ -187,6 +238,7 @@ export default class Confess extends Component {
               sinText={ this.state.sinText }
               ethSpotPrice={ this.state.ethSpotPrice }
               updateSinValue={ this.updateSinValue.bind(this) }
+              pending={ this.state.pending }
               onPurchase={ async () => { 
                 let responseObj = await this.purchase();
                 if (responseObj.complete) {

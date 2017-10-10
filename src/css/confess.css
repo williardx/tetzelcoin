@@ -174,9 +174,12 @@ input[type="number"] {
     box-shadow: none !important;   
 }
 
-.submit-btn {
+.submit-btn, .ui.loader {
     margin-top: 35px !important;
-    float: right;
+}
+
+.submit-btn {
+    float: right;    
 }
 
 .payment-input.recipient > input, .payment-input-column.recipient {

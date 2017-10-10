@@ -2,16 +2,31 @@ import React, { Component } from 'react';
 import {
   Button,
   Container,
+  Grid,
   Form,
   Header,
   Image,
   Input,
-  Grid,
+  Loader,
 } from 'semantic-ui-react';
 
 export default class PurchaseSin extends Component {
 
   render() {
+
+    var submitButton = (pending) => {
+      if (pending) return null;
+      return (
+        <Button
+          disabled={ this.props.pending }
+          type="submit" 
+          primary 
+          size='big' 
+          className='btn-cta submit-btn' 
+          onClick={() => this.props.onPurchase() }> Submit </Button>
+      );
+    }
+
     return(
       <Container className='confess-container'>
         <Header
@@ -30,7 +45,7 @@ export default class PurchaseSin extends Component {
             <Grid.Column className='payment-input-column recipient' width={12}>
               <Input
                 className='confess payment-input recipient'
-                fluid 
+                fluid
                 readOnly
                 value={ this.props.tetzelAddress }/>
             </Grid.Column>
@@ -41,6 +56,7 @@ export default class PurchaseSin extends Component {
             </Grid.Column>
             <Grid.Column className='payment-input-column' width={11}>
               <Input
+                readOnly={ this.props.pending }
                 className='confess payment-input input-with-units'
                 fluid
                 type='number'
@@ -87,12 +103,10 @@ export default class PurchaseSin extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <Button
-          type="submit" 
-          primary 
-          size='big' 
-          className='btn-cta submit-btn' 
-          onClick={() => this.props.onPurchase() }> Submit </Button>
+        <div>
+          <Loader inline='centered' active={ this.props.pending }>Transaction pending... this may take a few moments</Loader>
+          { submitButton(this.props.pending) }
+        </div>
       </Container>
     );
   }
