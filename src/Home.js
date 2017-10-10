@@ -82,7 +82,7 @@ export default class Home extends Component {
             />
             <Header
               as='h4'
-              content='Sign up to receive updates about TetzelCoin and the token sale'
+              content='Sign up to receive updates about TetzelCoin and the SIN token sale'
               style={{ fontSize: '1.2em', fontWeight: 'normal' }}
             />
             <MailchimpEmailForm
@@ -99,7 +99,7 @@ export default class Home extends Component {
               <Grid.Column width={8}>
                 <Header as='h3' style={{ fontSize: '2em' }}>What is TetzelCoin?</Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  TetzelCoin is a cryptocurrency designed to be a token for forgiveness. Since we cannot forgive and forget, users are able to define their sins in monetary terms and take appropriate action to correct their misdeeds.
+                  TetzelCoin is a blockchain-based app that forgives users of their sins. Users confess their sins and pay an amount of Ether they believe their sin is worth. In return, they receive forgiveness in the form of SIN tokens. 85% of the proceeds go to medical debt forgiveness.
                 </p>
                 <a href="https://drive.google.com/open?id=0B7t2SoXRiUoXVERSaV9aRnR3VGc">
                   <Button primary size='big' className='btn-cta'>
@@ -171,7 +171,7 @@ export default class Home extends Component {
                 </Grid.Column>
                 <Grid.Column>
                   <p style={{ fontSize: '1.33em', marginBottom: '40px' }}>
-                    TetzelCoin allows us to correct our past wrongs by doing what's right. The first step to using TetzelCoin is to publicly confess a sin -- i.e., a harmful thing we have said or done -- and to pay an amount in proportion to the gravity of the sin. The confession and payment are done through the Pardoner, a special smart contract designed to pardon people of their sins. The Pardoner will register your confession on the public and permanent record of the Ethereum blockchain.
+                    TetzelCoin allows us to correct our past wrongs by doing what's right. The first step to using TetzelCoin is to publicly confess a sin -- i.e., a harmful thing we have said or done -- and to pay an amount in proportion to the gravity of the sin. The confession and payment are done through a special Ethereum smart contract designed to pardon people of their sins. The smart contract will register your confession on the public and permanent record of the Ethereum blockchain.
                   </p>
                 </Grid.Column>
               </Grid.Row>
@@ -181,16 +181,16 @@ export default class Home extends Component {
               </Grid.Row>
               <Grid.Row>
                 <Segment className='how-it-works-steps' style={{ marginBottom: '40px' }} >
-                  <p style={{ fontSize: '1.2em' }}>You receive TetzelCoin as a token of forgiveness. The proceeds from your confession are used to forgive medical debt.</p>
+                  <p style={{ fontSize: '1.2em' }}>You receive SIN tokens as a token of forgiveness. 85% of the proceeds from your confession are used to forgive medical debt.</p>
                 </Segment>
               </Grid.Row>
               <Grid.Row columns={2}>
                 <Grid.Column>
                    <p style={{ fontSize: '1.33em' }}>
-                    TetzelCoin is fundamentally about forgiveness. Once you've confessed and paid an appropriate amount for your sin, the Pardoner will issue you TetzelCoin (SIN) as a token of forgiveness. Once issued, you can use the token to further forgive or apologize to others by simply sending them TetzelCoin.
+                    TetzelCoin is fundamentally about forgiveness. Once you've confessed and paid an appropriate amount for your sin, you will receive SIN tokens showing you have been forgiven.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    The proceeds from TetzelCoin will be used to forgive medical debt. A particularly pernicious form of debt, medical debt is issued when a patient is unable to pay for their treatment. Medical debt can be purchased for pennies on the dollar, allowing your forgiveness to magnify tens of times over and help forgive others of their debts.
+                    85% of the proceeds from TetzelCoin will be donated to <a href="https://www.ripmedicaldebt.org/">RIP Medical Debt</a>, a New York-based non-profit that forgives medical debt in the United States. A particularly pernicious form of debt, medical debt is issued when a patient is unable to pay for their treatment. Medical debt can be purchased for pennies on the dollar, allowing your forgiveness to magnify tens of times over and help forgive others of their debts.
                   </p>
                 </Grid.Column>
                 <Grid.Column floated='right'>
@@ -220,16 +220,16 @@ export default class Home extends Component {
                 <Grid.Column width={8}>
                   <Header as='h3' style={{ fontSize: '2em' }}>Token Sale</Header>
                   <p style={{ fontSize: '1.33em' }}>
-                    The TetzelCoin token sale will begin on October 31st at 12PM PST (the 500th Anniversary of Reformation Day) and will end January 1st, 2018, 12 AM PST.
+                    The SIN token sale will begin on October 31st at 12PM PST (the 500th Anniversary of <a href="https://en.wikipedia.org/wiki/Reformation_Day">Reformation Day</a>) and will end January 1st, 2018, 12 AM PST.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    The token sale is uncapped. Tokens will be issued at a rate of 500 SIN per ETH and will be available immediately upon confession. Only ether will be accepted as payment.
+                    The token sale is uncapped. Tokens will be issued at a rate of 500 SIN per ETH and will be available immediately upon confession. Only ether will be accepted as payment. SIN tokens are ERC20-compatible.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    85% of the tokens will be distributed to token buyers and 15% will be retained by the team.
+                    At the conclusion of the sale, an additional 15% of SIN tokens will be issued to the team.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    After costs are covered, 85% of the proceeds from the token sale will go towards medical debt forgiveness.
+                    After costs are covered, 85% of the proceeds from the token sale will be donated directly to <a href="https://www.ripmedicaldebt.org/">RIP Medical Debt</a>.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
                     Accepted purchase method: ETH
@@ -331,7 +331,7 @@ export default class Home extends Component {
 
         <Segment basic textAlign='center' style={{ padding: '8em 0em' }} vertical>
           <Container>
-            <Header as='h3' style={{ fontSize: '2em' }}>Receive updates about TetzelCoin and the token sale</Header>                      
+            <Header as='h3' style={{ fontSize: '2em' }}>Receive updates about TetzelCoin and the SIN token sale</Header>                      
             <MailchimpEmailForm
               u={this.props.mailchimp.u}
               id={this.props.mailchimp.id}
