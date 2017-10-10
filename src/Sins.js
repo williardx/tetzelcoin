@@ -85,7 +85,8 @@ export default class Sins extends Component {
     return {
       timestamp: parseInt(event.timeStamp, 16),
       sinner: "0x" + event.topics[1].replace(/^0x0+/, ""),
-      sin: this.props.web3.toUtf8(event.data.replace(/^0x0+\d0+/, '')),
+      //TODO: Figure out why the first significant byte is always junk.
+      sin: this.props.web3.toUtf8(event.data.replace(/^0x0+\d0+\w{2}/, '')),
       payment: this.props.web3.fromWei(parseInt(event.topics[2], 16), 'ether'),
     };
   }
