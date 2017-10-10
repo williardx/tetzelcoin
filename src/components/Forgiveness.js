@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import {
+  Button,
   Container,
   Header,
   Image,
 } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 export default class Forgiveness extends Component {
 
   render() {
 
-    const txComplete = this.props.tx !== null;
-    let txUrl;
-    if (txComplete) {
-      txUrl = 'https://etherscan.io/tx/' + this.props.tx;    
-    }
+    const txUrl = 'https://etherscan.io/tx/' + this.props.tx;    
 
     return (
       <Container className='confess-container'>
@@ -28,7 +26,25 @@ export default class Forgiveness extends Component {
           size='medium' 
           className='center-hack' />
         <p className='confess sin-ownership'>You own { this.props.tokenAmount } SIN</p>
-        <p className='confess'>Once your transaction completes your SIN tokens will be available and you will be forgiven. <a href={ txUrl }>View your transaction on Etherscan.</a></p>
+        <p className='confess'>Congratulations, you are forgiven. Your transaction has completed and your SIN tokens are available. Your sin is now viewable in the Table of Sins. <a href={ txUrl }>View your transaction on Etherscan.</a></p>
+        <div className='forgiveness-btns-wrapper'>
+          <Link to='/sins'>
+            <Button
+              primary 
+              size='big'
+              className='btn-cta'>
+              View Table of Sins
+            </Button>
+          </Link>
+          <Link to='/confess'>
+            <Button
+              primary 
+              size='big'
+              className='btn-cta'>
+              Confess Again
+            </Button>
+          </Link>
+        </div>
       </Container>
     );
   }
