@@ -3,6 +3,7 @@ import {
   Button,
   Container,
   Header,
+  Loader,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import SinsTable from './components/SinsTable';
@@ -21,7 +22,7 @@ export default class Sins extends Component {
     this.state = {
       tetzelAddress: null,
       tetzelInstance: null,
-      recentSins: [],
+      recentSins: null,
     };
   }
 
@@ -98,10 +99,38 @@ export default class Sins extends Component {
     let logs = await fetch(url);
     let data = await logs.json();
     let newSins = data.result.map(this.processConfessEvent.bind(this));
-    this.setState({recentSins: this.state.recentSins.concat(newSins)});
+    if (this.state.recentSins !== null) {
+      this.setState({recentSins: this.state.recentSins.concat(newSins)});
+    } else {
+      this.setState({recentSins: newSins});
+    }
   }
 
   render() {
+
+    var showSinsTable = (sinsLoaded) => {
+      if (sinsLoaded) {
+        return (
+          <div>
+            <SinsTable 
+              recentSins={ this.state.recentSins } 
+              sinsPerPage={ 10 } />
+            <div className='sins-table confess-btn-wrapper'>
+              <Link to='/confess'>
+                <Button 
+                  size='big' 
+                  primary 
+                  className='btn-cta sins-table confess-btn'>Confess Now</Button>
+              </Link>
+            </div>
+          </div>
+        );
+      } else {
+        return null;
+      }
+    }
+
+    var sinsLoaded = this.state.recentSins !== null;
 
     return(
       <div>
@@ -113,17 +142,8 @@ export default class Sins extends Component {
             textAlign='center'
             className='dswallau sins-header' />
           <p className='sins-table'>These are the sins of those who have confessed through the TetzelCoin confessional. Every sin is taken directly from the Ethereum blockchain. The sins will remain recorded on the blockchain for as long as Ethereum exists.</p>
-          <SinsTable 
-            recentSins={ this.state.recentSins } 
-            sinsPerPage={ 10 } />
-          <div className='sins-table confess-btn-wrapper'>
-            <Link to='/confess'>
-              <Button 
-                size='big' 
-                primary 
-                className='btn-cta sins-table confess-btn'>Confess Now</Button>
-            </Link>
-          </div>
+          <Loader active={ !sinsLoaded }>Loading...</Loader>;
+          { showSinsTable(sinsLoaded) }
         </Container>
       </div>
     )
