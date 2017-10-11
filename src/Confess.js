@@ -128,7 +128,8 @@ export default class Confess extends Component {
         this.state.sinText,
         {
           from: this.state.account, 
-          value: this.props.web3.toWei(sinValue, 'ether')
+          value: this.props.web3.toWei(sinValue, 'ether'),
+          gas: 200000,
         }
       );
       
