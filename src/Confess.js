@@ -119,12 +119,9 @@ export default class Confess extends Component {
       throw "Invalid confession";
     }
 
-    var txStatus;
-    this.setState({pending: true})
-
     try {
 
-      var results = await this.state.tetzelInstance.confess(
+      const txHash = await this.state.tetzelInstance.confess.sendTransaction(
         this.state.sinText,
         {
           from: this.state.account, 
@@ -132,12 +129,25 @@ export default class Confess extends Component {
           gas: 200000,
         }
       );
+      this.setState({tx: txHash, pending: true});
       
-      var isSuccess = this.checkTxSuccess(results);
+      var isSuccess = false;
+      var count = 0;
+
+      while(!isSuccess && count < 9) {
+        var txReceipt = await this.getTransactionReceipt(txHash);
+        if (txReceipt !== null) {
+          isSuccess = this.checkTxSuccess(txReceipt);
+          if (isSuccess) break;
+        }
+        count += 1;
+        await this.sleep(5000);
+      }
+
+      var txStatus;
 
       if (isSuccess) {
         txStatus = {complete: true, msg: ''};
-        this.setState({tx: results.tx});
       } else {
         throw 'Transaction failed';
       }
@@ -153,16 +163,32 @@ export default class Confess extends Component {
   }
 
   /*
-  Checks whether or not a transaction succeeded by looking for the `Confess`
-  event in the transaction receipt. We need to do this because there's no way to tell
+  Checks whether or not a transaction succeeded by looking for an event (`Confess`)
+  triggered by the Tetzel contract. We need to do this because there's no way to tell
   the difference between a transaction that failed due to out of gas errors 
   on internal transactions but is still successfully mined and a successful
   transaction.
   */
   checkTxSuccess(txReceipt) {
     return txReceipt.logs.reduce((acc, logObj) => {
-      return logObj.event === 'Confess' || acc
+      return logObj.address === this.state.tetzelAddress || acc
     }, false);
+  }
+
+  /*
+  Promisified version of web3's getTransactionReceipt
+  */
+  getTransactionReceipt(txHash) {
+    var self = this;
+    return new Promise(function (resolve, reject) {
+      self.props.web3.eth.getTransactionReceipt(txHash, function (err, result) {
+        if (err !== null) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
   }
 
   updateSinValue(val, unit) {
@@ -222,6 +248,7 @@ export default class Confess extends Component {
               ethSpotPrice={ this.state.ethSpotPrice }
               updateSinValue={ this.updateSinValue.bind(this) }
               pending={ this.state.pending }
+              tx={ this.state.tx }
               onPurchase={ async () => { 
                 let responseObj = await this.purchase();
                 if (responseObj.complete) {

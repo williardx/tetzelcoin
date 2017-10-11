@@ -14,6 +14,8 @@ export default class PurchaseSin extends Component {
 
   render() {
 
+    const txUrl = this.props.tx ? 'https://etherscan.io/tx/' + this.props.tx : '';
+
     var submitButton = (pending) => {
       if (pending) return null;
       return (
@@ -104,7 +106,7 @@ export default class PurchaseSin extends Component {
           </Grid.Row>
         </Grid>
         <div>
-          <Loader inline='centered' active={ this.props.pending }>Transaction pending... this may take a few moments</Loader>
+          <Loader inline='centered' active={ this.props.pending }>Transaction pending... this may take a few moments. <br /> <a href={ txUrl }>View your transaction on Etherscan.</a></Loader>
           { submitButton(this.props.pending) }
         </div>
       </Container>
