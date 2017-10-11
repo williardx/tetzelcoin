@@ -9,7 +9,7 @@ contract TetzelCrowdsale is Crowdsale {
   address public charityWallet = 0x8b2448602f53608F86cf2c31D60eb3142a1596d4; // xcxc - Change this to real wallet
   uint256 public rate = 500; // 1 eth = 500 SIN
   uint256 public startTime = block.timestamp;
-  uint256 public endTime = block.timestamp + 60*60*7;
+  uint256 public endTime = block.timestamp + 60*60*24*7;
 
   bool teamTokensMinted = false;
 
