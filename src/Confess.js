@@ -133,15 +133,7 @@ export default class Confess extends Component {
         }
       );
       
-      var isSuccess = false;
-      var count = 0;
-      while (!isSuccess && count < 9) {
-        isSuccess = await this.checkTxSuccess(
-          results.tx, results.receipt.blockNumber
-        );
-        count += 1;
-        await this.sleep(5000);
-      }
+      var isSuccess = this.checkTxSuccess(results);
 
       if (isSuccess) {
         txStatus = {complete: true, msg: ''};
@@ -162,23 +154,15 @@ export default class Confess extends Component {
 
   /*
   Checks whether or not a transaction succeeded by looking for the `Confess`
-  event in the event logs. We need to do this because there's no way to tell
+  event in the transaction receipt. We need to do this because there's no way to tell
   the difference between a transaction that failed due to out of gas errors 
   on internal transactions but is still successfully mined and a successful
   transaction.
-
-  TODO: Use `web3.eth.filter` once I figure out how to get it working
-  with testnet.
   */
-  async checkTxSuccess(txHash, blockNumber) {
-    var url = `https://ropsten.etherscan.io/api?module=logs&action=getLogs&fromBlock=${blockNumber}&toBlock=${blockNumber}&address=${this.state.tetzelAddress}`;
-    var logs = await fetch(url);
-    var data = await logs.json();
-    var txs = data.result.map((logObj) => logObj.transactionHash);
-    var txPresent = data.result.reduce((acc, logObj) => {
-        return logObj.transactionHash === txHash || acc
-      }, false);
-    return txPresent;
+  checkTxSuccess(txReceipt) {
+    return txReceipt.logs.reduce((acc, logObj) => {
+      return logObj.event === 'Confess' || acc
+    }, false);
   }
 
   updateSinValue(val, unit) {
