@@ -63,6 +63,7 @@
     "semantic-ui-react": "^0.71.0",
     "three": "^0.86.0",
     "three-obj-loader": "^1.1.2",
+    "truffle-hdwallet-provider": "^0.0.3",
     "zeppelin-solidity": "^1.1.0"
   },
   "scripts": {
