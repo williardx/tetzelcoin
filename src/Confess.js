@@ -208,8 +208,6 @@ export default class Confess extends Component {
 
   render() {
 
-    console.log(this.state);
-
     const currentView = () => {
       switch(this.state.activeView) {
         case 'CONFESS_SIN':
