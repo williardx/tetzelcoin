@@ -83,11 +83,24 @@ export default class Sins extends Component {
   }
 
   processConfessEvent(event) {
+
+    var sinText;
+    try {
+      var replacedText = event.data.replace(/^0x0+\d0+/, '');
+      if (replacedText.length % 2 === 1) {
+        replacedText = '0' + replacedText;
+      }
+      sinText = this.props.web3.toUtf8(replacedText);
+    } catch(e) {
+      sinText = 'Error: Unable to display sin';
+      console.log(e);
+    }
+
     return {
       timestamp: parseInt(event.timeStamp, 16),
       sinner: "0x" + event.topics[1].replace(/^0x0+/, ""),
       //TODO: Figure out why the first significant byte is always junk.
-      sin: this.props.web3.toUtf8(event.data.replace(/^0x0+\d0+\w{2}/, '')),
+      sin: sinText,
       payment: this.props.web3.fromWei(parseInt(event.topics[2], 16), 'ether'),
     };
   }
