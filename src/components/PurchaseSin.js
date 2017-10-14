@@ -30,7 +30,7 @@ export default class PurchaseSin extends Component {
     }
 
     return(
-      <Container className='confess-container'>
+      <div className='confess-contain'>
         <Header
           as='h1'
           content='Submit Payment'
@@ -111,7 +111,7 @@ export default class PurchaseSin extends Component {
           <Loader inline='centered' active={ this.props.pending }>Transaction pending... this may take a few moments. <br /> <a href={ txUrl }>View your transaction on Etherscan.</a></Loader>
           { submitButton(this.props.pending) }
         </div>
-      </Container>
+      </div>
     );
   }
 
