@@ -11,7 +11,7 @@ need to use the "confess" class as a namespace */
     background: radial-gradient(ellipse at center top, rgba(79,79,79,1) 0%, rgba(79,79,79,0) 100%) !important;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4f4f4f', endColorstr='#4f4f4f', GradientType=1 ) !important;
     color: #86888A !important;
-    background-color: #303030 !important;
+    background-color: #101010 !important;
     margin: 0 !important;
     width: 100%;
     overflow: hidden;
@@ -29,7 +29,7 @@ textarea.confess, .confess > input {
     resize: none !important;
     color: #F1FAFF !important;
     font-family: 'Didact Gothic', sans-serif !important;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15), inset 2px 2px 10px rgba(0, 0, 0, 0.15) !important;
+  /*  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15), inset 2px 2px 10px rgba(0, 0, 0, 0.15) !important; */
     border-radius: 10px !important;
 }
 
@@ -41,13 +41,22 @@ textarea.confess, .confess > input {
 
 .input-with-units > input {
     /* For inputs with ETH/SIN after them */
-    margin-right: -2.5em !important;
-    padding: 0.678571em 3.2em 0.6785em 1em !important;
-    max-width: none !important;    
+    /* margin-right: -2.5em !important; */
+    /* padding: 0.678571em 3.2em 0.6785em 1em !important; */
+    max-width: none !important;
 }
 
 .payment-input-column {
-    background: #4F4F4F;
+    /* background: #4F4F4F; */
+}
+
+.right.floated.one.wide.column.payment-form-text {
+  background: #4F4F4F !important;
+}
+
+.gray-out,
+.gray-out input[type="text"] {
+  color: #86888A !important;
 }
 
 .payment-form-text {
@@ -64,7 +73,7 @@ textarea.confess, .confess > input {
 
 .donation-img-wrapper {
     padding-top: 10px;
-    padding-bottom: 10px;    
+    padding-bottom: 10px;
 }
 
 textarea.confess {
@@ -84,7 +93,7 @@ h1.gradient-text {
 }
 
 .confess-header {
-    font-size: 4em !important; 
+    font-size: 4em !important;
     margin-bottom: 0 !important;
 }
 
@@ -132,7 +141,7 @@ a.arrow-link {
 
 .grid.bordered-form.value-form {
     padding-left: 15px !important;
-    padding-right: 15px !important;    
+    padding-right: 15px !important;
 }
 
 .grid.bordered-form.purchase-form {
@@ -150,7 +159,7 @@ a.arrow-link {
 
 label {
     font-size: 16px;
-    color: #F1FAFF;    
+    color: #F1FAFF;
 }
 
 /* Remove input spinner */
@@ -169,7 +178,7 @@ input[type="number"] {
 
 .donation-field > input, .donation-column {
     background-color: transparent !important;
-    box-shadow: none !important;   
+    box-shadow: none !important;
 }
 
 .submit-btn, .ui.loader {
@@ -177,11 +186,11 @@ input[type="number"] {
 }
 
 .submit-btn {
-    float: right;    
+    float: right;
 }
 
 .payment-input.recipient > input, .payment-input-column.recipient {
-    border-top-right-radius: 10px !important;    
+    border-top-right-radius: 10px !important;
 }
 
 p.sin-ownership {
@@ -217,9 +226,9 @@ p.sin-ownership {
 
 /* Responsiveness */
 @media screen and (max-width: 500px) {
-    
+
     .confess-header {
-        font-size: 2.5em !important; 
+        font-size: 2.5em !important;
         margin: 0 !important;
     }
 
@@ -227,4 +236,19 @@ p.sin-ownership {
         font-size: 16px !important;
     }
 
+}
+
+.donation-field.payment-input.input-with-units.gray-out input[type="text"] {
+  height: 100% !important;
+}
+
+@media (max-width: 650px) {
+  .payment-form-text {
+    font-size: 13px !important;
+  }
+}
+@media (max-width: 400px) {
+  .ui.fluid.input>input {
+    height: 40px;
+  }
 }
