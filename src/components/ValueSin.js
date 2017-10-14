@@ -13,7 +13,7 @@ export default class ValueSin extends Component {
   render() {
     console.log(this.state);
     return (
-      <Container className='confess-container'>
+      <div className='purchase-sin-wrapper'>
         <Header
           as='h1'
           content='Value Your Sin' 
@@ -84,7 +84,7 @@ export default class ValueSin extends Component {
           </Grid.Row>
         </Grid>
         <a className='arrow-link next-link' onClick={ () => this.props.onNext() }>Next <Icon name='long arrow right'/></a>
-      </Container>
+      </div>
     )
   }
 }
