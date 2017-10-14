@@ -25,17 +25,35 @@ class SinsTable extends Component {
 
     var startIndex = (this.state.currentPage - 1) * this.props.sinsPerPage;
     var endIndex = startIndex + this.props.sinsPerPage;
+
     var trs = this.state.reversedSins.slice(startIndex, endIndex).map((sinObj, i) => {
-      return (
-        <Grid.Row className='sins-table' key={i}>
+      var sinValue = (sinObj.payment * 500).toFixed(2);
+      return ([
+        <Grid.Row only='tablet computer' key={2 * i}>
           <Grid.Column width={2} textAlign="center">
             <Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment>
           </Grid.Column>
           <Grid.Column width={2} className='sinner-field'>{ sinObj.sinner }</Grid.Column>
           <Grid.Column width={10} textAlign="center">{ sinObj.sin }</Grid.Column>
-          <Grid.Column width={2} textAlign="center">{ sinObj.payment * 500 }</Grid.Column>          
+          <Grid.Column width={2} textAlign="center">{ sinValue }</Grid.Column>          
+        </Grid.Row>,
+        <Grid.Row only='mobile' key={2 * i + 1}>
+          <Grid className='sins-table mobile-subgrid'>
+            <Grid.Row textAlign='center'>
+              <Grid.Column width={16}>
+                <p className='sins-table mobile-subgrid sin-text'>{ sinObj.sin }</p>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column width={6} textAlign="center">
+                <Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment>
+              </Grid.Column>
+              <Grid.Column width={4} className='sinner-field'>{ sinObj.sinner }</Grid.Column>
+              <Grid.Column width={6} textAlign="center">{ sinValue } SIN</Grid.Column>
+            </Grid.Row>
+          </Grid>
         </Grid.Row>
-      );
+      ]);
     });
 
     if (this.props.recentSins.length % this.props.sinsPerPage > 0) {
@@ -57,8 +75,8 @@ class SinsTable extends Component {
 
     return(
       <div>
-        <Grid divided='vertically'>
-          <Grid.Row>
+        <Grid>
+          <Grid.Row only='tablet computer'>
             <Grid.Column textAlign="center" width={2}>Time</Grid.Column>
             <Grid.Column textAlign="center" width={2}>Sinner</Grid.Column>
             <Grid.Column textAlign="center" width={10}>Confession</Grid.Column>

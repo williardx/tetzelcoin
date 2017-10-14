@@ -39,3 +39,11 @@ div.sins-table.confess-btn-wrapper {
     text-align: center;
     margin-top: 100px;
 }
+
+.sins-table.mobile-subgrid {
+    width: 100%;
+}
+
+p.sins-table.mobile-subgrid.sin-text {
+    padding: 0;
+}
