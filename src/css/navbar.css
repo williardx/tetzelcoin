@@ -43,3 +43,10 @@ h1.header.ui.dswallau.navbar-header {
     color: #86888A;
 }
 
+@media screen and (max-width: 500px) {
+    
+    .menu a.navbar-link > div.navbar-item {
+        font-size: 12px;
+    }
+
+}
