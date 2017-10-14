@@ -46,7 +46,7 @@ export default class Home extends Component {
       <Grid.Column textAlign={alignment}>
         <p className='footer-text footer-copyright'>Copyright &copy; TetzelCoin</p>
         <p className='footer-text'><a href="https://drive.google.com/open?id=0B1_FSb-uT5g-ZzYyNWdaWmFFUjA">Press Kit</a></p>
-      </Grid.Column>      
+      </Grid.Column>
     );
 
     let footerEmail = (alignment) => (
@@ -126,7 +126,7 @@ export default class Home extends Component {
           <Container>
             <Grid stackable verticalAlign='middle'>
               <Grid.Row>
-                <Header as='h3' className='center-hack' style={{ fontSize: '2em', paddingBottom: '0' }}>How does it work?</Header>              
+                <Header as='h3' className='center-hack' style={{ fontSize: '2em', paddingBottom: '0' }}>How does it work?</Header>
               </Grid.Row>
               <Grid.Row only='computer tablet'>
                 <Image
@@ -155,13 +155,13 @@ export default class Home extends Component {
                 />
               </Grid.Row>
               <Grid.Row>
-                <Header as='h4' style={{ fontSize: '2em', marginTop: '20px', marginBottom: '20px' }}>Confess</Header>                            
+                <Header as='h4' style={{ fontSize: '2em', marginTop: '20px', marginBottom: '20px' }}>Confess</Header>
               </Grid.Row>
               <Grid.Row>
                 <Segment className='how-it-works-steps' style={{ marginBottom: '40px' }} >
                   <p style={{ fontSize: '1.2em' }}>Confess your sin and pay whatever you believe your sin to be worth. The sin gets registered on the blockchain.</p>
                 </Segment>
-              </Grid.Row> 
+              </Grid.Row>
               <Grid.Row columns={2}>
                 <Grid.Column floated='left'>
                   <Image
@@ -274,8 +274,8 @@ export default class Home extends Component {
                   <Grid.Row>
                     <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0', marginTop: '25px' }}>Will Doenlen</Header>
                     <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Project Lead and Development</Header>
-                    <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }} >Widely known for his <a href="http://www.huffingtonpost.com/2014/09/18/hamster-wheel-standing-de_n_5837086.html">hamster wheel standing desk</a>, Will Doenlen's art explores the existential absurdity of human systems 
-                    that provide us with symbolic value in our daily lives. You can view more of his projects 
+                    <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }} >Widely known for his <a href="http://www.huffingtonpost.com/2014/09/18/hamster-wheel-standing-de_n_5837086.html">hamster wheel standing desk</a>, Will Doenlen's art explores the existential absurdity of human systems
+                    that provide us with symbolic value in our daily lives. You can view more of his projects
                     on his <a href="http://williardx.com">portfolio</a>. Will holds a BS from MIT.</p>
                   </Grid.Row>
                   <Grid.Row style={{textAlign: 'center', marginBottom: '50px'}}>
@@ -306,7 +306,7 @@ export default class Home extends Component {
                   <Grid.Row>
                     <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0', marginTop: '25px' }}>Leanne Luce</Header>
                     <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Design</Header>
-                    <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }}>Leanne is a designer, developer, 
+                    <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }}>Leanne is a designer, developer,
                     and fashion technologist based out of San Francisco.  You can visit her blog, <a href="https://thefashionrobot.com">the fashion robot</a> or view previous works in her <a href="https://leanneluce.com">portfolio</a>. Leanne holds a BFA from Rhode Island School of Design (RISD).</p>
                   </Grid.Row>
                   <Grid.Row style={{textAlign: 'center', marginBottom: '50px'}}>
@@ -325,13 +325,13 @@ export default class Home extends Component {
                   </Grid.Row>
                 </Grid.Column>
               </Grid.Row>
-            </Grid>          
+            </Grid>
           </Container>
         </Segment>
 
         <Segment basic textAlign='center' style={{ padding: '8em 0em' }} vertical>
           <Container>
-            <Header as='h3' style={{ fontSize: '2em' }}>Receive updates about TetzelCoin and the SIN token sale</Header>                      
+            <Header as='h3' style={{ fontSize: '2em' }}>Receive updates about TetzelCoin and the SIN token sale</Header>
             <MailchimpEmailForm
               u={this.props.mailchimp.u}
               id={this.props.mailchimp.id}

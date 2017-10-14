@@ -16,22 +16,22 @@ export default class ValueSin extends Component {
       <div className='purchase-sin-wrapper'>
         <Header
           as='h1'
-          content='Value Your Sin' 
+          content='Value Your Sin'
           textAlign='center'
-          className='dswallau confess-header gradient-text' 
+          className='dswallau confess-header gradient-text'
         />
         <p className='confess'>How do you value a sin? To help you figure out how much your sin is worth, we're going to ask you to value a few other sins first. You can then use those numbers to value your own. You can skip this part if you already know how much your sin is worth.</p>
-        <Grid padded columns={2} className='bordered-form value-form'>
+        <Grid padded columns={2} className='bordered-form value-form padded-vertical'>
           <Grid.Row>
             <Grid.Column width={11}>
               <label>Jane told her best friend a white lie. She should pay...?</label>
             </Grid.Column>
             <Grid.Column width={4} floated='right'>
               <Input
-                className='confess'
+                className='confess gray-out'
                 fluid
-                value={ this.props.testSinValues[0] } 
-                icon='dollar' 
+                value={ this.props.testSinValues[0] }
+                icon='dollar'
                 iconPosition='left'
                 type='number'
                 onChange={ (e) => this.props.updateTestSinValues(0, e.target.value) } />
@@ -43,11 +43,11 @@ export default class ValueSin extends Component {
             </Grid.Column>
             <Grid.Column width={4} floated='right'>
               <Input
-                className='confess'
+                className='confess gray-out'
                 fluid
-                value={ this.props.testSinValues[1] } 
-                icon='dollar' 
-                iconPosition='left' 
+                value={ this.props.testSinValues[1] }
+                icon='dollar'
+                iconPosition='left'
                 type='number'
                 onChange={ (e) => this.props.updateTestSinValues(1, e.target.value) } />
             </Grid.Column>
@@ -57,12 +57,12 @@ export default class ValueSin extends Component {
               <label>Joe isn't living his best life. He should pay...?</label>
             </Grid.Column>
             <Grid.Column width={4} floated='right'>
-              <Input 
-                className='confess'
+              <Input
+                className='confess gray-out'
                 fluid
                 value={ this.props.testSinValues[2] }
-                icon='dollar' 
-                iconPosition='left' 
+                icon='dollar'
+                iconPosition='left'
                 type='number'
                 onChange={ (e) => this.props.updateTestSinValues(2, e.target.value) } />
             </Grid.Column>
@@ -73,12 +73,12 @@ export default class ValueSin extends Component {
             </Grid.Column>
             <Grid.Column width={4} floated='right'>
               <Input
-                className='confess'
+                className='confess gray-out'
                 fluid
                 value={ this.props.sinValueUSD }
-                icon='dollar' 
+                icon='dollar'
                 iconPosition='left'
-                type='number' 
+                type='number'
                 onChange={ (e) => this.props.updateSinValue(e.target.value, 'USD') } />
             </Grid.Column>
           </Grid.Row>
