@@ -22,9 +22,12 @@ import './css/home.css';
 
 export default class Home extends Component {
 
+  state = { popupVisible: false };
+
   render() {
 
-    let launchDate = Math.floor(new Date(2017, 9, 31, 12).getTime() / 1000);
+    const launchDate = Math.floor(new Date(2017, 9, 31, 12).getTime() / 1000);
+    const eventPopup = this.state.popupVisible ? <EventPopup /> : null;
 
     let footerSocial = (alignment) => (
       <Grid.Column textAlign={alignment}>
@@ -71,11 +74,13 @@ export default class Home extends Component {
               className='dswallau'
               style={{ fontSize: '4em', marginBottom: 0, marginTop: '1em' }}
             />
-            <Header
-              as='h2'
-              content='A Token for Forgiveness'
-              style={{ fontSize: '1.5em', fontWeight: 'normal', marginTop: '0em' }}
-            />
+            <Visibility onBottomPassed={ () => this.setState({popupVisible: true}) }>
+              <Header
+                as='h2'
+                content='A Token for Forgiveness'
+                style={{ fontSize: '1.5em', fontWeight: 'normal', marginTop: '0em' }}
+              />
+            </Visibility>
             <Image
               centered
               size='medium'
@@ -92,7 +97,7 @@ export default class Home extends Component {
               signupUrl={this.props.mailchimp.signupUrl}
             />
 
-          <EventPopup />
+          { eventPopup }
           
           </Container>
         </Segment>

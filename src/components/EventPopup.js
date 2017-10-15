@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Grid, Header, Popup, Image } from 'semantic-ui-react'
 
 const timeoutLength = 1000500
-const invite = [
+const invites = [
   {
     button: <div><h2>You're invited!</h2>
       <img src='/images/Will3-Tetzel-Small.jpg' />
@@ -31,8 +31,9 @@ export default class EventPopup extends React.Component {
     return (
       <Grid>
         <Grid.Column width={8}>
-          {invite.map(invite => (
+          {invites.map((invite, i) => (
             <Popup className='event-popup'
+              key={i}
               trigger={<Button size='big' className='event-popup' content='Attend Our In-Person Confessional!' />}
               content={invite.button}
               on='click'
