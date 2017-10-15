@@ -271,6 +271,11 @@ p.sin-ownership {
   .payment-form-text {
     font-size: 13px !important;
   }
+
+  button.btn-cta.btn-forgiveness {
+      margin: 10px;
+  }
+
 }
 @media (max-width: 400px) {
   .ui.fluid.input>input {

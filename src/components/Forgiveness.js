@@ -14,7 +14,7 @@ export default class Forgiveness extends Component {
     const txUrl = 'https://etherscan.io/tx/' + this.props.tx;    
 
     return (
-      <Container className='confess-container'>
+      <div className='forgiveness-wrapper'>
         <Header
           as='h1'
           content={ "You Are Forgiven" }
@@ -32,7 +32,7 @@ export default class Forgiveness extends Component {
             <Button
               primary 
               size='big'
-              className='btn-cta'>
+              className='btn-cta btn-forgiveness'>
               View Table of Sins
             </Button>
           </Link>
@@ -40,12 +40,12 @@ export default class Forgiveness extends Component {
             <Button
               primary 
               size='big'
-              className='btn-cta'>
+              className='btn-cta btn-forgiveness'>
               Confess Again
             </Button>
           </Link>
         </div>
-      </Container>
+      </div>
     );
   }
 

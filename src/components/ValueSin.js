@@ -11,7 +11,6 @@ import {
 export default class ValueSin extends Component {
 
   render() {
-    console.log(this.state);
     return (
       <div className='purchase-sin-wrapper'>
         <Header
