@@ -147,17 +147,18 @@ export default class Sins extends Component {
 
     return(
       <div className='sins-table-outer-wrapper'>
-        <Navbar />
-        <Container className='sins-table below-navbar'>
-          <Header
-            as='h1'
-            content='Table of Sins' 
-            textAlign='center'
-            className='dswallau sins-header' />
-          <p className='sins-table'>These are the sins of those who have confessed through the TetzelCoin confessional. Every sin is taken directly from the Ethereum blockchain. The sins will remain recorded on the blockchain for as long as Ethereum exists.</p>
-          <Loader active={ !sinsLoaded }>Loading...</Loader>
-          { showSinsTable(sinsLoaded) }
-        </Container>
+        <Navbar>
+          <Container className='sins-table below-navbar'>
+            <Header
+              as='h1'
+              content='Table of Sins' 
+              textAlign='center'
+              className='dswallau sins-header' />
+            <p className='sins-table'>These are the sins of those who have confessed through the TetzelCoin confessional. Every sin is taken directly from the Ethereum blockchain. The sins will remain recorded on the blockchain for as long as Ethereum exists.</p>
+            <Loader active={ !sinsLoaded }>Loading...</Loader>
+            { showSinsTable(sinsLoaded) }
+          </Container>
+        </Navbar>
       </div>
     )
   }

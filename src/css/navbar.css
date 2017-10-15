@@ -1,6 +1,7 @@
 .ui.menu.navbar {
     box-shadow: none;
     margin-bottom: 0;
+    padding-right: 0 !important;
 }
 
 .navbar.confessional-screen {
@@ -27,7 +28,7 @@
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%);
 }
 
-a.navbar-link {
+a.navbar-link, .close-menu {
     text-decoration: none !important;
 }
 
@@ -36,11 +37,11 @@ h1.header.ui.dswallau.navbar-header {
     font-size: 2em;
 }
 
-.menu a.navbar-link > div.navbar-item {
+.menu a.navbar-link > div.navbar-item, .mobile.navbar-link {
     font-size: 18px;
     height: 100%;
     text-transform: uppercase;
-    color: #86888A;
+    color: #86888A !important;
 }
 
 .item.navbar-item {
@@ -54,10 +55,39 @@ h1.header.ui.dswallau.navbar-header {
     padding-right: 20px;
     padding-left: 20px;
 }
-@media screen and (max-width: 500px) {
+
+a.navbar-link.mobile {
+    display: none !important;
+}
+
+.navbar-link.hamburger {
+    font-size: 25px;
+}
+
+.navbar-link.hamburger:hover {
+    background: #FFF !important;
+}
+
+@media screen and (max-width: 760px) {
     
-    .menu a.navbar-link > div.navbar-item {
-        font-size: 12px;
+    a.navbar-link.mobile {
+        display: block !important;
     }
 
+    a.navbar-link.desktop {
+        display: none !important;
+    }
+
+}
+
+.mobile.navbar {
+    text-align: left;
+}
+
+.mobile.navbar-link-wrapper {
+    padding: 40px 20px 20px 20px;
+}
+
+.mobile.navbar-link {
+    font-size: 25px;
 }

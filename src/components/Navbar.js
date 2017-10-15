@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Header,
+  Icon,
   Menu,
+  Sidebar,
 } from "semantic-ui-react";
 
 import '../css/dswallau.css';
@@ -10,7 +12,42 @@ import '../css/navbar.css';
 
 export default class Navbar extends Component {
 
+  state = { visible: false };
+
+  toggleVisibility = () => this.setState({ visible: !this.state.visible });
+
   render() {
+    const { visible } = this.state;
+    console.log(visible);
+
+    const mobileMenu = (visible) => {
+      if (!visible) return null;
+      return ( 
+        <div className='navbar mobile'>
+          <div className='mobile navbar-link-wrapper'>
+            <Link className='mobile navbar-link' name='home' to='/'>
+              Home
+            </Link>
+          </div>
+          <div className='mobile navbar-link-wrapper'>
+            <Link className='mobile navbar-link' name='instructions' to='/instructions'>
+              Instructions
+            </Link>
+          </div>
+          <div className='mobile navbar-link-wrapper'>
+            <Link className='mobile navbar-link' name='confess' to='/confess'>
+              Confess
+            </Link>
+          </div>
+          <div className='mobile navbar-link-wrapper'>
+            <Link className='mobile navbar-link' name='sins' to='/sins'>
+              Sins
+            </Link>
+          </div>
+        </div>
+      );
+    }
+
     return(
       <div>
         <Menu borderless className='navbar'>
@@ -26,19 +63,38 @@ export default class Navbar extends Component {
           </Link>
 
           <Menu.Menu position='right'>
-            <Link className='navbar-link' to='/'>
+            <Link className='navbar-link desktop' to='/'>
               <Menu.Item className='navbar-item' name='home' >
                 Home
               </Menu.Item>
             </Link>
-            <Link className='navbar-link' to='/instructions'>
+            <Link className='navbar-link desktop' to='/instructions'>
+              <Menu.Item className='navbar-item' name='instructions' >
+                Instructions
+              </Menu.Item>
+            </Link>
+            <Link className='navbar-link desktop' to='/confess'>
               <Menu.Item className='navbar-item' name='instructions' >
                 Confess
               </Menu.Item>
             </Link>
+            <Link className='navbar-link desktop' to='/sins'>
+              <Menu.Item className='navbar-item' name='instructions' >
+                Table of Sins
+              </Menu.Item>
+            </Link>
+            <Menu.Item 
+              className='navbar-link mobile hamburger' 
+              onClick={ this.toggleVisibility } >
+              <Icon name={ visible ? 'close' : 'content' } />
+            </Menu.Item>
           </Menu.Menu>
         </Menu>
-        <div className='navbar confessional-screen'></div>
+
+        { /* Mobile menu - hide confessional screen and content when visible */ }
+        { mobileMenu(visible) }
+        { visible ? null : <div className='navbar confessional-screen'></div> }
+        { visible ? null : this.props.children }
       </div>
     )
   }
