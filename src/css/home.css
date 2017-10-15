@@ -21,19 +21,21 @@
     background: -o-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 83%, rgba(255,255,255,1) 100%);
     background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 83%, rgba(255,255,255,1) 100%);
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 83%, rgba(255,255,255,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0 );    
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0 );
 }
 
 .dark-gray-background {
     background: #FAFAFA !important;
 }
 
-button.ui.big.primary.button.btn-cta {
+button.ui.big.primary.button.btn-cta,
+a.ui.big.primary.button.btn-cta {
     text-transform: uppercase !important;
     font-weight: 400 !important;
     letter-spacing: .5px !important;
     font-family: 'Didact Gothic', sans-serif !important;
     transition: all 0.8s ease 0s;
+    text-decoration: none !important;
 }
 button.ui.big.primary.button.btn-cta:active {
     transform: translateY(4px);
@@ -43,7 +45,7 @@ button.ui.big.primary.button.btn-cta:hover {
 }
 
 input[type="text"],
-.ui.form .field .ui.input input, 
+.ui.form .field .ui.input input,
 .ui.form .fields .field .ui.input input {
     font-family: 'Didact Gothic', sans-serif !important;
     letter-spacing: .2px;
@@ -83,15 +85,15 @@ a:hover {
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   text-align: center;  
+   text-align: center;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   text-align: center;  
+   text-align: center;
 }
 
-:-ms-input-placeholder {  
-   text-align: center; 
+:-ms-input-placeholder {
+   text-align: center;
 }
 
 /* Semantic UI is being annoying about centering some items... so we have
@@ -128,8 +130,8 @@ this hack instead.
 
 .wiggle {
   animation-name: wiggle;
-  animation-duration: 1.5s; 
-  animation-timing-function: ease-out; 
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
   animation-iteration-count: infinite;
@@ -151,8 +153,8 @@ this hack instead.
 
 .rise {
   animation-name: rise;
-  animation-duration: 4s; 
-  animation-timing-function: ease-out; 
+  animation-duration: 4s;
+  animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
   animation-iteration-count: infinite;
@@ -189,7 +191,7 @@ a.icons-link:hover:after {
     background-repeat: no-repeat !important;
     min-height: 250px !important;
     overflow: hidden !important;
-    padding: 1em 0em !important; 
+    padding: 1em 0em !important;
 }
 
 .footer:before {
@@ -206,7 +208,7 @@ a.icons-link:hover:after {
     background: -o-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 73%, rgba(255,255,255,1) 100%);
     background: -ms-linear-gradient(bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 73%, rgba(255,255,255,1) 100%);
     background: linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 73%, rgba(255,255,255,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0 );    
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=0 );
 }
 
 .footer-text {
@@ -227,4 +229,82 @@ a.icons-link:hover:after {
     .footer-email {
         padding-bottom: 0 !important;
     }
+}
+
+/* EVENT POPUP CSS */
+.event-popup {
+  position: fixed;
+  bottom: 5px;
+  right: 1px;
+  z-index: 100000000;
+}
+button.button.event-popup {
+  background: #5F5F5F;
+  color: #F1FAFF;
+  font-family: 'Didact Gothic', sans-serif;
+  transition: all 0.8s ease 0s;
+  font-weight: 400 !important;
+  letter-spacing: .2px !important;
+  border-radius: 10px !important;
+  border: 1px solid #5F5F5F !important;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+  margin-left: 5px;
+}
+button.button.event-popup:hover {
+  background: #86888A;
+  color: #F1FAFF;
+}
+button.button.event-popup:focus {
+  background: #5F5F5F;
+  color: #F1FAFF;
+}
+.ui.top.right.popup.transition.visible,
+.ui.popup.transition.visible {
+  position: fixed !important;
+  bottom: 50px !important;
+  font-size: 20px !important;
+  width: 320px !important;
+  color: #8A8484 !important;
+  border: 1px solid #E0E0E0;
+  border-radius: 10px !important;
+  transition: all 0.8s ease 0s;
+}
+
+.ui.top.right.popup.transition.visible div,
+.ui.popup.transition.visible div {
+  width: 285px !important;
+}
+
+@media (max-width: 350px) {
+  .ui.top.right.popup.transition.visible div,
+  .ui.popup.transition.visible div {
+    width: 265px !important;
+  }
+  .ui.popup.transition.visible.event-popup {
+    bottom: 70px !important;
+  }
+}
+
+.ui.top.right.popup.transition.visible img,
+.ui.popup.transition.visible img {
+    width: 100%;
+}
+
+.ui.popup.transition.visible.event-popup {
+  top: auto;
+  bottom: 61px !important;
+  right: 6px !important;
+}
+
+.ui.popup.transition.visible.event-popup::before {
+  bottom: -6px;
+  float: right;
+  right: 20px !important;
+}
+.ui.popup:before {
+  box-shadow: 1px 1px 0 0 #E0E0E0 !important;
+}
+
+small, .small {
+  line-height: 1rem;
 }

@@ -15,6 +15,7 @@ import {
 } from 'semantic-ui-react'
 import CountdownTimer from './components/CountdownTimer';
 import MailchimpEmailForm from './components/MailchimpEmailForm';
+import EventPopup from './components/EventPopup';
 
 import './css/dswallau.css';
 import './css/home.css';
@@ -90,6 +91,9 @@ export default class Home extends Component {
               id={this.props.mailchimp.id}
               signupUrl={this.props.mailchimp.signupUrl}
             />
+
+          <EventPopup />
+          
           </Container>
         </Segment>
 
