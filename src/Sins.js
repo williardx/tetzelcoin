@@ -146,7 +146,7 @@ export default class Sins extends Component {
     var sinsLoaded = this.state.recentSins !== null;
 
     return(
-      <div>
+      <div className='sins-table-outer-wrapper'>
         <Navbar />
         <Container className='sins-table below-navbar'>
           <Header
@@ -155,7 +155,7 @@ export default class Sins extends Component {
             textAlign='center'
             className='dswallau sins-header' />
           <p className='sins-table'>These are the sins of those who have confessed through the TetzelCoin confessional. Every sin is taken directly from the Ethereum blockchain. The sins will remain recorded on the blockchain for as long as Ethereum exists.</p>
-          <Loader active={ !sinsLoaded }>Loading...</Loader>;
+          <Loader active={ !sinsLoaded }>Loading...</Loader>
           { showSinsTable(sinsLoaded) }
         </Container>
       </div>

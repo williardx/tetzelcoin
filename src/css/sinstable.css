@@ -1,3 +1,7 @@
+.sins-table-outer-wrapper {
+    padding-bottom: 120px;
+}
+
 h1.header.ui.dswallau.sins-header {
     color: #86888A !important;
     font-size: 4em; 
@@ -12,8 +16,18 @@ h1.header.ui.dswallau.sins-header {
     overflow: hidden;    
 }
 
-.ui.grid > .sins-table.row {
-    padding: 0;
+.sins-table.ui.grid.main-grid {
+    border-radius: 10px;
+    border: 1px solid #86888A;
+}
+
+.sins-table.row {
+    border-bottom: 1px solid #86888A;
+}
+
+/* Get both last computer-only and mobile-only rows in the grid */
+.sins-table.row:last-of-type, .sins-table.row:nth-last-of-type(2) {
+    border-bottom: none;
 }
 
 p.sins-table {
@@ -40,10 +54,35 @@ div.sins-table.confess-btn-wrapper {
     margin-top: 100px;
 }
 
-.sins-table.mobile-subgrid {
+.ui.grid.sins-table.mobile-subgrid {
     width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 p.sins-table.mobile-subgrid.sin-text {
     padding: 0;
+}
+
+@media screen and (max-width: 500px) {
+
+    .sins-header {
+        font-size: 2.5em !important;
+        margin: 0 !important;
+    }
+
+    p.sins-table {
+        font-size: 16px !important;
+        padding: 30px 0px;
+    }
+
+
+    .sins-table-outer-wrapper {
+        padding-bottom: 50px;
+    }
+
+    div.sins-table.confess-btn-wrapper {
+        margin-top: 50px;
+    }
+
 }

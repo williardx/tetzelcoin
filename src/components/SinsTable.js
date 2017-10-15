@@ -29,7 +29,7 @@ class SinsTable extends Component {
     var trs = this.state.reversedSins.slice(startIndex, endIndex).map((sinObj, i) => {
       var sinValue = (sinObj.payment * 500).toFixed(2);
       return ([
-        <Grid.Row only='tablet computer' key={2 * i}>
+        <Grid.Row className='sins-table' only='tablet computer' key={2 * i}>
           <Grid.Column width={2} textAlign="center">
             <Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment>
           </Grid.Column>
@@ -37,7 +37,7 @@ class SinsTable extends Component {
           <Grid.Column width={10} textAlign="center">{ sinObj.sin }</Grid.Column>
           <Grid.Column width={2} textAlign="center">{ sinValue }</Grid.Column>          
         </Grid.Row>,
-        <Grid.Row only='mobile' key={2 * i + 1}>
+        <Grid.Row className='sins-table' only='mobile' key={2 * i + 1}>
           <Grid className='sins-table mobile-subgrid'>
             <Grid.Row textAlign='center'>
               <Grid.Column width={16}>
@@ -75,8 +75,8 @@ class SinsTable extends Component {
 
     return(
       <div>
-        <Grid>
-          <Grid.Row only='tablet computer'>
+        <Grid className='sins-table main-grid'>
+          <Grid.Row className='sins-table' only='tablet computer'>
             <Grid.Column textAlign="center" width={2}>Time</Grid.Column>
             <Grid.Column textAlign="center" width={2}>Sinner</Grid.Column>
             <Grid.Column textAlign="center" width={10}>Confession</Grid.Column>

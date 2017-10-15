@@ -33,11 +33,6 @@ export default class Navbar extends Component {
             </Link>
             <Link className='navbar-link' to='/instructions'>
               <Menu.Item className='navbar-item' name='instructions' >
-                Instructions
-              </Menu.Item>
-            </Link>
-            <Link className='navbar-link' to='/confess'>
-              <Menu.Item className='navbar-item' name='confess' >
                 Confess
               </Menu.Item>
             </Link>
