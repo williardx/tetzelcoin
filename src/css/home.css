@@ -315,3 +315,13 @@ button.button.event-popup > i {
     padding-left: 15px;
     padding-right: 19px;
 }
+
+@media only screen and (max-width: 350px) {
+    button.button.event-popup {
+        font-size: 16px !important;
+    }
+
+    .ui.big.primary.button.btn-cta {
+        font-size: 16px !important;
+    }
+}
