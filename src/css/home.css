@@ -249,6 +249,7 @@ button.button.event-popup {
   border: 1px solid #5F5F5F !important;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
   margin-left: 5px;
+  padding-right: 0;
 }
 button.button.event-popup:hover {
   background: #86888A;
@@ -307,4 +308,10 @@ button.button.event-popup:focus {
 
 small, .small {
   line-height: 1rem;
+}
+
+button.button.event-popup > i {
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 19px;
 }

@@ -27,7 +27,7 @@ export default class Home extends Component {
   render() {
 
     const launchDate = Math.floor(new Date(2017, 9, 31, 12).getTime() / 1000);
-    const eventPopup = this.state.popupVisible ? <EventPopup /> : null;
+    const eventPopup = this.state.popupVisible ? <EventPopup togglePopupVisibility={ () => this.setState({popupVisible: false}) } /> : null;
 
     let footerSocial = (alignment) => (
       <Grid.Column textAlign={alignment}>
