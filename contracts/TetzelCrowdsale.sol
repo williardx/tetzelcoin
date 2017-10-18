@@ -1,13 +1,12 @@
 pragma solidity ^0.4.11;
 
 import 'zeppelin-solidity/contracts/math/SafeMath.sol';
-import 'zeppelin-solidity/contracts/token/MintableToken.sol';
 import './TetzelCoin.sol';
 
 contract TetzelCrowdsale {
   using SafeMath for uint256;
 
-  MintableToken public token;
+  TetzelCoin public token;
   uint256 public weiRaised;
   address public teamWallet = 0x244b236b19ea4cA308A994edd51A786C726B7864; // xcxc - Change this to real address
   address public charityWallet = 0x8b2448602f53608F86cf2c31D60eb3142a1596d4; // xcxc - Change this to real address
@@ -15,7 +14,7 @@ contract TetzelCrowdsale {
   uint256 public totalCost = 1 ether; // xcxc - change this to real value once final costs are known
   uint256 public rate = 500; // 1 eth = 500 SIN
   uint256 public startTime = block.timestamp;
-  uint256 public endTime = block.timestamp + 60*2;
+  uint256 public endTime = block.timestamp + 60*60;
   bool public teamMembersRegistered = false;
   mapping(address => uint256) public teamMemberTokenAllocation; // address -> number of tokens can buy after the sale is over
   address owner;
@@ -34,15 +33,16 @@ contract TetzelCrowdsale {
    * @param value weis paid for purchase
    * @param amount amount of tokens purchased
    */
-  event TokenPurchase(address indexed purchaser, address indexed beneficiary, uint256 value, uint256 amount);
+  event TokenPurchase(
+    address indexed purchaser, 
+    address indexed beneficiary, 
+    uint256 value, 
+    uint256 amount
+  );
 
-  function TetzelCrowdsale() {
+  function TetzelCrowdsale(address _token) {
     owner = msg.sender;
-    token = createTokenContract();
-  }
-
-  function createTokenContract() internal returns (MintableToken) {
-    return new TetzelCoin();
+    token = TetzelCoin(_token);
   }
 
   /*
