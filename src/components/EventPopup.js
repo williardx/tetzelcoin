@@ -32,7 +32,7 @@ export default class EventPopup extends Component {
         <div>
           <h2>You're invited!</h2>
           <img src='/images/Will3-Tetzel-Small.jpg' />
-          <p><small>Join us for our In-Person Confessional Event November 1st at the Convent Arts Collective in San Francisco!</small></p>
+          <p><small>Join us for our In-Person Confessional Event on November 8th at the Convent Arts Collective in San Francisco!</small></p>
           <Button 
             primary 
             size='big' 
