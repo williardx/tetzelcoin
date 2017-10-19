@@ -63,32 +63,12 @@ contract TetzelCrowdsale {
   }
 
   function forwardFunds() internal {
-
-    uint256 msgValue = msg.value;
-
-    // Keep refunding ETH to costRefundWallet until we recover the costs of the project
-    if (weiRaised < totalCost) {
-      if (msgValue + weiRaised <= totalCost) {
-        costRefundWallet.transfer(msgValue);
-        return;
-      } else {
-        uint256 diff = totalCost - weiRaised;
-        costRefundWallet.transfer(diff);
-        msgValue -= diff;
-      }
-    }
-
-    uint256 teamValue = msgValue * 15 / 100; // Team keeps 15%
-    uint256 charityValue = msgValue - teamValue; // Charity keeps 85%    
+    uint256 teamValue = msg.value * 15 / 100; // Team keeps 15%
+    uint256 charityValue = msg.value - teamValue; // Charity keeps 85%    
     teamWallet.transfer(teamValue);
     charityWallet.transfer(charityValue);
-
   }
 
-  /*
-    Slightly customized version of original buyTokens so that we can check the amount
-    of funds raised before forwarding funds to the right wallet.
-  */
   function buyTokens(address beneficiary) public payable {
     require(beneficiary != 0x0);
     require(validPurchase());
@@ -101,12 +81,9 @@ contract TetzelCrowdsale {
     token.mint(beneficiary, tokens);
     TokenPurchase(msg.sender, beneficiary, weiAmount, tokens);
 
-    forwardFunds();
-
-    // update state - this is after `forwardFunds` since `forwardFunds`
-    // needs to check the amount of weiRaised before adding in the current
-    // amount to be purchased
     weiRaised = weiRaised.add(weiAmount);
+
+    forwardFunds();
   }
 
   /*

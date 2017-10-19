@@ -29,11 +29,9 @@ contract Tetzel {
   }
 
   function confess(string sin) payable returns (bool success) {
-
-    // No forgiveness for those who don't pay
-    if (msg.value == 0) {
-      throw;
-    }
+    
+    require(msg.value > 0);
+    require(bytes(sin).length > 0);
 
     // Issue TetzelCoin for the sinner
     crowdsale.buyTokens.value(msg.value)(msg.sender);
