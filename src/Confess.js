@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import Tetzel from '../build/contracts/Tetzel.json';
 import TetzelCrowdsale from '../build/contracts/TetzelCrowdsale.json';
 
+import TermsAndConditionsModal from './components/TermsAndConditionsModal';
 import ConfessSin from './components/ConfessSin';
 import ValueSin from './components/ValueSin';
 import PurchaseSin from './components/PurchaseSin';
@@ -289,6 +290,7 @@ export default class Confess extends Component {
 
     return(
       <Container className='confess-wrapper'>
+        <TermsAndConditionsModal />
         <div className='confess-top'>
           <Link className='arrow-link exit-link' to='/'><Icon name='long arrow left' /> Exit Confession</Link>
         </div>
