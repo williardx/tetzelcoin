@@ -10,14 +10,14 @@ contract TetzelCrowdsale {
   uint256 public weiRaised;
   address public teamWallet = 0x244b236b19ea4cA308A994edd51A786C726B7864; // xcxc - Change this to real address
   address public charityWallet = 0x8b2448602f53608F86cf2c31D60eb3142a1596d4; // xcxc - Change this to real address
-  address public costRefundWallet = 0xeFDA35E0CdF4E70CB616ef3265204AD1B037CFb9; // xcxc - Change this to real address
-  uint256 public totalCost = 1 ether; // xcxc - change this to real value once final costs are known
   uint256 public rate = 500; // 1 eth = 500 SIN
   uint256 public startTime = block.timestamp;
   uint256 public endTime = block.timestamp + 60*60;
+  uint256 public totalTeamMemberAllocation = 15; // percent
   bool public teamMembersRegistered = false;
+  mapping(address => bool) reigsteredTeamMembers; // address -> whether or not a team member has been registered
   mapping(address => uint256) public teamMemberTokenAllocation; // address -> number of tokens can buy after the sale is over
-  address owner;
+  address public owner;
 
   modifier onlyOwner() {
     if (msg.sender != owner) {
@@ -47,15 +47,27 @@ contract TetzelCrowdsale {
 
   /*
     Register each team member and how many tokens they're allowed to buy
-    at the conclusion of the sale. We only want to run this function once
-    to prevent being able to repeatedly buy tokens after the sale has ended.
+    at the conclusion of the sale. We can add team members until there's
+    no more team member allocation left.
+
+    Unfortunately Solidity can't handle decimal points so we'll just use
+    whole number percentages
   */
-  function registerTeamMembers() onlyOwner {
-    require(!teamMembersRegistered);
-    teamMemberTokenAllocation[0x6FD4d4c1ab6590FCF51A1f03416043d1da483386] = token.totalSupply() * 2 / 100; // xcxc - change this to real address
-    teamMembersRegistered = true;
+  function registerTeamMember(address teamMember, uint256 percent) public onlyOwner {
+    require(teamMemberTokenAllocation[teamMember] == 0);
+    require(percent <= totalTeamMemberAllocation);
+    teamMemberTokenAllocation[teamMember] = percent;
+    totalTeamMemberAllocation -= percent;
   }
 
+  /*
+    Function to remove team members. Sets the token allocation back to 0
+    and adds their percentage back to the total.
+  */
+  function removeTeamMember(address teamMember) public onlyOwner {
+    totalTeamMemberAllocation += teamMemberTokenAllocation[teamMember];
+    teamMemberTokenAllocation[teamMember] = 0;
+  }
 
   // fallback function throws since token buyers must confess first
   function () payable {
@@ -93,9 +105,12 @@ contract TetzelCrowdsale {
   function buyTeamTokens() public payable {
     require(hasEnded());
     require(teamMemberTokenAllocation[msg.sender] > 0);
-    require(msg.value > 0);
+    require(msg.value > 1);
 
-    token.mint(msg.sender, teamMemberTokenAllocation[msg.sender]);
+    uint256 tokenAmount = token.totalSupply() * teamMemberTokenAllocation[msg.sender] / 100;
+    token.mint(msg.sender, tokenAmount);
+    TokenPurchase(msg.sender, msg.sender, msg.value, teamMemberTokenAllocation[msg.sender]);
+
     charityWallet.transfer(msg.value);
     weiRaised = weiRaised.add(msg.value);
     teamMemberTokenAllocation[msg.sender] = 0;
