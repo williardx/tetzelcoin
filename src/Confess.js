@@ -21,6 +21,7 @@ export default class Confess extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      errorMsg: '',
       tx: null,
       tetzelInstance: null,
       tetzelAddress: 'Loading...',
@@ -212,22 +213,47 @@ export default class Confess extends Component {
     this.setState({sinText: txt});
   }
 
+  validateSinText() {
+    return this.state.sinText.length > 0;
+  }
+
+  handleInvalidSinText() {
+    this.setState({errorMsg: 'Please confess before moving on.'});
+  }
+
   updateTestSinValues(idx, val) {
     var newTestSinValues = this.state.testSinValues.slice();
     newTestSinValues[idx] = val;
     this.setState({testSinValues: newTestSinValues});
   }
 
+  changeActiveView(nextView) {
+    const validViews = ['CONFESS_SIN', 'VALUE_SIN', 'PURCHASE_SIN', 'FORGIVENESS'];
+    if (validViews.indexOf(nextView) === -1) {
+      throw 'Invalid view';
+    }
+
+    // Validating sin text input shouldn't have to occur here, but it does
+    // with the way this is currently set up
+    // TODO: Refactor this
+    if (this.state.activeView === 'CONFESS_SIN' && !this.validateSinText()) {
+      this.handleInvalidSinText();
+    } else {
+      this.setState({activeView: nextView, errorMsg: ''});
+    }
+  }
+
   render() {
 
-    const currentView = () => {
+    const showActiveView = () => {
       switch(this.state.activeView) {
         case 'CONFESS_SIN':
           return (
             <ConfessSin
+              errorMsg={ this.state.errorMsg }
               sinText={ this.state.sinText }
               updateSinText={ this.updateSinText.bind(this) }
-              onNext={ (txt) => this.setState({activeView: 'VALUE_SIN'}) } />            
+              onNext={ () => this.changeActiveView('VALUE_SIN') } />            
           );
         case 'VALUE_SIN':
           return (
@@ -237,7 +263,7 @@ export default class Confess extends Component {
               testSinValues={ this.state.testSinValues }
               updateSinValue={ this.updateSinValue.bind(this) }
               updateTestSinValues={ this.updateTestSinValues.bind(this) }
-              onNext={ () => this.setState({activeView: 'PURCHASE_SIN'}) } />
+              onNext={ () => this.changeActiveView('PURCHASE_SIN') } />
           );
         case 'PURCHASE_SIN':
           return (
@@ -253,7 +279,7 @@ export default class Confess extends Component {
               onPurchase={ async () => { 
                 let responseObj = await this.purchase();
                 if (responseObj.complete) {
-                  this.setState({activeView: 'FORGIVENESS'})
+                  this.changeActiveView('FORGIVENESS');
                 } else {
                   console.log(responseObj.msg);
                 }
@@ -274,13 +300,13 @@ export default class Confess extends Component {
       return(
         <div className='icon-wrapper'>
           <Icon
-            onClick={ () => this.setState({activeView: 'CONFESS_SIN'}) } 
+            onClick={ () => this.changeActiveView('CONFESS_SIN') } 
             name={ this.state.activeView === 'CONFESS_SIN' ? 'circle' : 'circle thin'} />
           <Icon
-            onClick={ () => this.setState({activeView: 'VALUE_SIN'}) } 
+            onClick={ () => this.changeActiveView('VALUE_SIN') } 
             name={ this.state.activeView === 'VALUE_SIN' ? 'circle' : 'circle thin'} />
           <Icon
-            onClick={ () => this.setState({activeView: 'PURCHASE_SIN'}) } 
+            onClick={ () => this.changeActiveView('PURCHASE_SIN') } 
             name={ 
               (this.state.activeView === 'PURCHASE_SIN' 
               || this.state.activeView === 'FORGIVENESS') ? 'circle' : 'circle thin'} />
@@ -295,7 +321,7 @@ export default class Confess extends Component {
           <Link className='arrow-link exit-link' to='/'><Icon name='long arrow left' /> Exit Confession</Link>
         </div>
         <div className='confess-content'>
-          { currentView() }
+          { showActiveView() }
         </div>
         <div className='confess-footer'>
           { ConfessionNav() }

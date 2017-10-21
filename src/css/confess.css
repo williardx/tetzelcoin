@@ -282,3 +282,7 @@ p.sin-ownership {
     height: 40px;
   }
 }
+
+.confess-sin.message.error-message {
+    margin-top: 0;
+}
