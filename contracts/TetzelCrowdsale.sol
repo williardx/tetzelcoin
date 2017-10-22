@@ -8,14 +8,15 @@ contract TetzelCrowdsale {
 
   TetzelCoin public token;
   uint256 public weiRaised;
-  address public teamWallet = 0x244b236b19ea4cA308A994edd51A786C726B7864; // xcxc - Change this to real address
-  address public charityWallet = 0x8b2448602f53608F86cf2c31D60eb3142a1596d4; // xcxc - Change this to real address
-  uint256 public rate = 500; // 1 eth = 500 SIN
-  uint256 public startTime = block.timestamp;
-  uint256 public endTime = block.timestamp + 60*60;
-  uint256 public totalTeamMemberAllocation = 15; // percent
-  bool public teamMembersRegistered = false;
-  mapping(address => bool) reigsteredTeamMembers; // address -> whether or not a team member has been registered
+  address public teamWallet;
+  address public charityWallet;
+  uint256 public teamPortion; // percent
+  uint256 public charityPortion; // percent
+  uint256 public rate;
+  uint256 public startTime;
+  uint256 public endTime;
+  uint256 public totalTeamMemberAllocation; // percent
+  mapping(address => bool) public reigsteredTeamMembers; // address -> whether or not a team member has been registered
   mapping(address => uint256) public teamMemberTokenAllocation; // address -> number of tokens can buy after the sale is over
   address public owner;
 
@@ -40,9 +41,39 @@ contract TetzelCrowdsale {
     uint256 amount
   );
 
-  function TetzelCrowdsale(address _token) {
+  function TetzelCrowdsale(
+    address _token,
+    address _teamWallet,
+    address _charityWallet,
+    uint256 _teamPortion,
+    uint256 _charityPortion,
+    uint256 _startTime,
+    uint256 _endTime,
+    uint256 _rate,
+    uint256 _totalTeamMemberAllocation
+  ) {
+
+    _startTime = now; // xcxc
+    _endTime = now + 60*60; // xcxc
+
+    require(_startTime >= now);
+    require(_endTime >= _startTime);
+    require(_rate > 0);
+    require(_teamPortion.add(_charityPortion) == 100);
+    require(_totalTeamMemberAllocation <= 100);
+    require(_teamWallet != 0x0);
+    require(_charityWallet != 0x0);
+
     owner = msg.sender;
     token = TetzelCoin(_token);
+    teamWallet = _teamWallet;
+    charityWallet = _charityWallet;
+    teamPortion = _teamPortion;
+    charityPortion = _charityPortion;
+    startTime = _startTime;
+    endTime = _endTime;
+    rate = _rate;
+    totalTeamMemberAllocation = _totalTeamMemberAllocation;
   }
 
   /*

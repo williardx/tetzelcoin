@@ -1,4 +1,4 @@
-/* Originally from zeppelin-solidity */
+/* With thanks to zeppelin-solidity */
 export default async promise => {
   try {
     await promise;

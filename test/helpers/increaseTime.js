@@ -1,3 +1,4 @@
+/* With thanks to zeppelin-solidity */
 import latestTime from './latestTime'
 
 // Increases testrpc time by the passed duration in seconds
