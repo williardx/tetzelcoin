@@ -98,7 +98,7 @@ export default class Home extends Component {
             />
 
           { eventPopup }
-          
+
           </Container>
         </Segment>
 
@@ -334,6 +334,69 @@ export default class Home extends Component {
                   </Grid.Row>
                 </Grid.Column>
               </Grid.Row>
+
+
+
+              <Grid.Row>
+                <Grid.Column width={2}>
+                </Grid.Column>
+                <Grid.Column width={6} padded='horizontally'>
+                  <Grid.Row>
+                    <Image
+                      fluid
+                      className='center-hack'
+                      size='huge'
+                      style={{width: '60%', borderRadius: '100%', boxShadow: '2px 1px 5px rgba(0, 0, 0, 0.1)' }}
+                      src='/images/Shoshi.png'
+                    />
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0', marginTop: '25px' }}>Shoshi</Header>
+                    <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Legal Advisor</Header>
+                    <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }} >
+                      Shoshi is an interactive sculpture composed of light, music, math and caffeine.
+                      Her areas of professional expertise include law, fintech, blockchain technologies, and highly regulated industries. She holds many degrees, she promises.
+                    </p>
+                  </Grid.Row>
+
+                </Grid.Column>
+                <Grid.Column width={6} padded='horizontally'>
+                  <Grid.Row>
+                    <Image
+                      fluid
+                      className='center-hack'
+                      size='huge'
+                      style={{width: '60%', borderRadius: '100%', boxShadow: '2px 1px 5px rgba(0, 0, 0, 0.1)' }}
+                      src='/images/Mike.jpg'
+                    />
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0', marginTop: '25px' }}>Mike Huff</Header>
+                    <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Event Collaborator</Header>
+                    <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }}>
+                      Michael is a self described &quot;human being&quot; who passionately fostering creative spaces around the
+                      Bay Area. His current efforts are focused on creating events in <a href="http://rathskeller.club/">The Rathskeller Club</a>,
+                      <a href="http://thegalallery.com/">The Galallery</a>, and <a href="http://www.conventartssf.com">The Convent</a>. 
+                    </p>
+                  </Grid.Row>
+                  <Grid.Row style={{textAlign: 'center', marginBottom: '50px'}}>
+                    <a className='icons-link' href="https://twitter.com/koalahamlet">
+                      <Image
+                        className='center-hack icons social-icons'
+                        src='/images/TetzelCoin_twitter.png'
+                      />
+                    </a>
+                    <a className='icons-link' href="https://www.linkedin.com/in/michael-alan-huff-822a3038/">
+                      <Image
+                        className='center-hack icons social-icons'
+                        src='/images/TetzelCoin_linkedin.png'
+                      />
+                    </a>
+                  </Grid.Row>
+                </Grid.Column>
+              </Grid.Row>
+
+
             </Grid>
           </Container>
         </Segment>
