@@ -65,7 +65,7 @@ contract TetzelCrowdsale {
     and adds their percentage back to the total.
   */
   function removeTeamMember(address teamMember) public onlyOwner {
-    totalTeamMemberAllocation += teamMemberTokenAllocation[teamMember];
+    totalTeamMemberAllocation = totalTeamMemberAllocation.add(teamMemberTokenAllocation[teamMember]);
     teamMemberTokenAllocation[teamMember] = 0;
   }
 
@@ -75,13 +75,13 @@ contract TetzelCrowdsale {
   }
 
   function forwardFunds() internal {
-    uint256 teamValue = msg.value * 15 / 100; // Team keeps 15%
-    uint256 charityValue = msg.value - teamValue; // Charity keeps 85%    
+    uint256 teamValue = msg.value.mul(15).div(100); // Team keeps 15%
+    uint256 charityValue = msg.value.sub(teamValue); // Charity keeps 85%    
     teamWallet.transfer(teamValue);
     charityWallet.transfer(charityValue);
   }
 
-  function buyTokens(address beneficiary) public payable {
+  function buyTokens(address beneficiary) public payable returns (bool success) {
     require(beneficiary != 0x0);
     require(validPurchase());
 
@@ -96,24 +96,25 @@ contract TetzelCrowdsale {
     weiRaised = weiRaised.add(weiAmount);
 
     forwardFunds();
+    return true;
   }
 
   /*
     Team members have the option to buy some number of tokens at the conclusion
-    of the sale for whatever price they want. All of this money goes to charity.
+    of the sale for at least 1 wei. All of this money goes to charity.
   */
-  function buyTeamTokens() public payable {
+  function buyTeamTokens() public payable returns (bool success) {
     require(hasEnded());
     require(teamMemberTokenAllocation[msg.sender] > 0);
-    require(msg.value > 1);
+    require(msg.value > 0);
 
-    uint256 tokenAmount = token.totalSupply() * teamMemberTokenAllocation[msg.sender] / 100;
+    uint256 tokenAmount = weiRaised.mul(rate).mul(teamMemberTokenAllocation[msg.sender]).div(100);
     token.mint(msg.sender, tokenAmount);
     TokenPurchase(msg.sender, msg.sender, msg.value, teamMemberTokenAllocation[msg.sender]);
 
     charityWallet.transfer(msg.value);
-    weiRaised = weiRaised.add(msg.value);
     teamMemberTokenAllocation[msg.sender] = 0;
+    return true;
   }
 
   // @return true if the transaction can buy tokens
