@@ -227,21 +227,18 @@ export default class Home extends Component {
             <Grid stackable verticalAlign='middle'>
               <Grid.Row>
                 <Grid.Column width={8}>
-                  <Header as='h3' style={{ fontSize: '2em' }}>Token Sale</Header>
+                  <Header as='h3' style={{ fontSize: '2em' }}>SIN Token Sale</Header>
                   <p style={{ fontSize: '1.33em' }}>
-                    The SIN token sale will begin on October 31st at 12PM PST (the 500th Anniversary of <a href="https://en.wikipedia.org/wiki/Reformation_Day">Reformation Day</a>) and will end January 1st, 2018, 12 AM PST.
+                    Confession and the SIN token sale will begin on October 31st at 12PM PST (the 500th Anniversary of <a href="https://en.wikipedia.org/wiki/Reformation_Day">Reformation Day</a>) and will end January 1st, 2018, 12 AM PST.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    The token sale is uncapped. Tokens will be issued at a rate of 500 SIN per ETH and will be available immediately upon confession. Only ether will be accepted as payment. SIN tokens are ERC20-compatible.
+                    The token sale is uncapped. Tokens will be issued at a rate of 500 SIN per ETH and will be available immediately upon confession. Only Ether will be accepted as payment. SIN tokens are ERC20-compatible.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    At the conclusion of the sale, an additional 15% of SIN tokens will be issued to the team.
+                    85% of the proceeds from the token sale will be donated directly to <a href="https://www.ripmedicaldebt.org/">RIP Medical Debt</a>. The remaining 15% of Ether will go to the team as compensation and to cover costs.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    After costs are covered, 85% of the proceeds from the token sale will be donated directly to <a href="https://www.ripmedicaldebt.org/">RIP Medical Debt</a>.
-                  </p>
-                  <p style={{ fontSize: '1.33em' }}>
-                    Accepted purchase method: ETH
+                    At the conclusion of the sale, team members will have the option to collectively purchase up to 15% of the total supply of SIN tokens at a discount.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
                     Token sale terms and conditions coming soon.
@@ -282,7 +279,7 @@ export default class Home extends Component {
                   </Grid.Row>
                   <Grid.Row>
                     <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0', marginTop: '25px' }}>Will Doenlen</Header>
-                    <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Project Lead and Development</Header>
+                    <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Creator &amp; Developer</Header>
                     <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }} >Widely known for his <a href="http://www.huffingtonpost.com/2014/09/18/hamster-wheel-standing-de_n_5837086.html">hamster wheel standing desk</a>, Will Doenlen's art explores the existential absurdity of human systems
                     that provide us with symbolic value in our daily lives. You can view more of his projects
                     on his <a href="http://williardx.com">portfolio</a>. Will holds a BS from MIT.</p>
@@ -314,7 +311,7 @@ export default class Home extends Component {
                   </Grid.Row>
                   <Grid.Row>
                     <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0', marginTop: '25px' }}>Leanne Luce</Header>
-                    <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Design</Header>
+                    <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Designer</Header>
                     <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }}>Leanne is a designer, developer,
                     and fashion technologist based out of San Francisco.  You can visit her blog, <a href="https://thefashionrobot.com">the fashion robot</a> or view previous works in her <a href="https://leanneluce.com">portfolio</a>. Leanne holds a BFA from Rhode Island School of Design (RISD).</p>
                   </Grid.Row>
@@ -352,7 +349,7 @@ export default class Home extends Component {
                   </Grid.Row>
                   <Grid.Row>
                     <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0', marginTop: '25px' }}>Shoshi</Header>
-                    <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Legal Advisor</Header>
+                    <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Legal Advisor &amp; Collaborator</Header>
                     <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }} >
                       Shoshi is an interactive sculpture composed of light, music, math and caffeine.
                       Her areas of professional expertise include law, fintech, blockchain technologies, and highly regulated industries. She holds many degrees, she promises.
