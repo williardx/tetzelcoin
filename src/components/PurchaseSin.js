@@ -8,6 +8,7 @@ import {
   Image,
   Input,
   Loader,
+  Message,
 } from 'semantic-ui-react';
 
 export default class PurchaseSin extends Component {
@@ -15,6 +16,7 @@ export default class PurchaseSin extends Component {
   render() {
 
     const txUrl = this.props.tx ? 'https://etherscan.io/tx/' + this.props.tx : '';
+    const hideErrorMsg = this.props.errorMsg.length === 0;
 
     var submitButton = (pending) => {
       if (pending) return null;
@@ -37,6 +39,12 @@ export default class PurchaseSin extends Component {
           textAlign='center'
           className='dswallau confess-header gradient-text'
         />
+        <Message 
+          color='red' 
+          hidden={ hideErrorMsg } 
+          className='confess-sin error-message'>
+          { this.props.errorMsg }
+        </Message>
         <p className='confess'>Now that you've confessed, submit your transaction to purchase your SIN tokens and obtain forgiveness.</p>
         <p className='confess'>Your sin: { this.props.sinText }</p>
         <Grid className='bordered-form purchase-form'>

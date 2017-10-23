@@ -45,24 +45,27 @@ export default class Confess extends Component {
         await this.instantiateContracts();
         await this.fetchEtherPrice();        
       } catch(e) {
-        console.log(e);
+        this.setState({errorMsg: e.message});
       }      
     }
   }
 
   async fetchAccount() {
 
+    const errorMsg = 'We couldn\`t find your account.' + 
+                     'Please check MetaMask or your Web3 provider.';
+
     try {
       var accounts = await this._getAccountsPromise();
     } catch(e) {
-      console.log(e);
+      this.setState({errorMsg: errorMsg});
     }
     
     if (!accounts) {
-      throw "Couldn't get any accounts! Make sure your Ethereum client is configured correctly."
+      this.setState({errorMsg: errorMsg});
+    } else {
+      this.setState({account: accounts[0]});
     }
-
-    this.setState({account: accounts[0]});
 
   }
 
@@ -117,8 +120,12 @@ export default class Confess extends Component {
     var isValidSin = this.state.sinText.length > 0;
     var isValidPayment = typeof sinValue === 'number' && sinValue > 0;
 
-    if ( !(isValidSin && isValidPayment) ) {
-      throw "Invalid confession";
+    if (!isValidSin) {
+      throw new Error('Your sin is not valid. Please confess before buying SIN tokens.');
+    }
+
+    if (!isValidPayment) {
+      throw new Error('Please enter a payment amount greater than 0.');
     }
 
     try {
@@ -151,7 +158,7 @@ export default class Confess extends Component {
       if (isSuccess) {
         txStatus = {complete: true, msg: ''};
       } else {
-        throw 'Transaction failed';
+        throw new Error('Transaction failed.');
       }
 
     } catch(e) {
@@ -205,7 +212,7 @@ export default class Confess extends Component {
         sinValueETH: val
       });       
     } else {
-      throw "Invalid unit for updateSinValue";
+      throw new Error("Invalid unit for updateSinValue");
     }
   }
 
@@ -230,7 +237,7 @@ export default class Confess extends Component {
   changeActiveView(nextView) {
     const validViews = ['CONFESS_SIN', 'VALUE_SIN', 'PURCHASE_SIN', 'FORGIVENESS'];
     if (validViews.indexOf(nextView) === -1) {
-      throw 'Invalid view';
+      throw new Error('Invalid view');
     }
 
     // Validating sin text input shouldn't have to occur here, but it does
@@ -268,6 +275,7 @@ export default class Confess extends Component {
         case 'PURCHASE_SIN':
           return (
             <PurchaseSin
+              errorMsg={ this.state.errorMsg }
               tetzelAddress={ this.state.tetzelAddress }
               sinRate={ this.state.sinRate }
               sinValueETH={ this.state.sinValueETH }
@@ -277,11 +285,15 @@ export default class Confess extends Component {
               pending={ this.state.pending }
               tx={ this.state.tx }
               onPurchase={ async () => { 
-                let responseObj = await this.purchase();
-                if (responseObj.complete) {
-                  this.changeActiveView('FORGIVENESS');
-                } else {
-                  console.log(responseObj.msg);
+                try {
+                  let responseObj = await this.purchase();
+                  if (responseObj.complete) {
+                    this.changeActiveView('FORGIVENESS');
+                  } else {
+                    throw new Error(responseObj.msg);
+                  }
+                } catch(e) {
+                  this.setState({errorMsg: e.message});
                 }
 
               }} />
