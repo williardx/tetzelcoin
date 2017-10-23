@@ -158,7 +158,7 @@ export default class Confess extends Component {
       if (isSuccess) {
         txStatus = {complete: true, msg: ''};
       } else {
-        throw new Error('Transaction failed.');
+        throw new Error('Transaction failed. Please check Etherscan for more details. Transaction hash: ' + this.state.tx);
       }
 
     } catch(e) {
@@ -284,7 +284,8 @@ export default class Confess extends Component {
               updateSinValue={ this.updateSinValue.bind(this) }
               pending={ this.state.pending }
               tx={ this.state.tx }
-              onPurchase={ async () => { 
+              onPurchase={ async () => {
+                this.setState({errorMsg: ''});
                 try {
                   let responseObj = await this.purchase();
                   if (responseObj.complete) {
