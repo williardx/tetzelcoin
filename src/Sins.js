@@ -4,6 +4,7 @@ import {
   Container,
   Header,
   Loader,
+  Message,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import SinsTable from './components/SinsTable';
@@ -23,19 +24,24 @@ export default class Sins extends Component {
       tetzelAddress: null,
       tetzelInstance: null,
       recentSins: null,
+      errorMsg: '',
     };
   }
 
   async componentWillMount() {
     if (this.props.web3) {
-      await this.instantiateContracts();
-      // TODO: Figure out why filter isn't working with Metamask and testnet.
-      // For now we're pulling sins from Etherscan instead when we're
-      // on testnet.
-      if (this.props.web3.version.network === '3') { // Ropsten
-        await this.getSinsFromEtherscan();
-      } else {
-        await this.getSinsFromTestRPC();
+      try {
+        await this.instantiateContracts();
+        // TODO: Figure out why filter isn't working with Metamask and testnet.
+        // For now we're pulling sins from Etherscan instead when we're
+        // on testnet.
+        if (this.props.web3.version.network === '3') { // Ropsten
+          await this.getSinsFromEtherscan();
+        } else {
+          await this.getSinsFromTestRPC();
+        }
+      } catch(e) {
+        this.setState({errorMsg: e.message});
       }
     }
   }
@@ -93,7 +99,6 @@ export default class Sins extends Component {
       sinText = this.props.web3.toUtf8(replacedText);
     } catch(e) {
       sinText = 'Error: Unable to display sin';
-      console.log(e);
     }
 
     return {
@@ -143,7 +148,8 @@ export default class Sins extends Component {
       }
     }
 
-    var sinsLoaded = this.state.recentSins !== null;
+    const sinsLoaded = this.state.recentSins !== null;
+    const hideErrorMsg = this.state.errorMsg.length === 0;
 
     return(
       <div className='sins-table-outer-wrapper'>
@@ -154,6 +160,12 @@ export default class Sins extends Component {
               content='Table of Sins' 
               textAlign='center'
               className='dswallau sins-header' />
+            <Message 
+              color='red' 
+              hidden={ hideErrorMsg } 
+              className='confess-sin error-message'>
+              { this.state.errorMsg }
+            </Message>
             <p className='sins-table'>These are the sins of those who have confessed through the TetzelCoin confessional. Every sin is taken directly from the Ethereum blockchain. The sins will remain recorded on the blockchain for as long as Ethereum exists.</p>
             <Loader active={ !sinsLoaded }>Loading...</Loader>
             { showSinsTable(sinsLoaded) }
