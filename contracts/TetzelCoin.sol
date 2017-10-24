@@ -6,7 +6,7 @@ contract TetzelCoin is MintableToken {
   string public constant name = "TetzelCoin";
   string public constant symbol = "SIN";
   uint public constant decimals = 18;
-  bool private paused = false;
+  bool public paused = false;
   mapping(address => bool) public minters;
 
   /**
