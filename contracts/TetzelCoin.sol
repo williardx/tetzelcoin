@@ -6,6 +6,7 @@ contract TetzelCoin is MintableToken {
   string public constant name = "TetzelCoin";
   string public constant symbol = "SIN";
   uint public constant decimals = 18;
+  bool private paused = false;
   mapping(address => bool) public minters;
 
   /**
@@ -14,6 +15,13 @@ contract TetzelCoin is MintableToken {
   modifier onlyMinters() {
     require(minters[msg.sender]);
     _;
+  }
+
+  /*
+    @dev Pauses minting of tokens
+  */
+  function pause() onlyOwner {
+    paused = !paused;
   }
 
   /**
@@ -44,6 +52,7 @@ contract TetzelCoin is MintableToken {
    * @return A boolean that indicates if the operation was successful.
    */
   function mint(address _to, uint256 _amount) onlyMinters canMint public returns (bool) {
+    require(!paused);
     totalSupply = totalSupply.add(_amount);
     balances[_to] = balances[_to].add(_amount);
     Mint(_to, _amount);

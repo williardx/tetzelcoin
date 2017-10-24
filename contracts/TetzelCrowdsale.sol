@@ -34,7 +34,7 @@ contract TetzelCrowdsale {
    * @param value weis paid for purchase
    * @param amount amount of tokens purchased
    */
-  event TokenPurchase(
+  event LogTokenPurchase(
     address indexed purchaser, 
     address indexed beneficiary, 
     uint256 value, 
@@ -121,10 +121,10 @@ contract TetzelCrowdsale {
     // calculate token amount to be created
     uint256 tokens = weiAmount.mul(rate);
 
-    token.mint(beneficiary, tokens);
-    TokenPurchase(msg.sender, beneficiary, weiAmount, tokens);
-
     weiRaised = weiRaised.add(weiAmount);
+
+    token.mint(beneficiary, tokens);
+    LogTokenPurchase(msg.sender, beneficiary, weiAmount, tokens);
 
     forwardFunds();
     return true;
@@ -138,13 +138,13 @@ contract TetzelCrowdsale {
     require(hasEnded());
     require(teamMemberTokenAllocation[msg.sender] > 0);
     require(msg.value > 0);
-
+    
     uint256 tokenAmount = weiRaised.mul(rate).mul(teamMemberTokenAllocation[msg.sender]).div(100);
+    teamMemberTokenAllocation[msg.sender] = 0;
     token.mint(msg.sender, tokenAmount);
-    TokenPurchase(msg.sender, msg.sender, msg.value, teamMemberTokenAllocation[msg.sender]);
+    LogTokenPurchase(msg.sender, msg.sender, msg.value, tokenAmount);
 
     charityWallet.transfer(msg.value);
-    teamMemberTokenAllocation[msg.sender] = 0;
     return true;
   }
 

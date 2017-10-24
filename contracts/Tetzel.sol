@@ -10,7 +10,7 @@ contract Tetzel {
   address owner; 
   IFtetzelCrowdsale public crowdsale;
 
-  event Confess(
+  event LogConfess(
     address indexed sinner,
     uint256 indexed payment,
     string sin
@@ -37,7 +37,7 @@ contract Tetzel {
     crowdsale.buyTokens.value(msg.value)(msg.sender);
 
     // Make the confession known!
-    Confess(msg.sender, msg.value, sin);
+    LogConfess(msg.sender, msg.value, sin);
 
     return true;
   }
