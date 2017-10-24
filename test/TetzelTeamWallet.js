@@ -56,24 +56,27 @@ contract('TetzelTeamWallet', function(accounts) {
 
   describe('claiming funds', function() {
 
-    it('should allow team members to withdraw funds proportional to their shares', async function() {
+    const teamMemberOneShares = 3;
+    const teamMemberTwoShares = 5;
+    const teamMemberThreeShares = 2;
+
+    beforeEach(async function(){
       await web3.eth.sendTransaction(
         {from: somePerson, to: this.contract.address, value: web3.toWei(1, 'ether')}
       );
-
-      const teamMemberOneShares = 3;
-      const teamMemberTwoShares = 5;
-      const teamMemberThreeShares = 2;
-      const totalShares = teamMemberOneShares + teamMemberTwoShares + teamMemberThreeShares;
-
       await this.contract.setTeamMemberShares(teamMemberOne, teamMemberOneShares, {from: owner});
       await this.contract.setTeamMemberShares(teamMemberTwo, teamMemberTwoShares, {from: owner});
       await this.contract.setTeamMemberShares(teamMemberThree, teamMemberThreeShares, {from: owner});
 
+      await this.contract.lockShares({from: owner});
       await this.contract.pause({from: owner});
+    });
 
-      let teamMembers = [teamMemberOne, teamMemberTwo, teamMemberThree];
-      let teamMemberShares =  [teamMemberOneShares, teamMemberTwoShares, teamMemberThreeShares];
+    it('should allow team members to withdraw funds proportional to their shares', async function() {
+
+      const totalShares = teamMemberOneShares + teamMemberTwoShares + teamMemberThreeShares;
+      const teamMembers = [teamMemberOne, teamMemberTwo, teamMemberThree];
+      const teamMemberShares =  [teamMemberOneShares, teamMemberTwoShares, teamMemberThreeShares];
 
       for (let i = 0; i < teamMembers.length; i++) {
         let member = teamMembers[i];
@@ -90,15 +93,30 @@ contract('TetzelTeamWallet', function(accounts) {
     });
 
     it('should set member shares to 0 after withdrawing', async function() {
-
+      await this.contract.claim({from: teamMemberOne});
+      const expectedShares = 0;
+      const shares = await this.contract.teamMemberShares(teamMemberOne);
+      assert.equal(shares, expectedShares);
     });
 
     it('should not change total shares', async function() {
+      const preTotalShares = await this.contract.totalShares();
+      await this.contract.claim({from: teamMemberOne});
+      const postTotalShares = await this.contract.totalShares();
+      assert(preTotalShares.equals(postTotalShares));
+    });
 
+    it('should update total released', async function() {
+      const preTotalReleased = await this.contract.totalReleased();
+      await this.contract.claim({from: teamMemberOne});
+      const postTotalReleased = await this.contract.totalReleased();
+      const expectedDiff = web3.toWei(0.3, 'ether');
+      assert(postTotalReleased.minus(preTotalReleased).equals(expectedDiff));
     });
 
     it('should not allow team members to withdraw more than once', async function() {
-
+      await this.contract.claim({from: teamMemberOne});
+      await expectThrow(this.contract.claim({from: teamMemberOne}));
     });
 
   });
@@ -125,6 +143,47 @@ contract('TetzelTeamWallet', function(accounts) {
       assert(paused === true);
       
       await this.contract.setTeamMemberShares(teamMemberOne, 1);
+      await expectThrow(this.contract.claim({from: teamMemberOne}));
+    });
+
+  });
+
+  describe('locking shares', function() {
+
+    it('should start out unlocked', async function() {
+      const locked = await this.contract.sharesLocked();
+      assert(locked === false);
+    });
+
+    it('should let the owner lock shares', async function() {
+      await this.contract.lockShares({from: owner});
+      const locked = await this.contract.sharesLocked();
+      assert(locked === true);
+    });
+
+    it('should not let non-owner lock shares', async function() {
+      await expectThrow(this.contract.lockShares({from: teamMemberOne}));
+    });
+
+    it('should prevent shares from being set when locked', async function() {
+      await this.contract.lockShares({from: owner});
+      await expectThrow(this.contract.setTeamMemberShares(teamMemberOne, 1, {from: owner}));
+    });
+
+    it('should be permanently locked once locked', async function() {
+      await this.contract.lockShares({from: owner});
+      await this.contract.lockShares({from: owner});
+      const locked = await this.contract.sharesLocked();
+      assert(locked === true);
+    });
+
+    it('should prevent claiming funds when shares unlocked', async function() {
+      await web3.eth.sendTransaction(
+        {from: somePerson, to: this.contract.address, value: web3.toWei(1, 'ether')}
+      );
+      await this.contract.setTeamMemberShares(teamMemberOne, 1, {from: owner});
+      await this.contract.pause();
+
       await expectThrow(this.contract.claim({from: teamMemberOne}));
     });
 

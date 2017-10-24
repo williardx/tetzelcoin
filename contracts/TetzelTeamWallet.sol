@@ -36,7 +36,7 @@ contract TetzelTeamWallet {
     }
 
     function claim() public onlyTeam returns (bool success) {
-        require(!paused);
+        require(!paused && sharesLocked);
         require(teamMemberShares[msg.sender] > 0);
         
         // Need to keep track of how much ether total we've received
@@ -50,7 +50,7 @@ contract TetzelTeamWallet {
     }
 
     function lockShares() public onlyOwner returns (bool success) {
-        sharesLocked = !sharesLocked;
+        sharesLocked = true;
     }
 
     /*
