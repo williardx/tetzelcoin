@@ -325,3 +325,7 @@ button.button.event-popup > i {
         font-size: 16px !important;
     }
 }
+
+.home.important-note {
+    text-decoration: underline;
+}
