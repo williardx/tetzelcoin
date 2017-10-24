@@ -31,6 +31,7 @@ export default class Confess extends Component {
       sinValueUSD: 0,
       sinValueETH: 0,
       sinRate: 500,
+      sinRecipient: 'Loading...',
       testSinValues: [0, 0, 0],
       ethSpotPrice: null,
       pending: false,
@@ -64,7 +65,8 @@ export default class Confess extends Component {
     if (!accounts) {
       this.setState({errorMsg: errorMsg});
     } else {
-      this.setState({account: accounts[0]});
+      // Initial SIN recipient is the current account by default
+      this.setState({account: accounts[0], sinRecipient: accounts[0]});
     }
 
   }
@@ -119,6 +121,7 @@ export default class Confess extends Component {
 
     var isValidSin = this.state.sinText.length > 0;
     var isValidPayment = typeof sinValue === 'number' && sinValue > 0;
+    var isValidAddress = this.props.web3.isAddress(this.state.sinRecipient);
 
     if (!isValidSin) {
       throw new Error('Your sin is not valid. Please confess before buying SIN tokens.');
@@ -128,9 +131,14 @@ export default class Confess extends Component {
       throw new Error('Please enter a payment amount greater than 0.');
     }
 
-    try {
+    if (!isValidAddress) {
+      throw new Error('Please enter a valid Ethereum address.');
+    }
 
+    try {
+      
       const txHash = await this.state.tetzelInstance.confess.sendTransaction(
+        this.state.sinRecipient,
         this.state.sinText,
         {
           from: this.state.account, 
@@ -234,6 +242,10 @@ export default class Confess extends Component {
     this.setState({testSinValues: newTestSinValues});
   }
 
+  updateSinRecipient(val) {
+    this.setState({sinRecipient: val});
+  }
+
   changeActiveView(nextView) {
     const validViews = ['CONFESS_SIN', 'VALUE_SIN', 'PURCHASE_SIN', 'FORGIVENESS'];
     if (validViews.indexOf(nextView) === -1) {
@@ -280,7 +292,9 @@ export default class Confess extends Component {
               sinRate={ this.state.sinRate }
               sinValueETH={ this.state.sinValueETH }
               sinText={ this.state.sinText }
+              sinRecipient={ this.state.sinRecipient }
               ethSpotPrice={ this.state.ethSpotPrice }
+              updateSinRecipient={ this.updateSinRecipient.bind(this) }
               updateSinValue={ this.updateSinValue.bind(this) }
               pending={ this.state.pending }
               tx={ this.state.tx }
@@ -300,10 +314,16 @@ export default class Confess extends Component {
               }} />
           );
         case 'FORGIVENESS':
+          const boughtSinsForSelf = this.state.account === this.state.sinRecipient;
+          console.log(boughtSinsForSelf);
+          console.log(this.state.account);
+          console.log(this.state.sinRecipient);
           return (
             <Forgiveness 
               tx={ this.state.tx }
               web3={ this.props.web3 }
+              boughtSinsForSelf={ boughtSinsForSelf }
+              sinRecipient={ this.state.sinRecipient }
               tokenAmount={ this.state.sinValueETH * this.state.sinRate } />
           );
       }

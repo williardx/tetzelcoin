@@ -12,6 +12,7 @@ contract Tetzel {
 
   event LogConfess(
     address indexed sinner,
+    address indexed recipient,
     uint256 payment,
     string sin
   );
@@ -28,16 +29,16 @@ contract Tetzel {
     crowdsale = IFtetzelCrowdsale(_crowdsale);
   }
 
-  function confess(string sin) public payable returns (bool success) {
-    
+  function confess(address recipient, string sin) public payable returns (bool success) {
+    require(recipient != 0x0);
     require(msg.value > 0);
     require(bytes(sin).length > 0);
 
-    // Issue TetzelCoin for the sinner
-    crowdsale.buyTokens.value(msg.value)(msg.sender);
+    // Issue SIN tokens for the sinner
+    crowdsale.buyTokens.value(msg.value)(recipient);
 
     // Make the confession known!
-    LogConfess(msg.sender, msg.value, sin);
+    LogConfess(msg.sender, recipient, msg.value, sin);
 
     return true;
   }
@@ -46,7 +47,7 @@ contract Tetzel {
     selfdestruct(owner);
   }
 
-  // No sin, no TetzelCoin!
+  // No sin, no SIN tokens!
   function() payable {
     throw;
   }

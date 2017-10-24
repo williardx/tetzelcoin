@@ -16,7 +16,6 @@ contract('Tetzel', function(accounts) {
   const teamWallet = accounts[1];
   const charityWallet = accounts[2];
   const teamPortion = 15;
-  const charityPortion = 85;
   const totalTeamMemberAllocation = 15;
   const value = web3.toWei(1, 'ether');
   const rate = 500;
@@ -34,7 +33,6 @@ contract('Tetzel', function(accounts) {
       teamWallet,
       charityWallet,
       teamPortion,
-      charityPortion,
       startTime,
       endTime,
       rate,
@@ -45,22 +43,31 @@ contract('Tetzel', function(accounts) {
   });
 
   describe('confessing', function() {
+    const sinRecipient = accounts[3];
     const sinner = accounts[4];
     const sin = 'I called my cat fat';
     const sinValue = web3.toWei(0.01, 'ether');
 
     it('should not accept an empty string', async function() {
-      await expectThrow(tetzel.confess('', {from: sinner, value: sinValue}));
+      await expectThrow(tetzel.confess(sinner, '', {from: sinner, value: sinValue}));
     });
 
     it('should not accept zero payment', async function() {
-      await expectThrow(tetzel.confess(sin, {from: sinner, value: 0}));
+      await expectThrow(tetzel.confess(sinner, sin, {from: sinner, value: 0}));
     });
 
     it('should buy tokens for the sinner', async function() {
       const preSinBalance = await token.balanceOf(sinner);
-      await tetzel.confess(sin, {from: sinner, value: sinValue});
+      await tetzel.confess(sinner, sin, {from: sinner, value: sinValue});
       const postSinBalance = await token.balanceOf(sinner);
+      const expectedTokens = sinValue * rate;
+      assert(postSinBalance.minus(preSinBalance).equals(expectedTokens));
+    });
+
+    it('should allow the sinner to designate the SIN tokens for a recepient', async function() {
+      const preSinBalance = await token.balanceOf(sinRecipient);
+      await tetzel.confess(sinRecipient, sin, {from: sinner, value: sinValue});
+      const postSinBalance = await token.balanceOf(sinRecipient);
       const expectedTokens = sinValue * rate;
       assert(postSinBalance.minus(preSinBalance).equals(expectedTokens));
     });

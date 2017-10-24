@@ -50,7 +50,7 @@ export default class PurchaseSin extends Component {
         <Grid className='bordered-form purchase-form'>
           <Grid.Row>
             <Grid.Column width={4} style={{ textAlign: 'center' }} className='payment-form-text payment-form-label'>
-              Contract Address
+              TetzelCoin Address
             </Grid.Column>
             <Grid.Column className='payment-input-column recipient' width={12}>
               <Input
@@ -59,6 +59,22 @@ export default class PurchaseSin extends Component {
                 readOnly
                 value={ this.props.tetzelAddress }/>
             </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={4} className='payment-form-text payment-form-label'>
+              SIN Recipient
+            </Grid.Column>
+
+            <Grid.Column className='payment-input-column' width={12}>
+              <Input
+                readOnly={ this.props.pending }
+                className='confess payment-input input-with-units'
+                fluid
+                type='text'
+                onChange={ (event) => this.props.updateSinRecipient(event.target.value) }
+                value={ this.props.sinRecipient } />
+            </Grid.Column>
+
           </Grid.Row>
           <Grid.Row>
             <Grid.Column width={4} className='payment-form-text payment-form-label'>
@@ -79,7 +95,7 @@ export default class PurchaseSin extends Component {
               ETH
             </Grid.Column>
 
-            </Grid.Row>
+          </Grid.Row>
             <Grid.Row>
             <Grid.Column width={4} style={{ textAlign: 'center' }} className='payment-form-text payment-form-label'>
               SIN Received
