@@ -11,12 +11,10 @@ contract TetzelCrowdsale {
   address public teamWallet;
   address public charityWallet;
   uint256 public teamPortion; // percent
-  uint256 public charityPortion; // percent
   uint256 public rate;
   uint256 public startTime;
   uint256 public endTime;
   uint256 public totalTeamMemberAllocation; // percent
-  mapping(address => bool) public reigsteredTeamMembers; // address -> whether or not a team member has been registered
   mapping(address => uint256) public teamMemberTokenAllocation; // address -> number of tokens can buy after the sale is over
   address public owner;
 
@@ -46,7 +44,6 @@ contract TetzelCrowdsale {
     address _teamWallet,
     address _charityWallet,
     uint256 _teamPortion,
-    uint256 _charityPortion,
     uint256 _startTime,
     uint256 _endTime,
     uint256 _rate,
@@ -59,7 +56,7 @@ contract TetzelCrowdsale {
     require(_startTime >= now);
     require(_endTime >= _startTime);
     require(_rate > 0);
-    require(_teamPortion.add(_charityPortion) == 100);
+    require(_teamPortion <= 100);
     require(_totalTeamMemberAllocation <= 100);
     require(_teamWallet != 0x0);
     require(_charityWallet != 0x0);
@@ -69,7 +66,6 @@ contract TetzelCrowdsale {
     teamWallet = _teamWallet;
     charityWallet = _charityWallet;
     teamPortion = _teamPortion;
-    charityPortion = _charityPortion;
     startTime = _startTime;
     endTime = _endTime;
     rate = _rate;
@@ -106,8 +102,8 @@ contract TetzelCrowdsale {
   }
 
   function forwardFunds() internal {
-    uint256 teamValue = msg.value.mul(15).div(100); // Team keeps 15%
-    uint256 charityValue = msg.value.sub(teamValue); // Charity keeps 85%    
+    uint256 teamValue = msg.value.mul(teamPortion).div(100);
+    uint256 charityValue = msg.value.sub(teamValue);
     teamWallet.transfer(teamValue);
     charityWallet.transfer(charityValue);
   }

@@ -12,7 +12,7 @@ contract Tetzel {
 
   event LogConfess(
     address indexed sinner,
-    uint256 indexed payment,
+    uint256 payment,
     string sin
   );
 
@@ -28,7 +28,7 @@ contract Tetzel {
     crowdsale = IFtetzelCrowdsale(_crowdsale);
   }
 
-  function confess(string sin) payable returns (bool success) {
+  function confess(string sin) public payable returns (bool success) {
     
     require(msg.value > 0);
     require(bytes(sin).length > 0);
@@ -42,7 +42,7 @@ contract Tetzel {
     return true;
   }
 
-  function destroy() onlyOwner {
+  function destroy() public onlyOwner {
     selfdestruct(owner);
   }
 
