@@ -93,8 +93,8 @@ export default class Sins extends Component {
     const data = event.data.replace(/^0x/, '');
     const chunks = data.match(/.{1,64}/g);
     const payment = parseInt(chunks[0], 16);
-    const sinHexChunks = chunks.splice(3, chunks.length);
-    const sinText = sinHexChunks.map(this.props.web3.toUtf8).join('');
+    const sinHex = chunks.splice(3, chunks.length).join('');
+    const sinText = this.props.web3.toUtf8(sinHex);
 
     return {
       timestamp: parseInt(event.timeStamp, 16),
