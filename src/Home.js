@@ -241,7 +241,7 @@ export default class Home extends Component {
                     At the conclusion of the sale, team members will have the option to collectively purchase up to 15% of the total supply of SIN tokens at a discount.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    <span className='home important-note'>Important Note</span>: SIN tokens have no value and we have no plans to try to make them valuable. This is a performance art piece. Confessing and buying SIN tokens is how you participate in the art.
+                    <span className='home important-note'>Important Note</span>: SIN tokens have no value and we have no plans to try to make them valuable. This is a conceptual art piece. Confessing and buying SIN tokens is how you participate in the art.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
                     Token sale terms and conditions coming soon.
