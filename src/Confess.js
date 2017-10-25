@@ -143,7 +143,7 @@ export default class Confess extends Component {
         {
           from: this.state.account, 
           value: this.props.web3.toWei(sinValue, 'ether'),
-          gas: 200000,
+          gas: 300000,
         }
       );
       this.setState({tx: txHash, pending: true});
