@@ -51,7 +51,7 @@ contract TetzelCrowdsale {
   ) {
 
     _startTime = now; // xcxc
-    _endTime = now + 60*60; // xcxc
+    _endTime = now + 60*60*24; // xcxc
 
     require(_startTime >= now);
     require(_endTime >= _startTime);
