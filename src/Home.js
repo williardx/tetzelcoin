@@ -371,7 +371,7 @@ export default class Home extends Component {
                     />
                   </Grid.Row>
                   <Grid.Row>
-                    <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0', marginTop: '25px' }}>Mike Huff</Header>
+                    <Header as='h3' className='dswallau' style={{ fontSize: '2em', textAlign: 'center', paddingBottom: '0', marginTop: '25px' }}>Michael Alan Huff</Header>
                     <Header as='h3' style={{ fontSize: '1.5em', textAlign: 'center', paddingBottom: '0', marginTop: '10px' }}>Event Collaborator</Header>
                     <p style={{ textAlign: 'justify', paddingLeft: '30px', paddingRight: '30px', fontSize: '1.15em' }}>
                       Michael is a self described &quot;human being&quot; who passionately fostering creative spaces around the
