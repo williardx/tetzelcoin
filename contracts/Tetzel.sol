@@ -24,9 +24,16 @@ contract Tetzel {
     _;
   }
 
-  function Tetzel(address _crowdsale) {
+  function Tetzel(IFtetzelCrowdsale _crowdsale) {
     owner = msg.sender;
-    crowdsale = IFtetzelCrowdsale(_crowdsale);
+    setCrowdsale(_crowdsale);
+  }
+
+  /*
+    Set crowdsale address in case of bugs or updates.
+  */
+  function setCrowdsale(IFtetzelCrowdsale _crowdsale) public onlyOwner {
+    crowdsale = _crowdsale;
   }
 
   function confess(address recipient, string sin) public payable returns (bool success) {

@@ -16,6 +16,7 @@ contract TetzelCrowdsale {
   uint256 public endTime;
   uint256 public totalTeamMemberAllocation; // percent
   mapping(address => uint256) public teamMemberTokenAllocation; // address -> number of tokens can buy after the sale is over
+  mapping(address => bool) public approvedTokenBuyers;
   address public owner;
 
   modifier onlyOwner() {
@@ -40,7 +41,7 @@ contract TetzelCrowdsale {
   );
 
   function TetzelCrowdsale(
-    address _token,
+    TetzelCoin _token,
     address _teamWallet,
     address _charityWallet,
     uint256 _teamPortion,
@@ -50,10 +51,10 @@ contract TetzelCrowdsale {
     uint256 _totalTeamMemberAllocation
   ) {
 
-    _startTime = now; // xcxc
-    _endTime = now + 60*60*24; // xcxc
+    // _startTime = now; // xcxc
+    // _endTime = now + 60*60*24; // xcxc
 
-    require(_startTime >= now);
+    // require(_startTime >= now);
     require(_endTime >= _startTime);
     require(_rate > 0);
     require(_teamPortion <= 100);
@@ -62,7 +63,6 @@ contract TetzelCrowdsale {
     require(_charityWallet != 0x0);
 
     owner = msg.sender;
-    token = TetzelCoin(_token);
     teamWallet = _teamWallet;
     charityWallet = _charityWallet;
     teamPortion = _teamPortion;
@@ -70,6 +70,7 @@ contract TetzelCrowdsale {
     endTime = _endTime;
     rate = _rate;
     totalTeamMemberAllocation = _totalTeamMemberAllocation;
+    setToken(_token);
   }
 
   /*
@@ -94,6 +95,23 @@ contract TetzelCrowdsale {
   function removeTeamMember(address teamMember) public onlyOwner {
     totalTeamMemberAllocation = totalTeamMemberAllocation.add(teamMemberTokenAllocation[teamMember]);
     teamMemberTokenAllocation[teamMember] = 0;
+  }
+
+  /*
+    Switch out the token that we're buying in case of bugs or updates.
+  */
+  function setToken(TetzelCoin _token) public onlyOwner {
+    token = _token;
+  }
+
+  /*
+    Add/remove approved token buyers. We only want people buying
+    SIN tokens from the main Tetzel contract so that they have to confess
+    in order to get SIN tokens.
+  */
+  function setTokenBuyer(address tokenBuyer) public onlyOwner {
+    bool canBuyTokens = approvedTokenBuyers[tokenBuyer];
+    approvedTokenBuyers[tokenBuyer] = !canBuyTokens;
   }
 
   // fallback function throws since token buyers must confess first
@@ -148,7 +166,7 @@ contract TetzelCrowdsale {
   function validPurchase() internal constant returns (bool) {
     bool withinPeriod = now >= startTime && now <= endTime;
     bool nonZeroPurchase = msg.value != 0;
-    return withinPeriod && nonZeroPurchase;
+    return withinPeriod && nonZeroPurchase && approvedTokenBuyers[msg.sender];
   }
 
   // @return true if crowdsale event has ended

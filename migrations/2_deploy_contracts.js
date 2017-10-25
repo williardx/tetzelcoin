@@ -30,8 +30,14 @@ module.exports = function(deployer) {
           tetzelCoinInstance.addMinter(TetzelCrowdsale.address);
         });
 
-        return deployer.deploy(Tetzel, TetzelCrowdsale.address);
-      
+        return deployer.deploy(Tetzel, TetzelCrowdsale.address).then(() => {
+
+          TetzelCrowdsale.deployed().then((tetzelCrowdsaleInstance) => {
+            tetzelCrowdsaleInstance.setTokenBuyers(Tetzel.address);
+          });
+
+        });
+
       });
     });
   });

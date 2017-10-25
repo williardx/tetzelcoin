@@ -10,7 +10,6 @@ const TetzelCrowdsale = artifacts.require('./TetzelCrowdsale.sol');
 const TetzelCoin = artifacts.require('./TetzelCoin.sol');
 
 contract('Tetzel', function(accounts) {
-  let token, crowdsale, tetzel;
 
   const owner = accounts[0];
   const teamWallet = accounts[1];
@@ -22,14 +21,20 @@ contract('Tetzel', function(accounts) {
   const startTime = latestTime();
   const endTime = startTime + duration.weeks(1);
 
+  const sinRecipient = accounts[3];
+  const sinner = accounts[4];
+  const somePerson = accounts[5];
+  const sin = 'I called my cat fat';
+  const sinValue = web3.toWei(0.01, 'ether');
+
   before(async function() {
     await advanceBlock();
   });
 
   beforeEach(async function() {
-    token = await TetzelCoin.new();
-    crowdsale = await TetzelCrowdsale.new(
-      token.address,
+    this.token = await TetzelCoin.new();
+    this.crowdsale = await TetzelCrowdsale.new(
+      this.token.address,
       teamWallet,
       charityWallet,
       teamPortion,
@@ -38,36 +43,33 @@ contract('Tetzel', function(accounts) {
       rate,
       totalTeamMemberAllocation
     );
-    tetzel = await Tetzel.new(crowdsale.address);
-    await token.addMinter(crowdsale.address);
+    this.tetzel = await Tetzel.new(this.crowdsale.address);
+    await this.token.addMinter(this.crowdsale.address);
+    await this.crowdsale.setTokenBuyer(this.tetzel.address);
   });
 
   describe('confessing', function() {
-    const sinRecipient = accounts[3];
-    const sinner = accounts[4];
-    const sin = 'I called my cat fat';
-    const sinValue = web3.toWei(0.01, 'ether');
 
     it('should not accept an empty string', async function() {
-      await expectThrow(tetzel.confess(sinner, '', {from: sinner, value: sinValue}));
+      await expectThrow(this.tetzel.confess(sinner, '', {from: sinner, value: sinValue}));
     });
 
     it('should not accept zero payment', async function() {
-      await expectThrow(tetzel.confess(sinner, sin, {from: sinner, value: 0}));
+      await expectThrow(this.tetzel.confess(sinner, sin, {from: sinner, value: 0}));
     });
 
     it('should buy tokens for the sinner', async function() {
-      const preSinBalance = await token.balanceOf(sinner);
-      await tetzel.confess(sinner, sin, {from: sinner, value: sinValue});
-      const postSinBalance = await token.balanceOf(sinner);
+      const preSinBalance = await this.token.balanceOf(sinner);
+      await this.tetzel.confess(sinner, sin, {from: sinner, value: sinValue});
+      const postSinBalance = await this.token.balanceOf(sinner);
       const expectedTokens = sinValue * rate;
       assert(postSinBalance.minus(preSinBalance).equals(expectedTokens));
     });
 
     it('should allow the sinner to designate the SIN tokens for a recepient', async function() {
-      const preSinBalance = await token.balanceOf(sinRecipient);
-      await tetzel.confess(sinRecipient, sin, {from: sinner, value: sinValue});
-      const postSinBalance = await token.balanceOf(sinRecipient);
+      const preSinBalance = await this.token.balanceOf(sinRecipient);
+      await this.tetzel.confess(sinRecipient, sin, {from: sinner, value: sinValue});
+      const postSinBalance = await this.token.balanceOf(sinRecipient);
       const expectedTokens = sinValue * rate;
       assert(postSinBalance.minus(preSinBalance).equals(expectedTokens));
     });
@@ -77,5 +79,36 @@ contract('Tetzel', function(accounts) {
     });
 
   });
+
+  describe('setting crowdsale', function() {
+
+    let newCrowdsale;
+
+    beforeEach(async function() {
+      newCrowdsale = await TetzelCrowdsale.new(
+        this.token.address,
+        teamWallet,
+        charityWallet,
+        teamPortion,
+        startTime,
+        endTime,
+        rate,
+        totalTeamMemberAllocation
+      );
+    });
+
+    it('should let owner set crowdsale', async function() {
+      const preCrowdsale = await this.tetzel.crowdsale();
+      assert.equal(preCrowdsale, this.crowdsale.address);
+      await this.tetzel.setCrowdsale(newCrowdsale.address);
+      const postCrowdsale = await this.tetzel.crowdsale();
+      assert.equal(postCrowdsale, newCrowdsale.address);
+    });
+
+    it('should not let non-owner set crowdsale', async function() {
+      await expectThrow(this.tetzel.setCrowdsale(newCrowdsale.address, {from: somePerson}));
+    });
+
+  }); 
 
 });

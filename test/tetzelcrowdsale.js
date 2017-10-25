@@ -49,6 +49,7 @@ contract('TetzelCrowdsale', function(accounts) {
       totalTeamMemberAllocation
     );
     await this.token.addMinter(this.crowdsale.address);
+    await this.crowdsale.setTokenBuyer(tokenBuyer);
   });
 
   it('should be ended only after end', async function () {
@@ -115,13 +116,26 @@ contract('TetzelCrowdsale', function(accounts) {
 
       const preTeamWalletBalance = web3.eth.getBalance(teamWallet);
       const preCharityWalletBalance = web3.eth.getBalance(charityWallet);
-      await this.crowdsale.buyTokens(tokenBuyer, {value: value});
+      await this.crowdsale.buyTokens(tokenBuyer, {from: tokenBuyer, value: value});
       const postTeamWalletBalance = web3.eth.getBalance(teamWallet);
       const postCharityWalletBalance = web3.eth.getBalance(charityWallet);
 
       assert(postTeamWalletBalance.minus(preTeamWalletBalance).equals(expectedTeamDiff))
       assert(postCharityWalletBalance.minus(preCharityWalletBalance).equals(expectedCharityDiff))
 
+    });
+
+    it('should allow approved buyers to purchase tokens', async function() {
+      const isApproved = await this.crowdsale.approvedTokenBuyers(tokenBuyer);
+      assert(isApproved === true);
+      const result = await this.crowdsale.buyTokens(tokenBuyer, {from: tokenBuyer, value: value});
+      assert(result);
+    });
+
+    it('should not allow uanpproved buyers to purchase tokens', async function() {
+      const isApproved = await this.crowdsale.approvedTokenBuyers(somePerson);
+      assert(isApproved === false);
+      await expectThrow(this.crowdsale.buyTokens(somePerson, {from: somePerson, value: value}));
     });
 
   });
@@ -181,7 +195,7 @@ contract('TetzelCrowdsale', function(accounts) {
       await increaseTimeTo(this.startTime);
       await this.crowdsale.registerTeamMember(teamMember, 1);
       await this.crowdsale.buyTokens(
-        nonTeamMember, {from: nonTeamMember, value: web3.toWei(0.01, 'ether')}
+        tokenBuyer, {from: tokenBuyer, value: web3.toWei(0.01, 'ether')}
       );
     });
 
@@ -241,5 +255,37 @@ contract('TetzelCrowdsale', function(accounts) {
     });
 
   });
+
+  describe('setting approved token buyers', function() {
+
+    it('should allow owner to set approved token buyers', async function() {
+      const pre = await this.crowdsale.approvedTokenBuyers(somePerson);
+      assert(pre === false);
+      await this.crowdsale.setTokenBuyer(somePerson, {from: owner});
+      const post = await this.crowdsale.approvedTokenBuyers(somePerson);
+      assert(post === true);
+    });
+
+    it('should not allow non-owner to set approved token buyers', async function() {
+      await expectThrow(this.crowdsale.setTokenBuyer(somePerson, {from: somePerson}));
+    });
+
+  });
+
+  describe('setting token address', function () {
+
+    it('should let the owner set the token address', async function() {
+      const preTokenAddress = await this.crowdsale.token();
+      assert.equal(preTokenAddress, this.token.address);
+      await this.crowdsale.setToken('0x2d4c37144e4107622c81ff5b79842820cfbdd341', {from: owner});
+      const postTokenAddress = await this.crowdsale.token();      
+      assert.equal(postTokenAddress, '0x2d4c37144e4107622c81ff5b79842820cfbdd341');
+    });
+
+    it('should not let non-owner set the token address', async function () {
+      await expectThrow(this.crowdsale.setToken('0x2d4c37144e4107622c81ff5b79842820cfbdd341', {from: somePerson}));
+    });
+
+  })
 
 });
