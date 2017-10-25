@@ -90,23 +90,18 @@ export default class Sins extends Component {
 
   processConfessEvent(event) {
 
-    var sinText;
-    try {
-      var replacedText = event.data.replace(/^0x0+\d0+/, '');
-      if (replacedText.length % 2 === 1) {
-        replacedText = '0' + replacedText;
-      }
-      sinText = this.props.web3.toUtf8(replacedText);
-    } catch(e) {
-      sinText = 'Error: Unable to display sin';
-    }
+    const data = event.data.replace(/^0x/, '');
+    const chunks = data.match(/.{1,64}/g);
+    const payment = parseInt(chunks[0], 16);
+    const sinHexChunks = chunks.splice(3, chunks.length);
+    const sinText = sinHexChunks.map(this.props.web3.toUtf8).join('');
 
     return {
       timestamp: parseInt(event.timeStamp, 16),
       sinner: "0x" + event.topics[1].replace(/^0x0+/, ""),
-      //TODO: Figure out why the first significant byte is always junk.
+      recipient: "0x" + event.topics[2].replace(/^0x0+/, ""),
       sin: sinText,
-      payment: this.props.web3.fromWei(parseInt(event.topics[2], 16), 'ether'),
+      payment: this.props.web3.fromWei(payment, 'ether'),
     };
   }
 

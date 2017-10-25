@@ -34,7 +34,8 @@ class SinsTable extends Component {
             <Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment>
           </Grid.Column>
           <Grid.Column width={2} className='sinner-field'>{ sinObj.sinner }</Grid.Column>
-          <Grid.Column width={10} textAlign="center">{ sinObj.sin }</Grid.Column>
+          <Grid.Column width={2} className='sinner-field'>{ sinObj.recipient }</Grid.Column>
+          <Grid.Column width={8} textAlign="center">{ sinObj.sin }</Grid.Column>
           <Grid.Column width={2} textAlign="center">{ sinValue }</Grid.Column>          
         </Grid.Row>,
         <Grid.Row className='sins-table' only='mobile' key={2 * i + 1}>
@@ -48,7 +49,8 @@ class SinsTable extends Component {
               <Grid.Column width={6} textAlign="center">
                 <Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment>
               </Grid.Column>
-              <Grid.Column width={4} className='sinner-field'>{ sinObj.sinner }</Grid.Column>
+              <Grid.Column width={3} className='sinner-field'>{ sinObj.sinner }</Grid.Column>
+              <Grid.Column width={3} className='sinner-field'>{ sinObj.recipient }</Grid.Column>
               <Grid.Column width={6} textAlign="center">{ sinValue } SIN</Grid.Column>
             </Grid.Row>
           </Grid>
@@ -79,7 +81,8 @@ class SinsTable extends Component {
           <Grid.Row className='sins-table' only='tablet computer'>
             <Grid.Column textAlign="center" width={2}>Time</Grid.Column>
             <Grid.Column textAlign="center" width={2}>Sinner</Grid.Column>
-            <Grid.Column textAlign="center" width={10}>Confession</Grid.Column>
+            <Grid.Column textAlign="center" width={2}>SIN Recipient</Grid.Column>
+            <Grid.Column textAlign="center" width={8}>Confession</Grid.Column>
             <Grid.Column textAlign="center" width={2}>SIN Value</Grid.Column>
           </Grid.Row>
           { trs }
