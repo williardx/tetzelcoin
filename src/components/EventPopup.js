@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { 
-  Button, 
+import {
+  Button,
   Popup,
-  Icon, 
+  Icon,
 } from 'semantic-ui-react';
 
 export default class EventPopup extends Component {
-  
+
   state = { isOpen: true }
   timeoutLength = 1000500;
 
@@ -33,12 +33,12 @@ export default class EventPopup extends Component {
           <h2>You're invited!</h2>
           <img src='/images/Will3-Tetzel-Small.jpg' />
           <p><small>Join us for our In-Person Confessional Event on November 8th at the Convent Arts Collective in San Francisco!</small></p>
-          <Button 
-            primary 
-            size='big' 
-            target='none' 
-            href={eventbriteUrl} 
-            className='btn-cta' 
+          <Button
+            primary
+            size='big'
+            target='none'
+            href={eventbriteUrl}
+            className='btn-cta'
             content='RSVP on Eventbrite' />
         </div>
       );
@@ -47,7 +47,7 @@ export default class EventPopup extends Component {
     const btnTrigger = () => {
       return (
         <Button size='big' className='event-popup'>
-          Attend Our In-Person Confessional! 
+          Attend Our In-Person Confessional!
           <Icon name='close' onClick={ this.props.togglePopupVisibility } />
         </Button>
       );

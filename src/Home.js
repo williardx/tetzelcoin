@@ -390,8 +390,8 @@ export default class Home extends Component {
                       <Image
                         className='center-hack icons social-icons'
                         src='/images/TetzelCoin_linkedin.png'
-                      />       
-                    </a>                  
+                      />
+                    </a>
                   </Grid.Row>
                 </Grid.Column>
               </Grid.Row>

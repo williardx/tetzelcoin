@@ -259,8 +259,8 @@ button.button.event-popup:focus {
   background: #5F5F5F;
   color: #F1FAFF;
 }
-.ui.top.right.popup.transition.visible,
-.ui.popup.transition.visible {
+.ui.top.right.popup.transition.visible.event-popup,
+.ui.popup.transition.visible.event-popup {
   position: fixed !important;
   bottom: 50px !important;
   font-size: 20px !important;
@@ -271,23 +271,23 @@ button.button.event-popup:focus {
   transition: all 0.8s ease 0s;
 }
 
-.ui.top.right.popup.transition.visible div,
-.ui.popup.transition.visible div {
+.ui.top.right.popup.transition.visible.event-popup div,
+.ui.popup.transition.visible.event-popup div {
   width: 285px !important;
 }
 
 @media (max-width: 350px) {
-  .ui.top.right.popup.transition.visible div,
-  .ui.popup.transition.visible div {
+  .ui.top.right.popup.transition.visible.event-popup div,
+  .ui.popup.transition.visible.event-popup div {
     width: 265px !important;
   }
-  .ui.popup.transition.visible.event-popup {
+  .ui.popup.transition.visible.event-popup.event-popup {
     bottom: 70px !important;
   }
 }
 
-.ui.top.right.popup.transition.visible img,
-.ui.popup.transition.visible img {
+.ui.top.right.popup.transition.visible.event-popup img,
+.ui.popup.transition.visible.event-popup img {
     width: 100%;
 }
 
@@ -302,7 +302,7 @@ button.button.event-popup:focus {
   float: right;
   right: 20px !important;
 }
-.ui.popup:before {
+.ui.popup.event-popup:before {
   box-shadow: 1px 1px 0 0 #E0E0E0 !important;
 }
 
