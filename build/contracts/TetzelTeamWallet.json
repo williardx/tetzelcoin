@@ -150,10 +150,10 @@
     "3": {
       "events": {},
       "links": {},
-      "address": "0x8dd3b77dab58da86b144b23428fee8a0e528f5e4",
-      "updated_at": 1508979339035
+      "address": "0xc8fcf92450889bcc400defdd2847d40f369c4547",
+      "updated_at": 1508989625059
     }
   },
   "schema_version": "0.0.5",
-  "updated_at": 1508979339035
+  "updated_at": 1508989625059
 }
