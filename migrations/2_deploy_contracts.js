@@ -12,7 +12,7 @@ const rate = 500;
 let tetzelCoinInstance, tetzelTeamWalletInstance, tetzelCrowdsaleInstance;
 
 module.exports = function(deployer) {
-  deployer.deploy(TetzelCoin).then((instance) => {
+  deployer.deploy(TetzelCoin).then(() => {
     return deployer.deploy(TetzelTeamWallet).then(() => {
       return deployer.deploy(
         TetzelCrowdsale, 
@@ -20,7 +20,7 @@ module.exports = function(deployer) {
         TetzelTeamWallet.address,
         charityWallet,
         teamPortion,
-        0, // TODO: figure out better way to test contracts and pass in startTime / endTime
+        0,
         0,
         rate,
         totalTeamMemberAllocation
