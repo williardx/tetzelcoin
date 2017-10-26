@@ -48,7 +48,7 @@ export default class Instructions extends Component {
                 </Grid>
               </List.Item>
               <List.Item>
-                <p>Follow the instructions on MetaMask's website to create an account send Ether to it to fund it. If you don't have any Ether we recommend using Coinbase for buying Ether.</p>
+                <p>Follow the instructions on MetaMask's website to create an account and send Ether to it to fund it. If you don't have any Ether we recommend using Coinbase for buying Ether.</p>
               </List.Item>
               <List.Item>
                 <p>Think of a sin you would like to confess and how much it's worth. The amount of SIN tokens you receive is directly proportional to the amount of Ether you pay. You can designate another account as the recipient of your SIN tokens.</p>
