@@ -22,20 +22,15 @@ export default class Navbar extends Component {
 
     const mobileMenu = (visible) => {
       if (!visible) return null;
-      return ( 
+      return (
         <div className='navbar mobile'>
           <div className='mobile navbar-link-wrapper'>
             <Link className='mobile navbar-link' name='home' to='/'>
-              Home
+              About
             </Link>
           </div>
           <div className='mobile navbar-link-wrapper'>
             <Link className='mobile navbar-link' name='instructions' to='/instructions'>
-              Instructions
-            </Link>
-          </div>
-          <div className='mobile navbar-link-wrapper'>
-            <Link className='mobile navbar-link' name='confess' to='/confess'>
               Confess
             </Link>
           </div>
@@ -65,26 +60,21 @@ export default class Navbar extends Component {
           <Menu.Menu position='right'>
             <Link className='navbar-link desktop' to='/'>
               <Menu.Item className='navbar-item' name='home' >
-                Home
+                About
               </Menu.Item>
             </Link>
             <Link className='navbar-link desktop' to='/instructions'>
-              <Menu.Item className='navbar-item' name='instructions' >
-                Instructions
-              </Menu.Item>
-            </Link>
-            <Link className='navbar-link desktop' to='/confess'>
               <Menu.Item className='navbar-item' name='instructions' >
                 Confess
               </Menu.Item>
             </Link>
             <Link className='navbar-link desktop' to='/sins'>
               <Menu.Item className='navbar-item' name='instructions' >
-                Table of Sins
+                Sins
               </Menu.Item>
             </Link>
-            <Menu.Item 
-              className='navbar-link mobile hamburger' 
+            <Menu.Item
+              className='navbar-link mobile hamburger'
               onClick={ this.toggleVisibility } >
               <Icon name={ visible ? 'close' : 'content' } />
             </Menu.Item>

@@ -1,16 +1,17 @@
 .ui.container.instructions-container {
-    margin-top: 35px;
-    max-width: 420px !important;
+    margin-top: 80px;
+    max-width: 550px !important;
 }
 
 h1.ui.header.instructions-header {
     color: #86888A !important;
-    font-size: 4em !important; 
+    font-size: 4em !important;
     margin-bottom: 0 !important;
 }
 
 .confess-button-wrapper {
     text-align: center !important;
+    padding-bottom: 20px;
 }
 
 .install-metamask-item {
@@ -31,4 +32,20 @@ h1.ui.header.instructions-header {
     background-color: #86888A !important;
     font-family: 'Didact Gothic', sans-serif !important;
     font-weight: normal !important;
+    border: 1px solid #afafaf !important;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+.instructions-wrapper .ui.ordered.list p {
+  font-size: 1.33em !important;
+}
+
+.ui.ordered.list .list>.item:before,
+.ui.ordered.list>.item:before,
+ol.ui.list li:before {
+  color: #86888A !important;
+}
+
+p.nopaddingbtm {
+  padding-bottom: 0 !important;
+  text-decoration: underline;
 }

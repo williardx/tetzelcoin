@@ -1,28 +1,33 @@
 .sins-table-outer-wrapper {
-    padding-bottom: 120px;
+    padding-bottom: 80px;
 }
 
 h1.header.ui.dswallau.sins-header {
     color: #86888A !important;
-    font-size: 4em; 
+    font-size: 4em;
 }
 
 .ui.container.sins-table.below-navbar {
-    margin-top: 52px;
+    margin-top: 80px;
+    width: 80%;
 }
 
 .sinner-field {
     text-overflow: ellipsis;
-    overflow: hidden;    
+    overflow: hidden;
 }
 
 .sins-table.ui.grid.main-grid {
     border-radius: 10px;
-    border: 1px solid #86888A;
+    border: 1px solid #AFB1B4;
+    margin-top: 1em;
+}
+.ui.grid.sins-table.main-grid {
+  font-size: 18px;
 }
 
 .sins-table.row {
-    border-bottom: 1px solid #86888A;
+    border-bottom: 1px solid #AFB1B4;
 }
 
 /* Get both last computer-only and mobile-only rows in the grid */
@@ -34,11 +39,20 @@ p.sins-table {
     padding: 10px 50px 30px 50px;
     font-size: 20px;
 }
+.sins-table .ten.wide.column {
+    padding-left: 2em !important;
+}
+.tablet.only.computer.only.row.sins-table:first-child {
+    text-transform: uppercase;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-size: 20px;
+}
 
 div.sins-table.pager {
     text-align: center;
     display: block !important;
-    margin-top: 50px;    
+    margin-top: 50px;
 }
 
 div.item.sins-table.pager-item {
@@ -78,7 +92,7 @@ p.sins-table.mobile-subgrid.sin-text {
 
 
     .sins-table-outer-wrapper {
-        padding-bottom: 50px;
+        padding-bottom: 40px;
     }
 
     div.sins-table.confess-btn-wrapper {

@@ -251,7 +251,7 @@ export default class Home extends Component {
                   <Image
                     rounded
                     size='large'
-                    src='/images/TetzelCoin_PieChart.png'
+                    src='/images/TetzelCoin_PieChart2.png'
                   />
                 </Grid.Column>
               </Grid.Row>

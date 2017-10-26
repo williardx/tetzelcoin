@@ -5,7 +5,7 @@ var objLoader = require('three-obj-loader');
 
 /*
 
-This visualization is based (almost entirely) off of 
+This visualization is based (almost entirely) off of
 https://threejs.org/examples/#webgl_postprocessing_godrays. Most of the code
 here is copied wholesale from there.
 
@@ -52,7 +52,7 @@ export default class ConfessionalScene extends Component {
 				//
 
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 3000 );
-				camera.position.z = 200;
+				camera.position.z = 350;
 
 				scene = new THREE.Scene();
 
@@ -352,7 +352,7 @@ export default class ConfessionalScene extends Component {
   }
 
   initConfessionalGodRays() {
-    
+
     THREE.ShaderGodRays = {
 
       /**
@@ -627,7 +627,7 @@ export default class ConfessionalScene extends Component {
 
       }
 
-    };    
+    };
   }
 
   render() {

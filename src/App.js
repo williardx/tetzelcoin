@@ -5,7 +5,7 @@ import Instructions from './Instructions';
 import Confess from './Confess';
 import Sins from './Sins';
 import NotFound from './NotFound';
-import getWeb3 from './utils/getWeb3'
+import getWeb3 from './utils/getWeb3';
 
 import './App.css';
 

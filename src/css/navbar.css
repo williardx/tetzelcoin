@@ -3,7 +3,9 @@
     margin-bottom: 0;
     padding-right: 0 !important;
 }
-
+.right.menu {
+  padding-right: 20px;
+}
 .navbar.confessional-screen {
     width: 100%;
     height: 100px;
@@ -69,7 +71,7 @@ a.navbar-link.mobile {
 }
 
 @media screen and (max-width: 760px) {
-    
+
     a.navbar-link.mobile {
         display: block !important;
     }

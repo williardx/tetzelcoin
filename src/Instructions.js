@@ -9,6 +9,7 @@ import {
   List,
 } from 'semantic-ui-react';
 import Navbar from './components/Navbar';
+import TetzelFooter from './components/footer';
 
 import './css/dswallau.css';
 import './css/instructions.css';
@@ -22,7 +23,7 @@ export default class Instructions extends Component {
           <Container className='instructions-container'>
             <Header
               as='h1'
-              content='Instructions' 
+              content='Instructions'
               textAlign='center'
               className='dswallau instructions-header' />
             <List ordered>
@@ -42,7 +43,7 @@ export default class Instructions extends Component {
                       </a>
                     </Grid.Row>
                     <Grid.Row>
-                      <a href="https://metamask.io/" className='learn-more'>Learn More</a>
+                      <p className="nopaddingbtm"><small><a href="https://metamask.io/" className='learn-more'>Learn More</a></small></p>
                     </Grid.Row>
                   </Grid.Column>
                 </Grid>
@@ -59,11 +60,12 @@ export default class Instructions extends Component {
             </List>
             <div className='confess-button-wrapper'>
               <Link to="/confess">
-                <Button primary size='big' className='btn-cta'>Confess</Button>
+                <Button primary size='big' className='btn-dark'>Confess</Button>
               </Link>
             </div>
           </Container>
         </Navbar>
+        <TetzelFooter></TetzelFooter>
       </div>
     );
   }

@@ -5,6 +5,9 @@ import {
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+import '../css/dswallau.css';
+import '../css/terms.css';
+
 export default class TermsAndConditionsModal extends Component {
 
   constructor(props) {
@@ -18,7 +21,7 @@ export default class TermsAndConditionsModal extends Component {
 
   render() {
     return (
-      <div>
+      <div id="terms-modal">
         <Modal open={ this.state.open }>
           <Modal.Header>
             Terms and Conditions
@@ -27,8 +30,8 @@ export default class TermsAndConditionsModal extends Component {
             TODO: Insert terms and conditions here
           </Modal.Content>
           <Modal.Actions>
-            <Link to='/'><Button>Go Back</Button></Link>
-            <Button onClick={ this.close }>Accept Terms</Button>
+            <Link to='/'><Button primary size='big' className='btn-cta'>Exit</Button></Link>
+            <Button primary size='big' className='btn-dark' onClick={ this.close }>Accept Terms</Button>
           </Modal.Actions>
         </Modal>
       </div>

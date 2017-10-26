@@ -1,0 +1,47 @@
+.ui.modal>.header:not(.ui) {
+  font-family: 'DS Wallau', serif;
+  font-size: 2.2rem !important;
+  text-align: center;
+  color: #86888A;
+}
+.ui.modal>.header:not(.ui) {
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+  background: rgba(255,255,255,.75);
+}
+.ui.modal>.actions {
+  border-bottom-left-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  background: rgba(255,255,255,.75) !important;
+}
+.ui.modal>.content {
+  background: rgba(255,255,255,.75) !important;
+}
+.ui.dimmer {
+  background-color: rgba(48,48,48,.85) !important;
+}
+.ui.active.modal {
+  border-radius: 10px !important;
+  background: linear-gradient(359.45deg, #86888A 1.25%, rgba(241, 250, 255, 0.86) 99.18%) !important;
+}
+button.ui.big.primary.button.btn-dark {
+    text-transform: uppercase !important;
+    font-weight: 400 !important;
+    letter-spacing: .5px !important;
+    font-family: 'Didact Gothic', sans-serif !important;
+    transition: all 0.8s ease 0s;
+    text-decoration: none !important;
+    background: #282727 !important;
+    border-color: #4F4F4F !important;
+    color: #F1FAFF !important;
+    border-radius: 10px !important;
+    border: 1px solid #5F5F5F !important;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+    margin-left: 5px;
+}
+button.ui.big.primary.button.btn-dark:active {
+    transform: translateY(4px);
+}
+button.ui.big.primary.button.btn-dark:hover {
+    background: #4F4F4F !important;
+}

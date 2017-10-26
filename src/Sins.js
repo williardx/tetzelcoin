@@ -12,6 +12,7 @@ import Navbar from './components/Navbar';
 
 import Tetzel from '../build/contracts/Tetzel.json';
 import TetzelCrowdsale from '../build/contracts/TetzelCrowdsale.json';
+import TetzelFooter from './components/footer';
 
 import './css/dswallau.css';
 import './css/sinstable.css';
@@ -71,10 +72,10 @@ export default class Sins extends Component {
       tetzelInstance: tetzelInstance,
       tetzelAddress: tetzelInstance.address,
     });
-  }  
+  }
 
   async getSinsFromTestRPC() {
-    
+
     var sinFilter = this.props.web3.eth.filter({
       address: this.state.tetzelInstance.address,
       fromBlock: 1,
@@ -125,15 +126,12 @@ export default class Sins extends Component {
       if (sinsLoaded) {
         return (
           <div>
-            <SinsTable 
-              recentSins={ this.state.recentSins } 
+            <SinsTable
+              recentSins={ this.state.recentSins }
               sinsPerPage={ 10 } />
             <div className='sins-table confess-btn-wrapper'>
               <Link to='/confess'>
-                <Button 
-                  size='big' 
-                  primary 
-                  className='btn-cta sins-table confess-btn'>Confess Now</Button>
+                <Button primary size='big' className='btn-dark'>Confess Now</Button>
               </Link>
             </div>
           </div>
@@ -147,25 +145,28 @@ export default class Sins extends Component {
     const hideErrorMsg = this.state.errorMsg.length === 0;
 
     return(
-      <div className='sins-table-outer-wrapper'>
+      <div>
         <Navbar>
-          <Container className='sins-table below-navbar'>
-            <Header
-              as='h1'
-              content='Table of Sins' 
-              textAlign='center'
-              className='dswallau sins-header' />
-            <Message 
-              color='red' 
-              hidden={ hideErrorMsg } 
-              className='confess-sin error-message'>
-              { this.state.errorMsg }
-            </Message>
-            <p className='sins-table'>These are the sins of those who have confessed through the TetzelCoin confessional. Every sin is taken directly from the Ethereum blockchain. The sins will remain recorded on the blockchain for as long as Ethereum exists.</p>
-            <Loader active={ !sinsLoaded }>Loading...</Loader>
-            { showSinsTable(sinsLoaded) }
-          </Container>
+          <div className='sins-table-outer-wrapper'>
+            <Container className='sins-table below-navbar'>
+              <Header
+                as='h1'
+                content='Table of Sins'
+                textAlign='center'
+                className='dswallau sins-header' />
+           <Message
+           color='red'
+           hidden={ hideErrorMsg }
+           className='confess-sin error-message'>
+           { this.state.errorMsg }
+           </Message>
+              <p className='sins-table'>These are the sins of those who have confessed through the TetzelCoin confessional. Every sin is taken directly from the Ethereum blockchain. The sins will remain recorded on the blockchain for as long as Ethereum exists.</p>
+              <Loader active={ !sinsLoaded }>Loading...</Loader>
+              { showSinsTable(sinsLoaded) }
+            </Container>
+          </div>
         </Navbar>
+        <div><TetzelFooter></TetzelFooter></div>
       </div>
     )
   }

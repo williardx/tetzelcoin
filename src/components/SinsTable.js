@@ -5,7 +5,7 @@ import {
 } from 'semantic-ui-react';
 import Moment from 'react-moment';
 
-import '../css/sinstable.css'
+import '../css/sinstable.css';
 
 class SinsTable extends Component {
 
@@ -59,16 +59,16 @@ class SinsTable extends Component {
     });
 
     if (this.props.recentSins.length % this.props.sinsPerPage > 0) {
-      var numPages = Math.floor(this.props.recentSins.length / this.props.sinsPerPage) + 1;    
+      var numPages = Math.floor(this.props.recentSins.length / this.props.sinsPerPage) + 1;
     } else {
       var numPages = Math.floor(this.props.recentSins.length / this.props.sinsPerPage);
     }
-    
+
     var pagerItems = new Array(numPages).fill(undefined).map((val, i) => {
       let classes = 'sins-table pager-item';
       if (this.state.currentPage === (i + 1)) classes += ' active';
       return (
-          <List.Item 
+          <List.Item
             key={i}
             className={ classes }
             onClick={ () => this.setState({currentPage: i + 1}) }>{ i + 1 }</List.Item>
