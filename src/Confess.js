@@ -151,7 +151,7 @@ export default class Confess extends Component {
       var isSuccess = false;
       var count = 0;
 
-      while(!isSuccess && count < 9) {
+      while(!isSuccess && count < 24) {
         var txReceipt = await this.getTransactionReceipt(txHash);
         if (txReceipt !== null) {
           isSuccess = this.checkTxSuccess(txReceipt);
