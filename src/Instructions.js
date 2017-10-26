@@ -27,7 +27,7 @@ export default class Instructions extends Component {
               className='dswallau instructions-header' />
             <List ordered>
               <List.Item className='install-metamask-item'>
-                <p>To purchase SIN tokens, please install Metamask. Metamask is a Chrome extension that lets you use Ethereum from your browser.</p>
+                <p>To confess, please install MetaMask. MetaMask is a Chrome extension that lets you use Ethereum from your browser.</p>
                 <Grid columns={2} >
                   <Grid.Column width={5}>
                     <Image
@@ -48,10 +48,13 @@ export default class Instructions extends Component {
                 </Grid>
               </List.Item>
               <List.Item>
-                <p>Follow the instructions on Metamask's website to create an account and send Ether (ETH) to it.</p>
+                <p>Follow the instructions on MetaMask's website to create an account send Ether to it to fund it. If you don't have any Ether we recommend using Coinbase for buying Ether.</p>
               </List.Item>
               <List.Item>
-                <p>After you confess you will be prompted to pay for your sin through Metamask. The correct address for payment will already be filled out for you.</p>
+                <p>Think of a sin you would like to confess and how much it's worth. The amount of SIN tokens you receive is directly proportional to the amount of Ether you pay. You can designate another account as the recipient of your SIN tokens.</p>
+              </List.Item>
+              <List.Item>
+                <p>After you submit your confession you will be prompted to pay for your sin through MetaMask. The correct address for payment will already be filled out for you.</p>
               </List.Item>
             </List>
             <div className='confess-button-wrapper'>
