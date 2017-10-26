@@ -54,7 +54,7 @@ contract TetzelCrowdsale {
     // _startTime = now; // xcxc
     // _endTime = now + 60*60*24; // xcxc
 
-    // require(_startTime >= now);
+    require(_startTime >= now);
     require(_endTime >= _startTime);
     require(_rate > 0);
     require(_teamPortion <= 100);

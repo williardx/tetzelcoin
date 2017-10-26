@@ -33,7 +33,7 @@ module.exports = function(deployer) {
         return deployer.deploy(Tetzel, TetzelCrowdsale.address).then(() => {
 
           TetzelCrowdsale.deployed().then((tetzelCrowdsaleInstance) => {
-            tetzelCrowdsaleInstance.setTokenBuyers(Tetzel.address);
+            tetzelCrowdsaleInstance.setTokenBuyer(Tetzel.address);
           });
 
         });
