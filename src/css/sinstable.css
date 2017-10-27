@@ -117,3 +117,7 @@ i.icon {
 .ui.popup:before{
   box-shadow: 1px 1px 0 0 #d4d4d5;
 }
+.gray,
+span.gray {
+  color: #828282 !important;
+}

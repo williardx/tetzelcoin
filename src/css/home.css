@@ -6,8 +6,44 @@
     min-height: 700px !important;
     padding: 1em 0em !important;
 }
+.hero2 {
+  background-image: url('/images/confessional-banner-03.png') !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  min-height: 575px !important;
+  padding: 1em 0em !important;
+}
+.hero2 h1 {
+  font-size: 6em !important;
+  text-align: center !important;
+}
 
-.hero:before {
+@media only screen and (max-width: 992px) {
+  .hero2 {
+    background-image: url('/images/confessional-banner-04.png') !important;
+  }
+  .hero2 h1 {
+    font-size: 5em !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .hero2 {
+    background-image: url('/images/confessional-banner-02.png') !important;
+  }
+  .hero2 h1 {
+    font-size: 3.5em !important;
+    text-align: left !important;
+  }
+  .hero2 button.ui.big.primary.button.btn-dark {
+    float: left !important;
+    font-size: 1.1rem;
+  }
+}
+
+.hero:before,
+.hero2:before  {
     content: '';
 	position: absolute;
 	top: 0;

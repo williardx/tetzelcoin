@@ -118,7 +118,18 @@ class SinsTable extends Component {
             <Grid.Column textAlign="center" width={2}>Time</Grid.Column>
             <Grid.Column textAlign="center" width={2}>Sinner</Grid.Column>
             <Grid.Column textAlign="center" width={8}>Confession</Grid.Column>
-            <Grid.Column textAlign="center" width={2}>SIN Recipient</Grid.Column>
+            <Grid.Column textAlign="center" width={2}>
+              <Popup
+                trigger={
+                  <span>SIN Recipient</span>
+                  }
+                on='hover'
+                position='top center'
+                hoverable >
+                <span className="gray"><strong>What is this?</strong><br />
+                You can confess and send your SIN tokens to someone else.</span>
+              </Popup>
+            </Grid.Column>
             <Grid.Column textAlign="center" width={2}>SIN Value</Grid.Column>
           </Grid.Row>
           { trs }
