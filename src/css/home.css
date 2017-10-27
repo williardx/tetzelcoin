@@ -360,6 +360,11 @@ button.button.event-popup > i {
     .ui.big.primary.button.btn-cta {
         font-size: 16px !important;
     }
+
+    button.ui.big.primary.button.btn-dark {
+        font-size: 16px !important;
+    }
+
 }
 
 .home.important-note {

@@ -286,3 +286,17 @@ p.sin-ownership {
 .confess-sin.message.error-message {
     margin-top: 0;
 }
+
+div.terms-and-conditions.actions-buttons {
+    width: 100%;
+}
+
+div.actions.terms-and-conditions {
+    text-align: center !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .ui.modal>.actions.terms-and-conditions {
+        padding: 1rem 1rem !important;
+    }
+}
