@@ -244,7 +244,7 @@ export default class Home extends Component {
                     <span className='home important-note'>Important Note</span>: SIN tokens have no value and we have no plans to try to make them valuable. This is a conceptual art piece. Confessing and buying SIN tokens is how you participate in the art.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    Token sale terms and conditions coming soon.
+                    <a href="https://drive.google.com/open?id=0B7t2SoXRiUoXUXU3NTRHSXpsNTA">View token sale terms and conditions.</a>
                   </p>
                 </Grid.Column>
                 <Grid.Column floated='right' width={6}>
