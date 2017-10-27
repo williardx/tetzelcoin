@@ -37,56 +37,37 @@ class SinsTable extends Component {
 
       return ([
         <Grid.Row className='sins-table' only='tablet computer' key={2 * i}>
-          <Grid.Column width={2} textAlign="center">
-            <Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment>
+          <Grid.Column width={3} className='sinner-field'>
+            <p><Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment><br/>
+            SINNER:<span className="courier">{ sinObj.sinner }</span><br/>
+            RECIPIENT:<span className="courier">{ sinObj.recipient }</span></p>
           </Grid.Column>
-          <Grid.Column width={2} className='sinner-field'>{ sinObj.sinner }</Grid.Column>
-          <Grid.Column width={8}>
-          <Popup
-            trigger={
-                <span>
-                  { sinObj.sin }
-                </span>
-              }
-            on='hover'
-            className='tweet-pop'
-            position='top center'
-            hoverable >
-            <a target="_blank" href={tweet}><Icon className="text-center" name="twitter" size="large" /></a>
-          </Popup>
+          <Grid.Column width={11}>
+            <p className='confession-sin'>{ sinObj.sin }</p>
           </Grid.Column>
-          <Grid.Column width={2} className='sinner-field'>{ sinObj.recipient }</Grid.Column>
-          <Grid.Column width={2} textAlign="center">{ sinValue }</Grid.Column>
+          <Grid.Column width={2} textAlign="right">
+            <p className='sin-value'>{ sinValue } SIN </p>
+            <a className="pull-right" target="_blank" href={tweet}><Icon className="lt-gray" name="twitter" size="large" /></a>
+          </Grid.Column>
         </Grid.Row>,
         <Grid.Row className='sins-table' only='mobile' key={2 * i + 1}>
           <Grid className='sins-table mobile-subgrid'>
-            <Grid.Row textAlign='center' style={{padding:0}}>
-              <Grid.Column width={16} textAlign="center">
-                <p className="sins-table" style={{padding:0}}><Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment>...</p>
-              </Grid.Column>
-            </Grid.Row>
             <Grid.Row textAlign='justified'>
               <Grid.Column width={16}>
                 <p className='sins-table mobile-subgrid sin-text'>
-                  CONFESSION: &nbsp; { sinObj.sin }
+                  { sinObj.sin }
                 </p>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row style={{padding:0}}>
-              <Grid.Column width={8} className='sinner-field'>
-                <p className="sins-table" style={{padding:0}}>SINNER: &nbsp; { sinObj.sinner }</p>
+              <Grid.Column width={11} className='sinner-field'>
+                <p className="sins-table" style={{padding:0}}><Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment></p>
+                <p className="sins-table" style={{padding:0}}>SINNER:<span className="courier">{ sinObj.sinner }</span></p>
+                <p className="sins-table" style={{padding:0}}>RECIPIENT:<span className="courier">{ sinObj.recipient }</span></p>
               </Grid.Column>
-              <Grid.Column width={8} className='sinner-field'>
-                <p className="sins-table" style={{padding:0}}>RECIPIENT: &nbsp; { sinObj.recipient }</p>
-              </Grid.Column>
-            </Grid.Row>
-
-            <Grid.Row>
-              <Grid.Column width={14} textAlign="left">
-                <p className="sins-table" style={{padding:0}}>SIN VALUE: { sinValue } SIN</p>
-              </Grid.Column>
-              <Grid.Column width={2}>
-                <a target="_blank" href={tweet}><Icon className="text-center" name="twitter" size="large" /></a>
+              <Grid.Column width={5} textAlign="right">
+                <p className="sins-table sins" style={{padding:'0px 0px 8px 0px'}}>{ sinValue } SIN</p>
+                <a target="_blank" href={tweet}><Icon className="lt-gray" name="twitter" size="large" /></a>
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -114,24 +95,6 @@ class SinsTable extends Component {
     return(
       <div>
         <Grid className='sins-table main-grid'>
-          <Grid.Row className='sins-table' only='tablet computer'>
-            <Grid.Column textAlign="center" width={2}>Time</Grid.Column>
-            <Grid.Column textAlign="center" width={2}>Sinner</Grid.Column>
-            <Grid.Column textAlign="center" width={8}>Confession</Grid.Column>
-            <Grid.Column textAlign="center" width={2}>
-              <Popup
-                trigger={
-                  <span>SIN Recipient</span>
-                  }
-                on='hover'
-                position='top center'
-                hoverable >
-                <span className="gray"><strong>What is this?</strong><br />
-                You can confess and send your SIN tokens to someone else.</span>
-              </Popup>
-            </Grid.Column>
-            <Grid.Column textAlign="center" width={2}>SIN Value</Grid.Column>
-          </Grid.Row>
           { trs }
         </Grid>
         <List className='sins-table pager' horizontal>

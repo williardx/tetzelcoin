@@ -13,7 +13,8 @@ h1.header.ui.dswallau.sins-header {
 }
 
 .sinner-field,
-.sinner-field .sins-table {
+.sinner-field .sins-table,
+.sinner-field p {
     text-overflow: ellipsis;
     overflow: hidden;
 }
@@ -23,7 +24,6 @@ h1.header.ui.dswallau.sins-header {
 
 .sins-table.ui.grid.main-grid {
     border-radius: 10px;
-    border: 1px solid #AFB1B4;
     margin-top: 1em;
 }
 .ui.grid.sins-table.main-grid {
@@ -31,7 +31,7 @@ h1.header.ui.dswallau.sins-header {
 }
 
 .sins-table.row {
-    border-bottom: 1px solid #AFB1B4;
+    border-bottom: 1px solid #E5E5E5;
 }
 
 /* Get both last computer-only and mobile-only rows in the grid */
@@ -46,12 +46,6 @@ p.sins-table {
 .sins-table .eight.wide.column {
   padding-left: 10px !important;
   padding-right: 10px !important;
-}
-.tablet.only.computer.only.row.sins-table:first-child {
-    text-transform: uppercase;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    font-size: 20px;
 }
 
 div.sins-table.pager {
@@ -92,17 +86,25 @@ p.sins-table.mobile-subgrid.sin-text {
     }
 
     p.sins-table {
-        font-size: 16px !important;
+        font-size: 17px !important;
         padding: 30px 0px;
     }
 
-
+    p.sins-table.sins {
+      font-size: 18px !important;
+    }
     .sins-table-outer-wrapper {
         padding-bottom: 40px;
     }
 
     div.sins-table.confess-btn-wrapper {
         margin-top: 50px;
+    }
+    .sinner-field p.sins-table {
+      font-size: 12px !important;
+    }
+    .mobile.only.row.sins-table {
+      padding-bottom: 2rem;
     }
 
 }
@@ -120,4 +122,27 @@ i.icon {
 .gray,
 span.gray {
   color: #828282 !important;
+}
+.lt-gray {
+  color: #E5E5E5 !important;
+}
+.courier {
+  font-family: 'Courier' !important;
+  padding-left: 5px;
+}
+.sinner-field p {
+  font-size: 16px !important;
+  line-height: 1.5em;
+  letter-spacing: .3px;
+}
+p.confession-sin {
+  font-size: 20px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+p.sin-value {
+  font-size: 22px !important;
+}
+.pull-right {
+  float: right;
 }
