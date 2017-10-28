@@ -41,6 +41,11 @@
     font-size: 1.1rem;
   }
 }
+@media only screen and (min-width: 1500px) {
+  .hero2 {
+    min-height: 780px !important;
+  }
+}
 
 .hero:before,
 .hero2:before  {

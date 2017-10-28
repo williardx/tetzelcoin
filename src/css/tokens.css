@@ -1,0 +1,14 @@
+.tokens-wrapper p {
+  font-size: 1.33em !important;
+}
+.tokens-wrapper p.text-center {
+  text-align: center;
+}
+.tokens-wrapper p span.courier {
+  font-family: 'Courier' !important;
+  font-size: .85em !important;
+}
+.ui.container.tokens-container {
+  margin-top: 80px;
+  max-width: 550px !important;
+}
