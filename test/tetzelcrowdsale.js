@@ -25,6 +25,8 @@ contract('TetzelCrowdsale', function(accounts) {
   const nonTeamMember = accounts[4];
   const tokenBuyer = accounts[5];
   const somePerson = accounts[6];
+  const teamMemberTwo = accounts[7];
+  const teamMemberThree = accounts[8];
 
 
   before(async function() {
@@ -215,18 +217,34 @@ contract('TetzelCrowdsale', function(accounts) {
     });
 
     it('should buy tokens for team member', async function() {
+      await this.crowdsale.registerTeamMember(teamMemberTwo, 5);
+      await this.crowdsale.registerTeamMember(teamMemberThree, 9);
       await increaseTimeTo(this.afterEndTime);
-      const preTeamMemberBalance = await this.token.balanceOf(teamMember);
-      const teamMemberPercentage = await this.crowdsale.teamMemberTokenAllocation(teamMember);
-      const expectedTokenAmount = await this.crowdsale.weiRaised() * rate * teamMemberPercentage / 100;
-      await this.crowdsale.buyTeamTokens({from: teamMember, value: 1});
-      const postTeamMemberBalance = await this.token.balanceOf(teamMember);
-      const teamMemberReceivedTokens = postTeamMemberBalance.minus(preTeamMemberBalance).equals(expectedTokenAmount)
-      assert(teamMemberReceivedTokens);
+
+      const teamMembers = [teamMember, teamMemberTwo, teamMemberThree];
+
+      for (var i = 0; i < teamMembers.length; i++) {
+        let preTeamMemberBalance = await this.token.balanceOf(teamMembers[i]);
+        let teamMemberPercentage = await this.crowdsale.teamMemberTokenAllocation(teamMembers[i]);
+        let expectedTokenAmount = await this.crowdsale.weiRaised() * rate * teamMemberPercentage / 100;
+        await this.crowdsale.buyTeamTokens({from: teamMembers[i], value: 1});
+        let postTeamMemberBalance = await this.token.balanceOf(teamMembers[i]);
+        let teamMemberReceivedTokens = postTeamMemberBalance.minus(preTeamMemberBalance).equals(expectedTokenAmount)
+        assert(teamMemberReceivedTokens);        
+      }
     });
 
-    it('should log the purchase', function() {
-      //TODO
+    it('should log the purchase', async function() {
+      await increaseTimeTo(this.afterEndTime);
+      const teamMemberPercentage = await this.crowdsale.teamMemberTokenAllocation(teamMember);
+      const {logs} = await this.crowdsale.buyTeamTokens({from: teamMember, value: 1});
+      const expectedTokenAmount = await this.crowdsale.weiRaised() * rate * teamMemberPercentage / 100;
+      const event = logs.find(e => e.event === 'LogTokenPurchase');
+      
+      assert(event);
+      assert.equal(event.args.purchaser, teamMember);
+      assert.equal(event.args.beneficiary, teamMember);
+      assert(web3.toBigNumber(event.args.amount).equals(expectedTokenAmount));
     });
 
     it('should send all money to charity', async function() {
