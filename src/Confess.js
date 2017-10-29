@@ -31,7 +31,7 @@ export default class Confess extends Component {
       sinValueUSD: 0,
       sinValueETH: 0,
       sinRate: 500,
-      sinRecipient: 'Loading...',
+      sinRecipient: '',
       testSinValues: [0, 0, 0],
       ethSpotPrice: null,
       pending: false,
@@ -53,8 +53,10 @@ export default class Confess extends Component {
 
   async fetchAccount() {
 
-    const errorMsg = 'We couldn\`t find your account.' + 
-                     'Please check MetaMask or your Web3 provider.';
+    const errorMsg = 'We couldn\'t find an Ethereum account. ' + 
+                     'Please check MetaMask or your Web3 provider. ' +
+                     'You can still view the confessional but will not ' +
+                     'be able to confess.';
 
     try {
       var accounts = await this._getAccountsPromise();
@@ -62,7 +64,7 @@ export default class Confess extends Component {
       this.setState({errorMsg: errorMsg});
     }
     
-    if (!accounts) {
+    if (accounts.length === 0) {
       this.setState({errorMsg: errorMsg});
     } else {
       // Initial SIN recipient is the current account by default
