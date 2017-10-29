@@ -4,7 +4,7 @@ const Tetzel = artifacts.require("./Tetzel.sol");
 const TetzelTeamWallet = artifacts.require("./TetzelTeamWallet.sol");
 
 // Data for TetzelCrowdsale
-const charityWallet = '0x8b2448602f53608F86cf2c31D60eb3142a1596d4';
+const charityWallet = '0xB21A66754BBca5fb116e1809e6bd8588b7f05c10';
 const teamPortion = 15;
 const totalTeamMemberAllocation = 15;
 const rate = 500;
