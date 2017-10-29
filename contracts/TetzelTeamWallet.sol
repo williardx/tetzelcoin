@@ -5,7 +5,7 @@ import 'zeppelin-solidity/contracts/math/SafeMath.sol';
 contract TetzelTeamWallet {
     using SafeMath for uint256;
 
-    address private owner;
+    address public owner;
     mapping(address => uint256) public teamMemberShares;
     uint256 public totalShares;
     uint256 public totalReleased;
