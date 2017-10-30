@@ -29,7 +29,7 @@ export default class HomeLaunch extends Component {
 
   render() {
 
-    const launchDate = Math.floor(new Date(2017, 9, 31, 12).getTime() / 1000);
+    const endTime = 1514793600;
     const eventPopup = this.state.popupVisible ? <EventPopup togglePopupVisibility={ () => this.setState({popupVisible: false}) } /> : null;
 
     return (
@@ -183,11 +183,11 @@ export default class HomeLaunch extends Component {
 
         <Segment className='dark-gray-background' style={{ padding: '8% 0em' }} vertical>
           <Container text style={{ textAlign: 'center' }}>
-            <Header as='h3' className='dswallau' style={{ fontSize: '3em', paddingBottom: '0' }}>Confession Begins</Header>
+            <Header as='h3' className='dswallau' style={{ fontSize: '3em', paddingBottom: '0' }}>Confession Ends</Header>
             <p style={{ fontSize: '1.33em', marginBottom: '2em' }}>
-              October 31, 2017, 12 PM PST
+              January 1, 2018, 12 AM PST
             </p>
-            <CountdownTimer targetTime={launchDate} />
+            <CountdownTimer targetTime={endTime} />
           </Container>
         </Segment>
 
@@ -213,7 +213,7 @@ export default class HomeLaunch extends Component {
                     <span className='home important-note'>Important Note</span>: SIN tokens have no value and we have no plans to try to make them valuable. This is a conceptual art piece. Confessing and buying SIN tokens is how you participate in the art.
                   </p>
                   <p style={{ fontSize: '1.33em' }}>
-                    Token sale terms and conditions coming soon.
+                    <a href="https://drive.google.com/open?id=0B7t2SoXRiUoXUXU3NTRHSXpsNTA">View token sale terms and conditions.</a>
                   </p>
                 </Grid.Column>
                 <Grid.Column floated='right' width={6}>
