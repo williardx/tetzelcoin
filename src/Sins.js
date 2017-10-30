@@ -109,7 +109,7 @@ export default class Sins extends Component {
   async getSinsFromEtherscan(fromBlock, toBlock) {
     if (typeof toBlock === 'undefined') toBlock = 'latest';
     if (typeof fromBlock === 'undefined') fromBlock = 1800000;
-    let url = `https://etherscan.io/api?module=logs&action=getLogs&fromBlock=${fromBlock}&toBlock=${toBlock}&address=${this.state.tetzelAddress}`;
+    let url = `https://api.etherscan.io/api?module=logs&action=getLogs&fromBlock=${fromBlock}&toBlock=${toBlock}&address=${this.state.tetzelAddress}`;
     let logs = await fetch(url);
     let data = await logs.json();
     let newSins = data.result.map(this.processConfessEvent.bind(this));
