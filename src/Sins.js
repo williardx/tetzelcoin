@@ -130,7 +130,7 @@ export default class Sins extends Component {
               recentSins={ this.state.recentSins }
               sinsPerPage={ 10 } />
             <div className='sins-table confess-btn-wrapper'>
-              <Link to='/confess'>
+              <Link to='/instructions'>
                 <Button primary size='big' className='btn-dark'>Confess Now</Button>
               </Link>
             </div>
@@ -166,7 +166,7 @@ export default class Sins extends Component {
             </Container>
           </div>
         </Navbar>
-        <div><TetzelFooter></TetzelFooter></div>
+        <TetzelFooter />
       </div>
     )
   }
