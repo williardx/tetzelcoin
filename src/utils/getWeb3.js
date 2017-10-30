@@ -18,7 +18,7 @@ let getWeb3 = new Promise(function(resolve, reject) {
       resolve(results);
     } else {
       // Fallback to infura if no web3 injection.
-      var provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/');
+      var provider = new Web3.providers.HttpProvider('https://mainnet.infura.io/');
       web3 = new Web3(provider);
 
       results = {

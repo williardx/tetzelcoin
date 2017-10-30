@@ -36,7 +36,7 @@ export default class Sins extends Component {
         // TODO: Figure out why filter isn't working with Metamask and testnet.
         // For now we're pulling sins from Etherscan instead when we're
         // on testnet.
-        if (this.props.web3.version.network === '3') { // Ropsten
+        if (this.props.web3.version.network === '1') { // mainnet
           await this.getSinsFromEtherscan();
         } else {
           await this.getSinsFromTestRPC();
@@ -109,7 +109,7 @@ export default class Sins extends Component {
   async getSinsFromEtherscan(fromBlock, toBlock) {
     if (typeof toBlock === 'undefined') toBlock = 'latest';
     if (typeof fromBlock === 'undefined') fromBlock = 1800000;
-    let url = `https://ropsten.etherscan.io/api?module=logs&action=getLogs&fromBlock=${fromBlock}&toBlock=${toBlock}&address=${this.state.tetzelAddress}`;
+    let url = `https://etherscan.io/api?module=logs&action=getLogs&fromBlock=${fromBlock}&toBlock=${toBlock}&address=${this.state.tetzelAddress}`;
     let logs = await fetch(url);
     let data = await logs.json();
     let newSins = data.result.map(this.processConfessEvent.bind(this));
