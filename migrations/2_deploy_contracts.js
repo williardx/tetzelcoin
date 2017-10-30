@@ -20,8 +20,8 @@ module.exports = function(deployer) {
         TetzelTeamWallet.address,
         charityWallet,
         teamPortion,
-        0,
-        0,
+        1509476400,
+        1514793600,
         rate,
         totalTeamMemberAllocation
       ).then(() => {
