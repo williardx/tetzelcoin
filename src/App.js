@@ -44,7 +44,7 @@ export default class App extends Component {
           <Route exact path="/home-launch" render={ () => <HomeLaunch mailchimp={this.state.mailchimp} /> } />
           <Route exact path="/confess" component={ () =>  <Confess web3={this.state.web3} /> } />
           <Route exact path="/sins" component={ () => <Sins web3={this.state.web3} /> } />
-          <Route exact path="/tokens" component={ Tokens } />
+          <Route exact path="/tokens" component={ () => <Tokens web3={this.state.web3} /> } />
           <Route component={ NotFound } />
         </Switch>
       </main>

@@ -4,11 +4,29 @@
 .tokens-wrapper p.text-center {
   text-align: center;
 }
-.tokens-wrapper p span.courier {
+
+.tokens-wrapper span.courier {
   font-family: 'Courier' !important;
-  font-size: .85em !important;
+  padding-left: 0;
+}
+.tokens-wrapper .tokens-address {
+    white-space: -moz-pre-wrap;
+    white-space: -hp-pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: pre-wrap;
+    white-space: pre-line;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.tokens-wrapper .tokens-instructions {
+  margin: 50px 0px;
 }
 .ui.container.tokens-container {
+  padding: 0px 15px;
+  margin-left: auto !important;
+  margin-right: auto !important;
   margin-top: 80px;
   max-width: 550px !important;
+  min-height: 560px;
 }
