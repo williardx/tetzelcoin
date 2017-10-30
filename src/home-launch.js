@@ -51,7 +51,7 @@ export default class HomeLaunch extends Component {
                   style={{ marginBottom: 0, marginTop: '1em', color: '#86888A' }}
                 />
               <br /><br />
-              <Link to="/confess"><Button primary size='big' className='btn-dark'>Confess</Button></Link>
+              <Link to="/instructions"><Button primary size='big' className='btn-dark'>Confess</Button></Link>
 
               </Grid.Column>
             </Grid.Row>
