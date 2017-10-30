@@ -42,7 +42,7 @@ export default class Navbar extends Component {
           </div>
           <div className='mobile navbar-link-wrapper'>
             <Link className='mobile navbar-link' name='instructions' to='/instructions'>
-              Confess
+              <Button primary size='big' className='btn-dark'>Confess</Button>
             </Link>
           </div>
         </div>

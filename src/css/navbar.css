@@ -3,15 +3,25 @@
     margin-bottom: 0;
     padding-right: 0 !important;
 }
+.ui.menu:not(.vertical) .item>.button {
+    position: relative;
+    top: 0;
+    margin: -.5em 0;
+    padding-bottom: .69571429em !important;
+    padding-top: .68571429em !important;
+    font-size: .95em !important;
+    padding-left: 1.3em !important;
+    padding-right: 1.3em !important;
+}
 .right.menu {
   padding-right: 20px;
 }
 .navbar.confessional-screen {
-    width: 100%;
-    height: 100px;
-    position: absolute;
+    min-width: 100% !important;
+    height: 100px !important;
+    position: absolute !important;
     z-index: -1;
-    background-image: url(/images/TetzelCoin_Background-Footer.png) !important;
+    background-image: url(/images/TetzelCoin_Background-small.png) !important;
     background-position: center !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
@@ -81,13 +91,25 @@ a.navbar-link.mobile {
     }
 
 }
-
+a.item.navbar-link.mobile.hamburger {
+    margin-right: -5px;
+    background: transparent !important;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.1);
+    font-size: 1.8em;
+}
 .mobile.navbar {
     text-align: left;
+    padding: 1em;
+    border-bottom: 1px solid #cccccc;
 }
-
+a.navbar-link.mobile {
+    font-size: 1.5em;
+}
+a.navbar-link.mobile button.ui.big.primary.button.btn-dark {
+  margin: 0 !important;
+}
 .mobile.navbar-link-wrapper {
-    padding: 40px 20px 20px 20px;
+    padding: 1.5em;
 }
 
 .mobile.navbar-link {

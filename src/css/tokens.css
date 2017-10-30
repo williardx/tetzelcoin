@@ -30,3 +30,26 @@
   max-width: 550px !important;
   min-height: 560px;
 }
+.tokens-instructions .ui.center.aligned.header,
+.tokens-instructions .ui.centered.header,
+.tokens-instructions a.ui.centered.header {
+  text-align: center;
+  font-weight: lighter;
+  font-size: 20px !important;
+  color: #828282 !important;
+}
+.tokens-container td {
+  font-size: 18px !important;
+  color: #828282 !important;
+  font-weight: normal !important;
+}
+@media (max-width: 767px) {
+  .ui.table:not(.unstackable) tr {
+    padding-top: 0px !important;
+    padding-bottom: .5em !important;
+  }
+  .ui.definition.table tr td.definition,
+  .ui.definition.table tr td:first-child:not(.ignored) {
+    padding-top: .5em !important;
+  }
+}

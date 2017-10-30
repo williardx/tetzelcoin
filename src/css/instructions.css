@@ -13,7 +13,10 @@ h1.ui.header.instructions-header {
     text-align: center !important;
     padding-bottom: 20px;
 }
-
+.ui.container.instructions-container {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 .install-metamask-item {
     margin-bottom: 30px !important;
 }
@@ -36,7 +39,7 @@ h1.ui.header.instructions-header {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
 }
 .instructions-wrapper .ui.ordered.list p {
-  font-size: 1.33em !important;
+  font-size: 20px !important;
 }
 
 .ui.ordered.list .list>.item:before,
