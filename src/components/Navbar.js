@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
+  Button,
   Header,
   Icon,
   Menu,
@@ -26,17 +27,22 @@ export default class Navbar extends Component {
         <div className='navbar mobile'>
           <div className='mobile navbar-link-wrapper'>
             <Link className='mobile navbar-link' name='home' to='/'>
-              About
-            </Link>
-          </div>
-          <div className='mobile navbar-link-wrapper'>
-            <Link className='mobile navbar-link' name='instructions' to='/instructions'>
-              Confess
+              Home
             </Link>
           </div>
           <div className='mobile navbar-link-wrapper'>
             <Link className='mobile navbar-link' name='sins' to='/sins'>
               Sins
+            </Link>
+          </div>
+          <div className='mobile navbar-link-wrapper'>
+            <Link className='mobile navbar-link' name='instructions' to='/tokens'>
+              Tokens
+            </Link>
+          </div>
+          <div className='mobile navbar-link-wrapper'>
+            <Link className='mobile navbar-link' name='instructions' to='/instructions'>
+              Confess
             </Link>
           </div>
         </div>
@@ -60,17 +66,22 @@ export default class Navbar extends Component {
           <Menu.Menu position='right'>
             <Link className='navbar-link desktop' to='/'>
               <Menu.Item className='navbar-item' name='home' >
-                About
-              </Menu.Item>
-            </Link>
-            <Link className='navbar-link desktop' to='/instructions'>
-              <Menu.Item className='navbar-item' name='instructions' >
-                Confess
+                Home
               </Menu.Item>
             </Link>
             <Link className='navbar-link desktop' to='/sins'>
               <Menu.Item className='navbar-item' name='instructions' >
                 Sins
+              </Menu.Item>
+            </Link>
+            <Link className='navbar-link desktop' to='/tokens'>
+              <Menu.Item className='navbar-item' name='instructions' >
+                Tokens
+              </Menu.Item>
+            </Link>
+            <Link className='navbar-link desktop' to='/instructions'>
+              <Menu.Item className='navbar-item btn-dark' name='instructions' >
+                <Button primary size='big' className='btn-dark'>Confess</Button>
               </Menu.Item>
             </Link>
             <Menu.Item
