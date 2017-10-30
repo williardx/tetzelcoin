@@ -18,8 +18,6 @@ contract('Tetzel', function(accounts) {
   const totalTeamMemberAllocation = 15;
   const value = web3.toWei(1, 'ether');
   const rate = 500;
-  const startTime = latestTime();
-  const endTime = startTime + duration.weeks(1);
 
   const sinRecipient = accounts[3];
   const sinner = accounts[4];
@@ -32,6 +30,8 @@ contract('Tetzel', function(accounts) {
   });
 
   beforeEach(async function() {
+    const startTime = latestTime() + duration.weeks(1);
+    const endTime = startTime + duration.weeks(1);
     this.token = await TetzelCoin.new();
     this.crowdsale = await TetzelCrowdsale.new(
       this.token.address,
@@ -46,6 +46,7 @@ contract('Tetzel', function(accounts) {
     this.tetzel = await Tetzel.new(this.crowdsale.address);
     await this.token.addMinter(this.crowdsale.address);
     await this.crowdsale.setTokenBuyer(this.tetzel.address);
+    await increaseTimeTo(startTime);
   });
 
   describe('confessing', function() {
@@ -85,13 +86,15 @@ contract('Tetzel', function(accounts) {
     let newCrowdsale;
 
     beforeEach(async function() {
+      const newStartTime = latestTime() + duration.weeks(1);
+      const newEndTime = newStartTime + duration.weeks(1);
       newCrowdsale = await TetzelCrowdsale.new(
         this.token.address,
         teamWallet,
         charityWallet,
         teamPortion,
-        startTime,
-        endTime,
+        newStartTime,
+        newEndTime,
         rate,
         totalTeamMemberAllocation
       );

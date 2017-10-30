@@ -51,9 +51,6 @@ contract TetzelCrowdsale {
     uint256 _totalTeamMemberAllocation
   ) {
 
-    // _startTime = now; // xcxc
-    // _endTime = now + 60*60*24; // xcxc
-
     require(_startTime >= now);
     require(_endTime >= _startTime);
     require(_rate > 0);
