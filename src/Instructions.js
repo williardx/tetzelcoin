@@ -57,6 +57,9 @@ export default class Instructions extends Component {
               <List.Item>
                 <p>After you submit your confession you will be prompted to pay for your sin through MetaMask. The correct address for payment will already be filled out for you.</p>
               </List.Item>
+              <List.Item>
+                <p>To receive updates on tax deductions, <Link to="/taxes">sign up here</Link>.</p>
+              </List.Item>
             </List>
             <div className='confess-button-wrapper'>
               <Link to="/confess">

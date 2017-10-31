@@ -63,6 +63,7 @@
     "react-dom": "^15.4.2",
     "react-moment": "^0.6.0",
     "react-router-dom": "^4.1.2",
+    "react-wufoo-embed": "^1.0.0",
     "semantic-ui-css": "^2.2.11",
     "semantic-ui-react": "^0.71.0",
     "three": "^0.86.0",

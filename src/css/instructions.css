@@ -52,3 +52,12 @@ p.nopaddingbtm {
   padding-bottom: 0 !important;
   text-decoration: underline;
 }
+
+body#public {
+  font-family: 'Didact Gothic', sans-serif !important;
+  font-size: 18px;
+}
+input#Field2,
+input#Field3 {
+  width: 100%;
+}

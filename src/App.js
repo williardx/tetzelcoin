@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import TaxForm from './TaxForm';
 import Home from './Home';
 import HomeLaunch from './home-launch';
 import Instructions from './Instructions';
@@ -41,6 +42,7 @@ export default class App extends Component {
         <Switch>
           <Route exact path="/" render={ () => <HomeLaunch mailchimp={this.state.mailchimp} /> } />
           <Route exact path="/instructions" component={ Instructions } />
+          <Route exact path="/taxes" component={ TaxForm } />
           <Route exact path="/confess" component={ () =>  <Confess web3={this.state.web3} /> } />
           <Route exact path="/sins" component={ () => <Sins web3={this.state.web3} /> } />
           <Route exact path="/tokens" component={ () => <Tokens web3={this.state.web3} /> } />
