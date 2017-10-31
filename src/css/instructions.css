@@ -61,3 +61,6 @@ input#Field2,
 input#Field3 {
   width: 100%;
 }
+.embed .confirm .logo-container {
+  display: none !important;
+}

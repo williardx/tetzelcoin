@@ -33,7 +33,7 @@ class SinsTable extends Component {
 
     var trs = this.state.reversedSins.slice(startIndex, endIndex).map((sinObj, i) => {
       var sinValue = (sinObj.payment * 500).toFixed(2);
-      var tweet = `https://twitter.com/home?status=${ sinObj.sin }`;
+      var tweet = `https://twitter.com/home?status=${ sinObj.sin } tetzelcoin.com`;
 
       return ([
         <Grid.Row className='sins-table' only='tablet computer' key={2 * i}>
