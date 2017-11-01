@@ -38,8 +38,7 @@ class SinsTable extends Component {
       return ([
         <Grid.Row className='sins-table' only='tablet computer' key={2 * i}>
           <Grid.Column width={3} className='sinner-field'>
-            <p><Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment><br/>
-            SINNER:<span className="courier">{ sinObj.sinner }</span><br/>
+            <p>SINNER:<span className="courier">{ sinObj.sinner }</span><br/>
             RECIPIENT:<span className="courier">{ sinObj.recipient }</span></p>
           </Grid.Column>
           <Grid.Column width={11}>
@@ -61,7 +60,6 @@ class SinsTable extends Component {
             </Grid.Row>
             <Grid.Row style={{padding:0}}>
               <Grid.Column width={11} className='sinner-field'>
-                <p className="sins-table" style={{padding:0}}><Moment fromNow={true} unix={true}>{ sinObj.timestamp }</Moment></p>
                 <p className="sins-table" style={{padding:0}}>SINNER:<span className="courier">{ sinObj.sinner }</span></p>
                 <p className="sins-table" style={{padding:0}}>RECIPIENT:<span className="courier">{ sinObj.recipient }</span></p>
               </Grid.Column>
