@@ -47,7 +47,7 @@ export default class Confess extends Component {
         await this.fetchEtherPrice();        
       } catch(e) {
         this.setState({errorMsg: e.message});
-      }      
+      }
     }
   }
 
@@ -119,7 +119,7 @@ export default class Confess extends Component {
 
   async purchase() {
 
-    var sinValue = parseFloat(this.state.sinValueETH);
+    var sinValue = parseFloat(parseFloat(this.state.sinValueETH).toFixed(8));
 
     var isValidSin = this.state.sinText.length > 0;
     var isValidPayment = typeof sinValue === 'number' && sinValue > 0;
