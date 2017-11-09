@@ -23,7 +23,7 @@ export default class ConfessSin extends Component {
           textAlign='center'
           className='dswallau confess-header gradient-text' 
         />
-        <p className='confess'>Write down your sin in the box below. Your sin will be displayed in the Table of Sins. Bear in mind that Ethereum will charge you more for longer text.</p>
+        <p className='confess'>Write down your sin in the box below. Your sin will be permanently recorded in the blockchain and displayed in the Table of Sins. Bear in mind that Ethereum will charge you more for longer text.</p>
         <Message 
           color='red' 
           hidden={ hideErrorMsg } 
