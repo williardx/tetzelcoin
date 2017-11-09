@@ -10,12 +10,10 @@ import {
   List,
   Menu,
   Segment,
-  Visibility,
   Input,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import CountdownTimer from './components/CountdownTimer';
-import EventPopup from './components/EventPopup';
 import MailchimpEmailForm from './components/MailchimpEmailForm';
 import Navbar from './components/Navbar';
 import TetzelFooter from './components/footer';
@@ -25,12 +23,9 @@ import './css/home.css';
 
 export default class HomeLaunch extends Component {
 
-  state = { popupVisible: false };
-
   render() {
 
     const endTime = 1514793600;
-    const eventPopup = this.state.popupVisible ? <EventPopup togglePopupVisibility={ () => this.setState({popupVisible: false}) } /> : null;
 
     return (
       <div>
@@ -55,12 +50,6 @@ export default class HomeLaunch extends Component {
 
               </Grid.Column>
             </Grid.Row>
-            <Visibility onBottomPassed={ () => this.setState({popupVisible: true}) }>
-
-            </Visibility>
-
-          { eventPopup }
-
           </Grid>
         </Segment>
 
