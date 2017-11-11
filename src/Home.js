@@ -16,6 +16,7 @@ import {
 import CountdownTimer from './components/CountdownTimer';
 import MailchimpEmailForm from './components/MailchimpEmailForm';
 import EventPopup from './components/EventPopup';
+import Featured from './components/Featured';
 
 import './css/dswallau.css';
 import './css/home.css';
@@ -97,10 +98,10 @@ export default class Home extends Component {
               signupUrl={this.props.mailchimp.signupUrl}
             />
 
-          { eventPopup }
-
           </Container>
         </Segment>
+
+        <Featured />
 
         <Segment style={{ padding: '2% 8%' }} vertical>
           <Grid container stackable verticalAlign='middle'>

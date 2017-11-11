@@ -17,6 +17,7 @@ import CountdownTimer from './components/CountdownTimer';
 import MailchimpEmailForm from './components/MailchimpEmailForm';
 import Navbar from './components/Navbar';
 import TetzelFooter from './components/footer';
+import Featured from './components/Featured';
 
 import './css/dswallau.css';
 import './css/home.css';
@@ -89,6 +90,9 @@ export default class HomeLaunch extends Component {
             </Grid.Row>
           </Grid>
         </Segment>
+
+        <Featured />
+
         <Segment style={{ padding: '8% 8%' }} vertical>
           <Container>
             <Grid stackable verticalAlign='middle'>

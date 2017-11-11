@@ -375,3 +375,14 @@ button.button.event-popup > i {
 .home.important-note {
     text-decoration: underline;
 }
+.featured .ui.vertical.segment {
+    border-bottom: 1px solid rgba(34,36,38,.15) !important;
+}
+.four.wide.column.media-img {
+    padding: 1em !important;
+}
+@media (max-width: 768px){
+  .featured .four.wide.column.media-img img {
+    width: 70%;
+  }
+}
