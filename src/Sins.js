@@ -112,6 +112,13 @@ export default class Sins extends Component {
     let url = `https://api.etherscan.io/api?module=logs&action=getLogs&fromBlock=${fromBlock}&toBlock=${toBlock}&address=${this.state.tetzelAddress}`;
     let logs = await fetch(url);
     let data = await logs.json();
+    if (data.message === 'NOTOK') {
+      this.setState({
+        errorMsg: 'There was a problem fetching the latest sins.',
+        recentSins: [],
+      });
+      return;
+    }
     let newSins = data.result.map(this.processConfessEvent.bind(this));
     if (this.state.recentSins !== null) {
       this.setState({recentSins: this.state.recentSins.concat(newSins)});
