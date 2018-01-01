@@ -31,18 +31,13 @@ export default class Navbar extends Component {
             </Link>
           </div>
           <div className='mobile navbar-link-wrapper'>
-            <Link className='mobile navbar-link' name='sins' to='/sins'>
-              Sins
-            </Link>
-          </div>
-          <div className='mobile navbar-link-wrapper'>
             <Link className='mobile navbar-link' name='instructions' to='/tokens'>
               Tokens
             </Link>
           </div>
           <div className='mobile navbar-link-wrapper'>
-            <Link className='mobile navbar-link' name='instructions' to='/instructions'>
-              <Button primary size='big' className='btn-dark'>Confess</Button>
+            <Link className='mobile navbar-link' name='sins' to='/sins'>
+              <Button primary size='big' className='btn-dark'>View Sins</Button>
             </Link>
           </div>
         </div>
@@ -69,19 +64,14 @@ export default class Navbar extends Component {
                 Home
               </Menu.Item>
             </Link>
-            <Link className='navbar-link desktop' to='/sins'>
-              <Menu.Item className='navbar-item' name='instructions' >
-                Sins
-              </Menu.Item>
-            </Link>
             <Link className='navbar-link desktop' to='/tokens'>
               <Menu.Item className='navbar-item' name='instructions' >
                 Tokens
               </Menu.Item>
             </Link>
-            <Link className='navbar-link desktop' to='/instructions'>
-              <Menu.Item className='navbar-item btn-dark' name='instructions' >
-                <Button primary size='big' className='btn-dark'>Confess</Button>
+            <Link className='navbar-link desktop' to='/sins'>
+              <Menu.Item className='navbar-item btn-dark' name='sins' >
+                <Button primary size='big' className='btn-dark'>View Sins</Button>
               </Menu.Item>
             </Link>
             <Menu.Item

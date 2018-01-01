@@ -136,11 +136,6 @@ export default class Sins extends Component {
             <SinsTable
               recentSins={ this.state.recentSins }
               sinsPerPage={ 10 } />
-            <div className='sins-table confess-btn-wrapper'>
-              <Link to='/instructions'>
-                <Button primary size='big' className='btn-dark'>Confess Now</Button>
-              </Link>
-            </div>
           </div>
         );
       } else {

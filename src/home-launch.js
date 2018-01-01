@@ -42,12 +42,12 @@ export default class HomeLaunch extends Component {
               <Grid.Column width={8} mobile={12} tablet={8} computer={8}>
                 <Header
                   as='h1'
-                  content='Confession Has Begun'
+                  content='Confession Has Ended'
                   className='dswallau'
                   style={{ marginBottom: 0, marginTop: '1em', color: '#86888A' }}
                 />
               <br /><br />
-              <Link to="/instructions"><Button primary size='big' className='btn-dark'>Confess</Button></Link>
+              <Link to="/sins"><Button primary size='big' className='btn-dark'>View Sins</Button></Link>
 
               </Grid.Column>
             </Grid.Row>
