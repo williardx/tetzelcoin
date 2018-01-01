@@ -8,17 +8,17 @@ export default class CountdownTimer extends Component {
 
   constructor(props) {
     super(props);
-    let secondsLeft = this.props.targetTime 
+    let secondsLeft = this.props.targetTime
                         - Math.floor((new Date().getTime() / 1000));
     this.state = {
       time: {},
-      seconds: secondsLeft,
+      seconds: secondsLeft < 0 ? 0 : secondsLeft,
       timer: 0,
     };
-    
+
     this.countdown = this.countdown.bind(this);
 
-  } 
+  }
 
   secondsToTime(secs){
     return {
@@ -32,13 +32,14 @@ export default class CountdownTimer extends Component {
   countdown() {
     // Remove one second, set state so a re-render happens.
     let seconds = this.state.seconds - 1;
+    seconds = seconds < 0 ? 0 : seconds;
     this.setState({
       time: this.secondsToTime(seconds),
       seconds: seconds,
     });
-    
+
     // Check if we're at zero.
-    if (seconds === 0) { 
+    if (seconds === 0) {
       clearInterval(this.state.timer);
     }
   }
