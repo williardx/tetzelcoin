@@ -1,0 +1,17 @@
+.ui.container.event-container {
+  padding: 0px 15px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 80px;
+}
+
+p.event-description {
+  font-size: 1.33em;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+img.event-image {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}

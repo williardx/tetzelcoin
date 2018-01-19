@@ -36,6 +36,11 @@ export default class Navbar extends Component {
             </Link>
           </div>
           <div className='mobile navbar-link-wrapper'>
+            <Link className='mobile navbar-link' name='event' to='/event'>
+              Event
+            </Link>
+          </div>
+          <div className='mobile navbar-link-wrapper'>
             <Link className='mobile navbar-link' name='sins' to='/sins'>
               <Button primary size='big' className='btn-dark'>View Sins</Button>
             </Link>
@@ -67,6 +72,11 @@ export default class Navbar extends Component {
             <Link className='navbar-link desktop' to='/tokens'>
               <Menu.Item className='navbar-item' name='instructions' >
                 Tokens
+              </Menu.Item>
+            </Link>
+            <Link className='navbar-link desktop' to='/event'>
+              <Menu.Item className='navbar-item' name='event' >
+                Event
               </Menu.Item>
             </Link>
             <Link className='navbar-link desktop' to='/sins'>

@@ -7,6 +7,7 @@ import Instructions from './Instructions';
 import Confess from './Confess';
 import Sins from './Sins';
 import Tokens from './Tokens';
+import ConfessionalEvent from './ConfessionalEvent';
 import NotFound from './NotFound';
 import getWeb3 from './utils/getWeb3';
 
@@ -46,6 +47,7 @@ export default class App extends Component {
           <Route exact path="/confess" component={ () =>  <Confess web3={this.state.web3} /> } />
           <Route exact path="/sins" component={ () => <Sins web3={this.state.web3} /> } />
           <Route exact path="/tokens" component={ () => <Tokens web3={this.state.web3} /> } />
+          <Route exact path="/event" component={ () => <ConfessionalEvent /> } />
           <Route component={ NotFound } />
         </Switch>
       </main>
