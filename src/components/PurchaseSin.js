@@ -25,6 +25,7 @@ export default class PurchaseSin extends Component {
           disabled={ this.props.pending }
           type="submit"
           primary
+          disabled
           size='big'
           className='btn-cta submit-btn'
           onClick={() => this.props.onPurchase() }> Submit </Button>
@@ -39,9 +40,9 @@ export default class PurchaseSin extends Component {
           textAlign='center'
           className='dswallau confess-header gradient-text'
         />
-        <Message 
-          color='red' 
-          hidden={ hideErrorMsg } 
+        <Message
+          color='red'
+          hidden={ hideErrorMsg }
           className='confess-sin error-message'>
           { this.props.errorMsg }
         </Message>

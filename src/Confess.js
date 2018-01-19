@@ -21,7 +21,7 @@ export default class Confess extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      errorMsg: '',
+      errorMsg: 'Confession has ended. You can still view the confessional but will be unable to confess.',
       tx: null,
       tetzelInstance: null,
       tetzelAddress: 'Loading...',
@@ -42,9 +42,11 @@ export default class Confess extends Component {
   async componentWillMount() {
     if (this.props.web3) {
       try {
-        await this.fetchAccount();
+        // We don't need to worry about fetching accounts now that
+        // the confessional has closed. This would be otherwise uncommented.
+        // await this.fetchAccount();
         await this.instantiateContracts();
-        await this.fetchEtherPrice();        
+        await this.fetchEtherPrice();
       } catch(e) {
         this.setState({errorMsg: e.message});
       }
@@ -53,7 +55,7 @@ export default class Confess extends Component {
 
   async fetchAccount() {
 
-    const errorMsg = 'We couldn\'t find an Ethereum account. ' + 
+    const errorMsg = 'We couldn\'t find an Ethereum account. ' +
                      'Please check MetaMask or your Web3 provider. ' +
                      'You can still view the confessional but will not ' +
                      'be able to confess.';
@@ -63,7 +65,7 @@ export default class Confess extends Component {
     } catch(e) {
       this.setState({errorMsg: errorMsg});
     }
-    
+
     if (accounts.length === 0) {
       this.setState({errorMsg: errorMsg});
     } else {
@@ -138,18 +140,18 @@ export default class Confess extends Component {
     }
 
     try {
-      
+
       const txHash = await this.state.tetzelInstance.confess.sendTransaction(
         this.state.sinRecipient,
         this.state.sinText,
         {
-          from: this.state.account, 
+          from: this.state.account,
           value: this.props.web3.toWei(sinValue, 'ether'),
           gas: 300000,
         }
       );
       this.setState({tx: txHash, pending: true});
-      
+
       var isSuccess = false;
       var count = 0;
 
@@ -184,7 +186,7 @@ export default class Confess extends Component {
   /*
   Checks whether or not a transaction succeeded by looking for an event (`Confess`)
   triggered by the Tetzel contract. We need to do this because there's no way to tell
-  the difference between a transaction that failed due to out of gas errors 
+  the difference between a transaction that failed due to out of gas errors
   on internal transactions but is still successfully mined and a successful
   transaction.
   */
@@ -215,12 +217,12 @@ export default class Confess extends Component {
       this.setState({
         sinValueUSD: val,
         sinValueETH: val / this.state.ethSpotPrice
-      });      
+      });
     } else if (unit === 'ETH') {
       this.setState({
         sinValueUSD: val * this.state.ethSpotPrice,
         sinValueETH: val
-      });       
+      });
     } else {
       throw new Error("Invalid unit for updateSinValue");
     }
@@ -274,7 +276,7 @@ export default class Confess extends Component {
               errorMsg={ this.state.errorMsg }
               sinText={ this.state.sinText }
               updateSinText={ this.updateSinText.bind(this) }
-              onNext={ () => this.changeActiveView('VALUE_SIN') } />            
+              onNext={ () => this.changeActiveView('VALUE_SIN') } />
           );
         case 'VALUE_SIN':
           return (
@@ -321,7 +323,7 @@ export default class Confess extends Component {
           console.log(this.state.account);
           console.log(this.state.sinRecipient);
           return (
-            <Forgiveness 
+            <Forgiveness
               tx={ this.state.tx }
               web3={ this.props.web3 }
               boughtSinsForSelf={ boughtSinsForSelf }
@@ -335,15 +337,15 @@ export default class Confess extends Component {
       return(
         <div className='icon-wrapper'>
           <Icon
-            onClick={ () => this.changeActiveView('CONFESS_SIN') } 
+            onClick={ () => this.changeActiveView('CONFESS_SIN') }
             name={ this.state.activeView === 'CONFESS_SIN' ? 'circle' : 'circle thin'} />
           <Icon
-            onClick={ () => this.changeActiveView('VALUE_SIN') } 
+            onClick={ () => this.changeActiveView('VALUE_SIN') }
             name={ this.state.activeView === 'VALUE_SIN' ? 'circle' : 'circle thin'} />
           <Icon
-            onClick={ () => this.changeActiveView('PURCHASE_SIN') } 
-            name={ 
-              (this.state.activeView === 'PURCHASE_SIN' 
+            onClick={ () => this.changeActiveView('PURCHASE_SIN') }
+            name={
+              (this.state.activeView === 'PURCHASE_SIN'
               || this.state.activeView === 'FORGIVENESS') ? 'circle' : 'circle thin'} />
         </div>
       );
